@@ -1,0 +1,2716 @@
+=================================================================================
+MANUAL SCORE INPUT DATA
+Event: Test Beauty Pageant - 2026-01-10 01:02:34
+Generated: 2026-01-11 10:59:51
+=================================================================================
+
+
+--------------------------------------------------------------------------------
+ROUND: Preliminary - Talent Competition (Round ID: 14)
+--------------------------------------------------------------------------------
+
+Criteria:
+  - Performance Quality (Max: 10.00, Weight: 33.33%)
+  - Stage Presence (Max: 10.00, Weight: 33.33%)
+  - Originality (Max: 10.00, Weight: 33.33%)
+
+
+JUDGE: John Anderson (Judge ID: 33, Username: judge1)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Performance Quality (ID: 28, Max: 10): 7.164
+    Stage Presence (ID: 41, Max: 10): 7.473
+    Originality (ID: 42, Max: 10): 7.799
+    → Total Raw Score: 22.436
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Performance Quality (ID: 28, Max: 10): 8.39
+    Stage Presence (ID: 41, Max: 10): 8.04
+    Originality (ID: 42, Max: 10): 7.494
+    → Total Raw Score: 23.924
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Performance Quality (ID: 28, Max: 10): 8.611
+    Stage Presence (ID: 41, Max: 10): 7.708
+    Originality (ID: 42, Max: 10): 7.161
+    → Total Raw Score: 23.480
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Performance Quality (ID: 28, Max: 10): 8.063
+    Stage Presence (ID: 41, Max: 10): 7.333
+    Originality (ID: 42, Max: 10): 6.897
+    → Total Raw Score: 22.293
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Performance Quality (ID: 28, Max: 10): 8.049
+    Stage Presence (ID: 41, Max: 10): 7.224
+    Originality (ID: 42, Max: 10): 7.93
+    → Total Raw Score: 23.203
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Performance Quality (ID: 28, Max: 10): 7.971
+    Stage Presence (ID: 41, Max: 10): 8.205
+    Originality (ID: 42, Max: 10): 9.233
+    → Total Raw Score: 25.409
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Performance Quality (ID: 28, Max: 10): 8.647
+    Stage Presence (ID: 41, Max: 10): 9.451
+    Originality (ID: 42, Max: 10): 9.323
+    → Total Raw Score: 27.421
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Performance Quality (ID: 28, Max: 10): 9.676
+    Stage Presence (ID: 41, Max: 10): 9.651
+    Originality (ID: 42, Max: 10): 9.354
+    → Total Raw Score: 28.681
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 9.938
+    Originality (ID: 42, Max: 10): 9.045
+    → Total Raw Score: 28.983
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 9.287
+    Originality (ID: 42, Max: 10): 9.128
+    → Total Raw Score: 28.415
+
+JUDGE: Maria Garcia (Judge ID: 34, Username: judge2)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Performance Quality (ID: 28, Max: 10): 7.024
+    Stage Presence (ID: 41, Max: 10): 7.988
+    Originality (ID: 42, Max: 10): 8.033
+    → Total Raw Score: 23.045
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Performance Quality (ID: 28, Max: 10): 8.092
+    Stage Presence (ID: 41, Max: 10): 8.381
+    Originality (ID: 42, Max: 10): 7.909
+    → Total Raw Score: 24.382
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Performance Quality (ID: 28, Max: 10): 8.396
+    Stage Presence (ID: 41, Max: 10): 7.774
+    Originality (ID: 42, Max: 10): 7.606
+    → Total Raw Score: 23.776
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Performance Quality (ID: 28, Max: 10): 8.071
+    Stage Presence (ID: 41, Max: 10): 7.291
+    Originality (ID: 42, Max: 10): 7.375
+    → Total Raw Score: 22.737
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Performance Quality (ID: 28, Max: 10): 7.986
+    Stage Presence (ID: 41, Max: 10): 7.481
+    Originality (ID: 42, Max: 10): 8.337
+    → Total Raw Score: 23.804
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Performance Quality (ID: 28, Max: 10): 7.687
+    Stage Presence (ID: 41, Max: 10): 8.494
+    Originality (ID: 42, Max: 10): 9.248
+    → Total Raw Score: 25.429
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Performance Quality (ID: 28, Max: 10): 8.668
+    Stage Presence (ID: 41, Max: 10): 9.512
+    Originality (ID: 42, Max: 10): 9.856
+    → Total Raw Score: 28.036
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Performance Quality (ID: 28, Max: 10): 9.64
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 10
+    → Total Raw Score: 29.640
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 9.711
+    Originality (ID: 42, Max: 10): 9.19
+    → Total Raw Score: 28.901
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 9.436
+    Originality (ID: 42, Max: 10): 9.374
+    → Total Raw Score: 28.810
+
+JUDGE: David Chen (Judge ID: 35, Username: judge3)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Performance Quality (ID: 28, Max: 10): 7.464
+    Stage Presence (ID: 41, Max: 10): 8.31
+    Originality (ID: 42, Max: 10): 8.509
+    → Total Raw Score: 24.283
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Performance Quality (ID: 28, Max: 10): 8.443
+    Stage Presence (ID: 41, Max: 10): 8.416
+    Originality (ID: 42, Max: 10): 8.091
+    → Total Raw Score: 24.950
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Performance Quality (ID: 28, Max: 10): 8.465
+    Stage Presence (ID: 41, Max: 10): 8.267
+    Originality (ID: 42, Max: 10): 8.051
+    → Total Raw Score: 24.783
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Performance Quality (ID: 28, Max: 10): 8.419
+    Stage Presence (ID: 41, Max: 10): 7.729
+    Originality (ID: 42, Max: 10): 8.146
+    → Total Raw Score: 24.294
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Performance Quality (ID: 28, Max: 10): 7.873
+    Stage Presence (ID: 41, Max: 10): 8.072
+    Originality (ID: 42, Max: 10): 8.87
+    → Total Raw Score: 24.815
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Performance Quality (ID: 28, Max: 10): 8.119
+    Stage Presence (ID: 41, Max: 10): 8.729
+    Originality (ID: 42, Max: 10): 9.768
+    → Total Raw Score: 26.616
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Performance Quality (ID: 28, Max: 10): 8.773
+    Stage Presence (ID: 41, Max: 10): 9.977
+    Originality (ID: 42, Max: 10): 10
+    → Total Raw Score: 28.750
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Performance Quality (ID: 28, Max: 10): 9.878
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 10
+    → Total Raw Score: 29.878
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 9.743
+    → Total Raw Score: 29.743
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 9.946
+    → Total Raw Score: 29.946
+
+JUDGE: Sarah Williams (Judge ID: 36, Username: judge4)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Performance Quality (ID: 28, Max: 10): 7.279
+    Stage Presence (ID: 41, Max: 10): 8.151
+    Originality (ID: 42, Max: 10): 8.18
+    → Total Raw Score: 23.610
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Performance Quality (ID: 28, Max: 10): 8.369
+    Stage Presence (ID: 41, Max: 10): 8.577
+    Originality (ID: 42, Max: 10): 8.125
+    → Total Raw Score: 25.071
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Performance Quality (ID: 28, Max: 10): 8.639
+    Stage Presence (ID: 41, Max: 10): 8.262
+    Originality (ID: 42, Max: 10): 7.417
+    → Total Raw Score: 24.318
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Performance Quality (ID: 28, Max: 10): 8.248
+    Stage Presence (ID: 41, Max: 10): 7.926
+    Originality (ID: 42, Max: 10): 7.735
+    → Total Raw Score: 23.909
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Performance Quality (ID: 28, Max: 10): 7.869
+    Stage Presence (ID: 41, Max: 10): 7.899
+    Originality (ID: 42, Max: 10): 8.66
+    → Total Raw Score: 24.428
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Performance Quality (ID: 28, Max: 10): 7.847
+    Stage Presence (ID: 41, Max: 10): 8.871
+    Originality (ID: 42, Max: 10): 9.433
+    → Total Raw Score: 26.151
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Performance Quality (ID: 28, Max: 10): 9.014
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 10
+    → Total Raw Score: 29.014
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 9.756
+    → Total Raw Score: 29.756
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 9.282
+    → Total Raw Score: 29.282
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 9.798
+    Originality (ID: 42, Max: 10): 9.424
+    → Total Raw Score: 29.222
+
+JUDGE: Michael Brown (Judge ID: 37, Username: judge5)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Performance Quality (ID: 28, Max: 10): 7.548
+    Stage Presence (ID: 41, Max: 10): 8.455
+    Originality (ID: 42, Max: 10): 8.361
+    → Total Raw Score: 24.364
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Performance Quality (ID: 28, Max: 10): 8.768
+    Stage Presence (ID: 41, Max: 10): 8.912
+    Originality (ID: 42, Max: 10): 8.077
+    → Total Raw Score: 25.757
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Performance Quality (ID: 28, Max: 10): 9.166
+    Stage Presence (ID: 41, Max: 10): 8.689
+    Originality (ID: 42, Max: 10): 7.392
+    → Total Raw Score: 25.247
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Performance Quality (ID: 28, Max: 10): 8.839
+    Stage Presence (ID: 41, Max: 10): 8.271
+    Originality (ID: 42, Max: 10): 7.721
+    → Total Raw Score: 24.831
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Performance Quality (ID: 28, Max: 10): 8.065
+    Stage Presence (ID: 41, Max: 10): 7.97
+    Originality (ID: 42, Max: 10): 8.295
+    → Total Raw Score: 24.330
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Performance Quality (ID: 28, Max: 10): 8.636
+    Stage Presence (ID: 41, Max: 10): 9.188
+    Originality (ID: 42, Max: 10): 9.403
+    → Total Raw Score: 27.227
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Performance Quality (ID: 28, Max: 10): 9.104
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 10
+    → Total Raw Score: 29.104
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 10
+    → Total Raw Score: 30.000
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 9.346
+    → Total Raw Score: 29.346
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 9.391
+    → Total Raw Score: 29.391
+
+JUDGE: Lisa Johnson (Judge ID: 38, Username: judge6)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Performance Quality (ID: 28, Max: 10): 8.18
+    Stage Presence (ID: 41, Max: 10): 8.576
+    Originality (ID: 42, Max: 10): 8.017
+    → Total Raw Score: 24.773
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Performance Quality (ID: 28, Max: 10): 9.128
+    Stage Presence (ID: 41, Max: 10): 8.525
+    Originality (ID: 42, Max: 10): 7.764
+    → Total Raw Score: 25.417
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Performance Quality (ID: 28, Max: 10): 9.284
+    Stage Presence (ID: 41, Max: 10): 8.207
+    Originality (ID: 42, Max: 10): 7.596
+    → Total Raw Score: 25.087
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Performance Quality (ID: 28, Max: 10): 8.903
+    Stage Presence (ID: 41, Max: 10): 8.253
+    Originality (ID: 42, Max: 10): 7.662
+    → Total Raw Score: 24.818
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Performance Quality (ID: 28, Max: 10): 8.678
+    Stage Presence (ID: 41, Max: 10): 7.918
+    Originality (ID: 42, Max: 10): 8.56
+    → Total Raw Score: 25.156
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Performance Quality (ID: 28, Max: 10): 8.545
+    Stage Presence (ID: 41, Max: 10): 8.895
+    Originality (ID: 42, Max: 10): 9.507
+    → Total Raw Score: 26.947
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Performance Quality (ID: 28, Max: 10): 9.415
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 10
+    → Total Raw Score: 29.415
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 9.921
+    → Total Raw Score: 29.921
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 9.462
+    → Total Raw Score: 29.462
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 9.972
+    Originality (ID: 42, Max: 10): 9.526
+    → Total Raw Score: 29.498
+
+JUDGE: Robert Taylor (Judge ID: 39, Username: judge7)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Performance Quality (ID: 28, Max: 10): 7.477
+    Stage Presence (ID: 41, Max: 10): 7.82
+    Originality (ID: 42, Max: 10): 7.632
+    → Total Raw Score: 22.929
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Performance Quality (ID: 28, Max: 10): 8.304
+    Stage Presence (ID: 41, Max: 10): 8.053
+    Originality (ID: 42, Max: 10): 7.572
+    → Total Raw Score: 23.929
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Performance Quality (ID: 28, Max: 10): 8.469
+    Stage Presence (ID: 41, Max: 10): 8.005
+    Originality (ID: 42, Max: 10): 6.798
+    → Total Raw Score: 23.272
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Performance Quality (ID: 28, Max: 10): 8.14
+    Stage Presence (ID: 41, Max: 10): 7.183
+    Originality (ID: 42, Max: 10): 6.897
+    → Total Raw Score: 22.220
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Performance Quality (ID: 28, Max: 10): 7.809
+    Stage Presence (ID: 41, Max: 10): 7.494
+    Originality (ID: 42, Max: 10): 7.843
+    → Total Raw Score: 23.146
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Performance Quality (ID: 28, Max: 10): 8.282
+    Stage Presence (ID: 41, Max: 10): 8.419
+    Originality (ID: 42, Max: 10): 9.096
+    → Total Raw Score: 25.797
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Performance Quality (ID: 28, Max: 10): 8.682
+    Stage Presence (ID: 41, Max: 10): 9.511
+    Originality (ID: 42, Max: 10): 9.426
+    → Total Raw Score: 27.619
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 10
+    Originality (ID: 42, Max: 10): 9.319
+    → Total Raw Score: 29.319
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 9.677
+    Originality (ID: 42, Max: 10): 9.032
+    → Total Raw Score: 28.709
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Performance Quality (ID: 28, Max: 10): 10
+    Stage Presence (ID: 41, Max: 10): 9.143
+    Originality (ID: 42, Max: 10): 9.087
+    → Total Raw Score: 28.230
+
+--------------------------------------------------------------------------------
+ROUND: Preliminary - Q&A Session (Round ID: 15)
+--------------------------------------------------------------------------------
+
+Criteria:
+  - Content & Clarity (Max: 10.00, Weight: 33.33%)
+  - Confidence (Max: 10.00, Weight: 33.33%)
+  - Communication Skills (Max: 10.00, Weight: 33.33%)
+
+
+JUDGE: John Anderson (Judge ID: 33, Username: judge1)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Content & Clarity (ID: 43, Max: 10): 7.101
+    Confidence (ID: 44, Max: 10): 7.7
+    Communication Skills (ID: 45, Max: 10): 7.847
+    → Total Raw Score: 22.648
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Content & Clarity (ID: 43, Max: 10): 8.299
+    Confidence (ID: 44, Max: 10): 8.124
+    Communication Skills (ID: 45, Max: 10): 7.469
+    → Total Raw Score: 23.892
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Content & Clarity (ID: 43, Max: 10): 8.68
+    Confidence (ID: 44, Max: 10): 7.796
+    Communication Skills (ID: 45, Max: 10): 7.2
+    → Total Raw Score: 23.676
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Content & Clarity (ID: 43, Max: 10): 8.082
+    Confidence (ID: 44, Max: 10): 7.379
+    Communication Skills (ID: 45, Max: 10): 7.293
+    → Total Raw Score: 22.754
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Content & Clarity (ID: 43, Max: 10): 7.933
+    Confidence (ID: 44, Max: 10): 7.366
+    Communication Skills (ID: 45, Max: 10): 8.169
+    → Total Raw Score: 23.468
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Content & Clarity (ID: 43, Max: 10): 7.806
+    Confidence (ID: 44, Max: 10): 8.436
+    Communication Skills (ID: 45, Max: 10): 9.02
+    → Total Raw Score: 25.262
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Content & Clarity (ID: 43, Max: 10): 8.95
+    Confidence (ID: 44, Max: 10): 9.239
+    Communication Skills (ID: 45, Max: 10): 9.596
+    → Total Raw Score: 27.785
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.44
+    → Total Raw Score: 29.440
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.827
+    Communication Skills (ID: 45, Max: 10): 8.802
+    → Total Raw Score: 28.629
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.368
+    Communication Skills (ID: 45, Max: 10): 8.89
+    → Total Raw Score: 28.258
+
+JUDGE: Maria Garcia (Judge ID: 34, Username: judge2)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Content & Clarity (ID: 43, Max: 10): 7.053
+    Confidence (ID: 44, Max: 10): 7.836
+    Communication Skills (ID: 45, Max: 10): 8.235
+    → Total Raw Score: 23.124
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Content & Clarity (ID: 43, Max: 10): 8.239
+    Confidence (ID: 44, Max: 10): 8.136
+    Communication Skills (ID: 45, Max: 10): 7.691
+    → Total Raw Score: 24.066
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Content & Clarity (ID: 43, Max: 10): 8.376
+    Confidence (ID: 44, Max: 10): 7.648
+    Communication Skills (ID: 45, Max: 10): 7.653
+    → Total Raw Score: 23.677
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Content & Clarity (ID: 43, Max: 10): 8.073
+    Confidence (ID: 44, Max: 10): 7.713
+    Communication Skills (ID: 45, Max: 10): 7.75
+    → Total Raw Score: 23.536
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Content & Clarity (ID: 43, Max: 10): 7.661
+    Confidence (ID: 44, Max: 10): 7.673
+    Communication Skills (ID: 45, Max: 10): 8.534
+    → Total Raw Score: 23.868
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Content & Clarity (ID: 43, Max: 10): 7.73
+    Confidence (ID: 44, Max: 10): 8.592
+    Communication Skills (ID: 45, Max: 10): 9.61
+    → Total Raw Score: 25.932
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Content & Clarity (ID: 43, Max: 10): 8.677
+    Confidence (ID: 44, Max: 10): 9.575
+    Communication Skills (ID: 45, Max: 10): 10
+    → Total Raw Score: 28.252
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Content & Clarity (ID: 43, Max: 10): 9.707
+    Confidence (ID: 44, Max: 10): 9.866
+    Communication Skills (ID: 45, Max: 10): 9.902
+    → Total Raw Score: 29.475
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.517
+    → Total Raw Score: 29.517
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.586
+    Communication Skills (ID: 45, Max: 10): 9.479
+    → Total Raw Score: 29.065
+
+JUDGE: David Chen (Judge ID: 35, Username: judge3)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Content & Clarity (ID: 43, Max: 10): 7.581
+    Confidence (ID: 44, Max: 10): 8.047
+    Communication Skills (ID: 45, Max: 10): 8.386
+    → Total Raw Score: 24.014
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Content & Clarity (ID: 43, Max: 10): 8.441
+    Confidence (ID: 44, Max: 10): 8.859
+    Communication Skills (ID: 45, Max: 10): 8.387
+    → Total Raw Score: 25.687
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Content & Clarity (ID: 43, Max: 10): 8.811
+    Confidence (ID: 44, Max: 10): 8.5
+    Communication Skills (ID: 45, Max: 10): 7.733
+    → Total Raw Score: 25.044
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Content & Clarity (ID: 43, Max: 10): 8.154
+    Confidence (ID: 44, Max: 10): 7.883
+    Communication Skills (ID: 45, Max: 10): 7.764
+    → Total Raw Score: 23.801
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Content & Clarity (ID: 43, Max: 10): 7.905
+    Confidence (ID: 44, Max: 10): 7.929
+    Communication Skills (ID: 45, Max: 10): 8.876
+    → Total Raw Score: 24.710
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Content & Clarity (ID: 43, Max: 10): 7.868
+    Confidence (ID: 44, Max: 10): 8.869
+    Communication Skills (ID: 45, Max: 10): 9.91
+    → Total Raw Score: 26.647
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Content & Clarity (ID: 43, Max: 10): 9.186
+    Confidence (ID: 44, Max: 10): 9.956
+    Communication Skills (ID: 45, Max: 10): 10
+    → Total Raw Score: 29.142
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Content & Clarity (ID: 43, Max: 10): 9.991
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 10
+    → Total Raw Score: 29.991
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 10
+    → Total Raw Score: 30.000
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.878
+    → Total Raw Score: 29.878
+
+JUDGE: Sarah Williams (Judge ID: 36, Username: judge4)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Content & Clarity (ID: 43, Max: 10): 7.382
+    Confidence (ID: 44, Max: 10): 8.307
+    Communication Skills (ID: 45, Max: 10): 8.211
+    → Total Raw Score: 23.900
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Content & Clarity (ID: 43, Max: 10): 8.012
+    Confidence (ID: 44, Max: 10): 8.571
+    Communication Skills (ID: 45, Max: 10): 7.993
+    → Total Raw Score: 24.576
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Content & Clarity (ID: 43, Max: 10): 8.406
+    Confidence (ID: 44, Max: 10): 8.058
+    Communication Skills (ID: 45, Max: 10): 7.69
+    → Total Raw Score: 24.154
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Content & Clarity (ID: 43, Max: 10): 8.266
+    Confidence (ID: 44, Max: 10): 7.996
+    Communication Skills (ID: 45, Max: 10): 7.664
+    → Total Raw Score: 23.926
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Content & Clarity (ID: 43, Max: 10): 7.899
+    Confidence (ID: 44, Max: 10): 7.896
+    Communication Skills (ID: 45, Max: 10): 8.292
+    → Total Raw Score: 24.087
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Content & Clarity (ID: 43, Max: 10): 7.969
+    Confidence (ID: 44, Max: 10): 8.936
+    Communication Skills (ID: 45, Max: 10): 9.4
+    → Total Raw Score: 26.305
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Content & Clarity (ID: 43, Max: 10): 9.026
+    Confidence (ID: 44, Max: 10): 9.777
+    Communication Skills (ID: 45, Max: 10): 10
+    → Total Raw Score: 28.803
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Content & Clarity (ID: 43, Max: 10): 9.719
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.83
+    → Total Raw Score: 29.549
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.317
+    → Total Raw Score: 29.317
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.947
+    Communication Skills (ID: 45, Max: 10): 9.521
+    → Total Raw Score: 29.468
+
+JUDGE: Michael Brown (Judge ID: 37, Username: judge5)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Content & Clarity (ID: 43, Max: 10): 7.703
+    Confidence (ID: 44, Max: 10): 8.298
+    Communication Skills (ID: 45, Max: 10): 8.459
+    → Total Raw Score: 24.460
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Content & Clarity (ID: 43, Max: 10): 8.687
+    Confidence (ID: 44, Max: 10): 8.601
+    Communication Skills (ID: 45, Max: 10): 8.166
+    → Total Raw Score: 25.454
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Content & Clarity (ID: 43, Max: 10): 8.922
+    Confidence (ID: 44, Max: 10): 8.503
+    Communication Skills (ID: 45, Max: 10): 7.62
+    → Total Raw Score: 25.045
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Content & Clarity (ID: 43, Max: 10): 8.645
+    Confidence (ID: 44, Max: 10): 7.784
+    Communication Skills (ID: 45, Max: 10): 7.853
+    → Total Raw Score: 24.282
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Content & Clarity (ID: 43, Max: 10): 8.08
+    Confidence (ID: 44, Max: 10): 7.919
+    Communication Skills (ID: 45, Max: 10): 8.536
+    → Total Raw Score: 24.535
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Content & Clarity (ID: 43, Max: 10): 8.24
+    Confidence (ID: 44, Max: 10): 8.948
+    Communication Skills (ID: 45, Max: 10): 9.308
+    → Total Raw Score: 26.496
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Content & Clarity (ID: 43, Max: 10): 9.331
+    Confidence (ID: 44, Max: 10): 9.872
+    Communication Skills (ID: 45, Max: 10): 9.979
+    → Total Raw Score: 29.182
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.801
+    → Total Raw Score: 29.801
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.722
+    → Total Raw Score: 29.722
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.412
+    → Total Raw Score: 29.412
+
+JUDGE: Lisa Johnson (Judge ID: 38, Username: judge6)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Content & Clarity (ID: 43, Max: 10): 7.966
+    Confidence (ID: 44, Max: 10): 8.426
+    Communication Skills (ID: 45, Max: 10): 8.365
+    → Total Raw Score: 24.757
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Content & Clarity (ID: 43, Max: 10): 8.924
+    Confidence (ID: 44, Max: 10): 8.881
+    Communication Skills (ID: 45, Max: 10): 7.824
+    → Total Raw Score: 25.629
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Content & Clarity (ID: 43, Max: 10): 9.202
+    Confidence (ID: 44, Max: 10): 8.304
+    Communication Skills (ID: 45, Max: 10): 7.461
+    → Total Raw Score: 24.967
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Content & Clarity (ID: 43, Max: 10): 8.825
+    Confidence (ID: 44, Max: 10): 8.118
+    Communication Skills (ID: 45, Max: 10): 7.7
+    → Total Raw Score: 24.643
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Content & Clarity (ID: 43, Max: 10): 8.338
+    Confidence (ID: 44, Max: 10): 8.181
+    Communication Skills (ID: 45, Max: 10): 8.425
+    → Total Raw Score: 24.944
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Content & Clarity (ID: 43, Max: 10): 8.758
+    Confidence (ID: 44, Max: 10): 8.983
+    Communication Skills (ID: 45, Max: 10): 9.465
+    → Total Raw Score: 27.206
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Content & Clarity (ID: 43, Max: 10): 9.6
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.812
+    → Total Raw Score: 29.412
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.746
+    → Total Raw Score: 29.746
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.565
+    → Total Raw Score: 29.565
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 9.123
+    → Total Raw Score: 29.123
+
+JUDGE: Robert Taylor (Judge ID: 39, Username: judge7)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Content & Clarity (ID: 43, Max: 10): 7.36
+    Confidence (ID: 44, Max: 10): 7.958
+    Communication Skills (ID: 45, Max: 10): 7.875
+    → Total Raw Score: 23.193
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Content & Clarity (ID: 43, Max: 10): 8.184
+    Confidence (ID: 44, Max: 10): 7.863
+    Communication Skills (ID: 45, Max: 10): 7.505
+    → Total Raw Score: 23.552
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Content & Clarity (ID: 43, Max: 10): 8.868
+    Confidence (ID: 44, Max: 10): 7.946
+    Communication Skills (ID: 45, Max: 10): 6.929
+    → Total Raw Score: 23.743
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Content & Clarity (ID: 43, Max: 10): 8.347
+    Confidence (ID: 44, Max: 10): 7.231
+    Communication Skills (ID: 45, Max: 10): 6.973
+    → Total Raw Score: 22.551
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Content & Clarity (ID: 43, Max: 10): 8.058
+    Confidence (ID: 44, Max: 10): 7.437
+    Communication Skills (ID: 45, Max: 10): 7.879
+    → Total Raw Score: 23.374
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Content & Clarity (ID: 43, Max: 10): 8.186
+    Confidence (ID: 44, Max: 10): 8.429
+    Communication Skills (ID: 45, Max: 10): 8.963
+    → Total Raw Score: 25.578
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Content & Clarity (ID: 43, Max: 10): 8.771
+    Confidence (ID: 44, Max: 10): 9.472
+    Communication Skills (ID: 45, Max: 10): 9.766
+    → Total Raw Score: 28.009
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.696
+    Communication Skills (ID: 45, Max: 10): 9.347
+    → Total Raw Score: 29.043
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Communication Skills (ID: 45, Max: 10): 8.95
+    → Total Raw Score: 28.950
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Content & Clarity (ID: 43, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.184
+    Communication Skills (ID: 45, Max: 10): 8.945
+    → Total Raw Score: 28.129
+
+--------------------------------------------------------------------------------
+ROUND: Semi-Final - Evening Gown (Round ID: 16)
+--------------------------------------------------------------------------------
+
+Criteria:
+  - Poise & Elegance (Max: 10.00, Weight: 33.33%)
+  - Stage Walk (Max: 10.00, Weight: 33.33%)
+  - Overall Presentation (Max: 10.00, Weight: 33.33%)
+
+
+JUDGE: John Anderson (Judge ID: 33, Username: judge1)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Poise & Elegance (ID: 46, Max: 10): 7.348
+    Stage Walk (ID: 47, Max: 10): 7.789
+    Overall Presentation (ID: 48, Max: 10): 7.829
+    → Total Raw Score: 22.966
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Poise & Elegance (ID: 46, Max: 10): 8.027
+    Stage Walk (ID: 47, Max: 10): 7.919
+    Overall Presentation (ID: 48, Max: 10): 7.278
+    → Total Raw Score: 23.224
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Poise & Elegance (ID: 46, Max: 10): 8.499
+    Stage Walk (ID: 47, Max: 10): 7.713
+    Overall Presentation (ID: 48, Max: 10): 7.203
+    → Total Raw Score: 23.415
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Poise & Elegance (ID: 46, Max: 10): 8.463
+    Stage Walk (ID: 47, Max: 10): 7.353
+    Overall Presentation (ID: 48, Max: 10): 6.952
+    → Total Raw Score: 22.768
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Poise & Elegance (ID: 46, Max: 10): 7.625
+    Stage Walk (ID: 47, Max: 10): 7.515
+    Overall Presentation (ID: 48, Max: 10): 7.706
+    → Total Raw Score: 22.846
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Poise & Elegance (ID: 46, Max: 10): 8.182
+    Stage Walk (ID: 47, Max: 10): 8.45
+    Overall Presentation (ID: 48, Max: 10): 8.882
+    → Total Raw Score: 25.514
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Poise & Elegance (ID: 46, Max: 10): 8.77
+    Stage Walk (ID: 47, Max: 10): 9.479
+    Overall Presentation (ID: 48, Max: 10): 9.5
+    → Total Raw Score: 27.749
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Poise & Elegance (ID: 46, Max: 10): 9.942
+    Stage Walk (ID: 47, Max: 10): 9.889
+    Overall Presentation (ID: 48, Max: 10): 9.453
+    → Total Raw Score: 29.284
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 9.498
+    Overall Presentation (ID: 48, Max: 10): 8.792
+    → Total Raw Score: 28.290
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 9.431
+    Overall Presentation (ID: 48, Max: 10): 8.834
+    → Total Raw Score: 28.265
+
+JUDGE: Maria Garcia (Judge ID: 34, Username: judge2)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Poise & Elegance (ID: 46, Max: 10): 7.426
+    Stage Walk (ID: 47, Max: 10): 7.969
+    Overall Presentation (ID: 48, Max: 10): 8.335
+    → Total Raw Score: 23.730
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Poise & Elegance (ID: 46, Max: 10): 8.413
+    Stage Walk (ID: 47, Max: 10): 8.197
+    Overall Presentation (ID: 48, Max: 10): 7.889
+    → Total Raw Score: 24.499
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Poise & Elegance (ID: 46, Max: 10): 8.614
+    Stage Walk (ID: 47, Max: 10): 8.064
+    Overall Presentation (ID: 48, Max: 10): 7.244
+    → Total Raw Score: 23.922
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Poise & Elegance (ID: 46, Max: 10): 8.415
+    Stage Walk (ID: 47, Max: 10): 7.302
+    Overall Presentation (ID: 48, Max: 10): 7.372
+    → Total Raw Score: 23.089
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Poise & Elegance (ID: 46, Max: 10): 7.809
+    Stage Walk (ID: 47, Max: 10): 7.595
+    Overall Presentation (ID: 48, Max: 10): 8.519
+    → Total Raw Score: 23.923
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Poise & Elegance (ID: 46, Max: 10): 7.817
+    Stage Walk (ID: 47, Max: 10): 8.352
+    Overall Presentation (ID: 48, Max: 10): 9.491
+    → Total Raw Score: 25.660
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Poise & Elegance (ID: 46, Max: 10): 8.951
+    Stage Walk (ID: 47, Max: 10): 9.354
+    Overall Presentation (ID: 48, Max: 10): 10
+    → Total Raw Score: 28.305
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Poise & Elegance (ID: 46, Max: 10): 9.638
+    Stage Walk (ID: 47, Max: 10): 10
+    Overall Presentation (ID: 48, Max: 10): 9.791
+    → Total Raw Score: 29.429
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 9.842
+    Overall Presentation (ID: 48, Max: 10): 9.162
+    → Total Raw Score: 29.004
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 9.571
+    Overall Presentation (ID: 48, Max: 10): 9.102
+    → Total Raw Score: 28.673
+
+JUDGE: David Chen (Judge ID: 35, Username: judge3)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Poise & Elegance (ID: 46, Max: 10): 7.601
+    Stage Walk (ID: 47, Max: 10): 8.182
+    Overall Presentation (ID: 48, Max: 10): 8.807
+    → Total Raw Score: 24.590
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Poise & Elegance (ID: 46, Max: 10): 8.371
+    Stage Walk (ID: 47, Max: 10): 8.52
+    Overall Presentation (ID: 48, Max: 10): 8.28
+    → Total Raw Score: 25.171
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Poise & Elegance (ID: 46, Max: 10): 8.94
+    Stage Walk (ID: 47, Max: 10): 8.224
+    Overall Presentation (ID: 48, Max: 10): 8.092
+    → Total Raw Score: 25.256
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Poise & Elegance (ID: 46, Max: 10): 8.494
+    Stage Walk (ID: 47, Max: 10): 7.76
+    Overall Presentation (ID: 48, Max: 10): 7.803
+    → Total Raw Score: 24.057
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Poise & Elegance (ID: 46, Max: 10): 8.067
+    Stage Walk (ID: 47, Max: 10): 8.041
+    Overall Presentation (ID: 48, Max: 10): 9.069
+    → Total Raw Score: 25.177
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Poise & Elegance (ID: 46, Max: 10): 8.169
+    Stage Walk (ID: 47, Max: 10): 8.782
+    Overall Presentation (ID: 48, Max: 10): 9.893
+    → Total Raw Score: 26.844
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Poise & Elegance (ID: 46, Max: 10): 9.053
+    Stage Walk (ID: 47, Max: 10): 9.987
+    Overall Presentation (ID: 48, Max: 10): 10
+    → Total Raw Score: 29.040
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 10
+    Overall Presentation (ID: 48, Max: 10): 10
+    → Total Raw Score: 30.000
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 10
+    Overall Presentation (ID: 48, Max: 10): 10
+    → Total Raw Score: 30.000
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 9.788
+    Overall Presentation (ID: 48, Max: 10): 9.813
+    → Total Raw Score: 29.601
+
+JUDGE: Sarah Williams (Judge ID: 36, Username: judge4)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Poise & Elegance (ID: 46, Max: 10): 7.282
+    Stage Walk (ID: 47, Max: 10): 7.919
+    Overall Presentation (ID: 48, Max: 10): 8.415
+    → Total Raw Score: 23.616
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Poise & Elegance (ID: 46, Max: 10): 8.332
+    Stage Walk (ID: 47, Max: 10): 8.749
+    Overall Presentation (ID: 48, Max: 10): 7.952
+    → Total Raw Score: 25.033
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Poise & Elegance (ID: 46, Max: 10): 8.407
+    Stage Walk (ID: 47, Max: 10): 8.333
+    Overall Presentation (ID: 48, Max: 10): 7.466
+    → Total Raw Score: 24.206
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Poise & Elegance (ID: 46, Max: 10): 8.145
+    Stage Walk (ID: 47, Max: 10): 7.759
+    Overall Presentation (ID: 48, Max: 10): 7.509
+    → Total Raw Score: 23.413
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Poise & Elegance (ID: 46, Max: 10): 7.859
+    Stage Walk (ID: 47, Max: 10): 8.017
+    Overall Presentation (ID: 48, Max: 10): 8.616
+    → Total Raw Score: 24.492
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Poise & Elegance (ID: 46, Max: 10): 8.081
+    Stage Walk (ID: 47, Max: 10): 8.841
+    Overall Presentation (ID: 48, Max: 10): 9.722
+    → Total Raw Score: 26.644
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Poise & Elegance (ID: 46, Max: 10): 8.941
+    Stage Walk (ID: 47, Max: 10): 9.935
+    Overall Presentation (ID: 48, Max: 10): 9.899
+    → Total Raw Score: 28.775
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Poise & Elegance (ID: 46, Max: 10): 9.748
+    Stage Walk (ID: 47, Max: 10): 10
+    Overall Presentation (ID: 48, Max: 10): 9.961
+    → Total Raw Score: 29.709
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 10
+    Overall Presentation (ID: 48, Max: 10): 9.571
+    → Total Raw Score: 29.571
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 9.582
+    Overall Presentation (ID: 48, Max: 10): 9.663
+    → Total Raw Score: 29.245
+
+JUDGE: Michael Brown (Judge ID: 37, Username: judge5)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Poise & Elegance (ID: 46, Max: 10): 7.723
+    Stage Walk (ID: 47, Max: 10): 8.531
+    Overall Presentation (ID: 48, Max: 10): 8.406
+    → Total Raw Score: 24.660
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Poise & Elegance (ID: 46, Max: 10): 8.476
+    Stage Walk (ID: 47, Max: 10): 8.886
+    Overall Presentation (ID: 48, Max: 10): 8.119
+    → Total Raw Score: 25.481
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Poise & Elegance (ID: 46, Max: 10): 8.848
+    Stage Walk (ID: 47, Max: 10): 8.473
+    Overall Presentation (ID: 48, Max: 10): 7.681
+    → Total Raw Score: 25.002
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Poise & Elegance (ID: 46, Max: 10): 8.515
+    Stage Walk (ID: 47, Max: 10): 7.787
+    Overall Presentation (ID: 48, Max: 10): 7.44
+    → Total Raw Score: 23.742
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Poise & Elegance (ID: 46, Max: 10): 8.113
+    Stage Walk (ID: 47, Max: 10): 8.074
+    Overall Presentation (ID: 48, Max: 10): 8.564
+    → Total Raw Score: 24.751
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Poise & Elegance (ID: 46, Max: 10): 8.551
+    Stage Walk (ID: 47, Max: 10): 9.129
+    Overall Presentation (ID: 48, Max: 10): 9.695
+    → Total Raw Score: 27.375
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Poise & Elegance (ID: 46, Max: 10): 9.277
+    Stage Walk (ID: 47, Max: 10): 9.941
+    Overall Presentation (ID: 48, Max: 10): 10
+    → Total Raw Score: 29.218
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 10
+    Overall Presentation (ID: 48, Max: 10): 10
+    → Total Raw Score: 30.000
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 10
+    Overall Presentation (ID: 48, Max: 10): 9.46
+    → Total Raw Score: 29.460
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 9.965
+    Overall Presentation (ID: 48, Max: 10): 9.277
+    → Total Raw Score: 29.242
+
+JUDGE: Lisa Johnson (Judge ID: 38, Username: judge6)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Poise & Elegance (ID: 46, Max: 10): 8.017
+    Stage Walk (ID: 47, Max: 10): 8.232
+    Overall Presentation (ID: 48, Max: 10): 8.382
+    → Total Raw Score: 24.631
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Poise & Elegance (ID: 46, Max: 10): 9.067
+    Stage Walk (ID: 47, Max: 10): 8.539
+    Overall Presentation (ID: 48, Max: 10): 7.71
+    → Total Raw Score: 25.316
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Poise & Elegance (ID: 46, Max: 10): 9.44
+    Stage Walk (ID: 47, Max: 10): 8.561
+    Overall Presentation (ID: 48, Max: 10): 7.645
+    → Total Raw Score: 25.646
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Poise & Elegance (ID: 46, Max: 10): 9.188
+    Stage Walk (ID: 47, Max: 10): 7.818
+    Overall Presentation (ID: 48, Max: 10): 7.588
+    → Total Raw Score: 24.594
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Poise & Elegance (ID: 46, Max: 10): 8.608
+    Stage Walk (ID: 47, Max: 10): 7.928
+    Overall Presentation (ID: 48, Max: 10): 8.343
+    → Total Raw Score: 24.879
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Poise & Elegance (ID: 46, Max: 10): 8.726
+    Stage Walk (ID: 47, Max: 10): 9.13
+    Overall Presentation (ID: 48, Max: 10): 9.688
+    → Total Raw Score: 27.544
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Poise & Elegance (ID: 46, Max: 10): 9.318
+    Stage Walk (ID: 47, Max: 10): 9.847
+    Overall Presentation (ID: 48, Max: 10): 10
+    → Total Raw Score: 29.165
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 10
+    Overall Presentation (ID: 48, Max: 10): 9.955
+    → Total Raw Score: 29.955
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 10
+    Overall Presentation (ID: 48, Max: 10): 9.211
+    → Total Raw Score: 29.211
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 9.764
+    Overall Presentation (ID: 48, Max: 10): 9.36
+    → Total Raw Score: 29.124
+
+JUDGE: Robert Taylor (Judge ID: 39, Username: judge7)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Poise & Elegance (ID: 46, Max: 10): 7.375
+    Stage Walk (ID: 47, Max: 10): 7.767
+    Overall Presentation (ID: 48, Max: 10): 7.759
+    → Total Raw Score: 22.901
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Poise & Elegance (ID: 46, Max: 10): 8.199
+    Stage Walk (ID: 47, Max: 10): 8.27
+    Overall Presentation (ID: 48, Max: 10): 7.387
+    → Total Raw Score: 23.856
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Poise & Elegance (ID: 46, Max: 10): 8.819
+    Stage Walk (ID: 47, Max: 10): 7.869
+    Overall Presentation (ID: 48, Max: 10): 6.954
+    → Total Raw Score: 23.642
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Poise & Elegance (ID: 46, Max: 10): 8.571
+    Stage Walk (ID: 47, Max: 10): 7.511
+    Overall Presentation (ID: 48, Max: 10): 6.971
+    → Total Raw Score: 23.053
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Poise & Elegance (ID: 46, Max: 10): 7.896
+    Stage Walk (ID: 47, Max: 10): 7.323
+    Overall Presentation (ID: 48, Max: 10): 8.055
+    → Total Raw Score: 23.274
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Poise & Elegance (ID: 46, Max: 10): 7.813
+    Stage Walk (ID: 47, Max: 10): 8.252
+    Overall Presentation (ID: 48, Max: 10): 9.092
+    → Total Raw Score: 25.157
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Poise & Elegance (ID: 46, Max: 10): 8.711
+    Stage Walk (ID: 47, Max: 10): 9.611
+    Overall Presentation (ID: 48, Max: 10): 9.57
+    → Total Raw Score: 27.892
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Poise & Elegance (ID: 46, Max: 10): 9.827
+    Stage Walk (ID: 47, Max: 10): 9.878
+    Overall Presentation (ID: 48, Max: 10): 9.174
+    → Total Raw Score: 28.879
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 9.687
+    Overall Presentation (ID: 48, Max: 10): 9.062
+    → Total Raw Score: 28.749
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Poise & Elegance (ID: 46, Max: 10): 10
+    Stage Walk (ID: 47, Max: 10): 9.221
+    Overall Presentation (ID: 48, Max: 10): 8.8
+    → Total Raw Score: 28.021
+
+--------------------------------------------------------------------------------
+ROUND: Semi-Final - Swimsuit (Round ID: 17)
+--------------------------------------------------------------------------------
+
+Criteria:
+  - Stage Presence (Max: 10.00, Weight: 33.33%)
+  - Confidence (Max: 10.00, Weight: 33.33%)
+  - Physical Fitness (Max: 10.00, Weight: 33.33%)
+
+
+JUDGE: John Anderson (Judge ID: 33, Username: judge1)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Stage Presence (ID: 41, Max: 10): 7.151
+    Confidence (ID: 44, Max: 10): 7.439
+    Physical Fitness (ID: 49, Max: 10): 7.783
+    → Total Raw Score: 22.373
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Stage Presence (ID: 41, Max: 10): 8.197
+    Confidence (ID: 44, Max: 10): 7.869
+    Physical Fitness (ID: 49, Max: 10): 7.47
+    → Total Raw Score: 23.536
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Stage Presence (ID: 41, Max: 10): 8.803
+    Confidence (ID: 44, Max: 10): 7.847
+    Physical Fitness (ID: 49, Max: 10): 6.778
+    → Total Raw Score: 23.428
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Stage Presence (ID: 41, Max: 10): 8.407
+    Confidence (ID: 44, Max: 10): 7.237
+    Physical Fitness (ID: 49, Max: 10): 7.221
+    → Total Raw Score: 22.865
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Stage Presence (ID: 41, Max: 10): 7.929
+    Confidence (ID: 44, Max: 10): 7.546
+    Physical Fitness (ID: 49, Max: 10): 7.848
+    → Total Raw Score: 23.323
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Stage Presence (ID: 41, Max: 10): 7.986
+    Confidence (ID: 44, Max: 10): 8.126
+    Physical Fitness (ID: 49, Max: 10): 8.851
+    → Total Raw Score: 24.963
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Stage Presence (ID: 41, Max: 10): 9.062
+    Confidence (ID: 44, Max: 10): 9.075
+    Physical Fitness (ID: 49, Max: 10): 9.772
+    → Total Raw Score: 27.909
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Stage Presence (ID: 41, Max: 10): 9.773
+    Confidence (ID: 44, Max: 10): 9.933
+    Physical Fitness (ID: 49, Max: 10): 9.231
+    → Total Raw Score: 28.937
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.881
+    Physical Fitness (ID: 49, Max: 10): 8.728
+    → Total Raw Score: 28.609
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.263
+    Physical Fitness (ID: 49, Max: 10): 9.107
+    → Total Raw Score: 28.370
+
+JUDGE: Maria Garcia (Judge ID: 34, Username: judge2)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Stage Presence (ID: 41, Max: 10): 6.979
+    Confidence (ID: 44, Max: 10): 7.823
+    Physical Fitness (ID: 49, Max: 10): 7.945
+    → Total Raw Score: 22.747
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Stage Presence (ID: 41, Max: 10): 8.266
+    Confidence (ID: 44, Max: 10): 8.035
+    Physical Fitness (ID: 49, Max: 10): 7.638
+    → Total Raw Score: 23.939
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Stage Presence (ID: 41, Max: 10): 8.324
+    Confidence (ID: 44, Max: 10): 7.976
+    Physical Fitness (ID: 49, Max: 10): 7.469
+    → Total Raw Score: 23.769
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Stage Presence (ID: 41, Max: 10): 8.041
+    Confidence (ID: 44, Max: 10): 7.351
+    Physical Fitness (ID: 49, Max: 10): 7.322
+    → Total Raw Score: 22.714
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Stage Presence (ID: 41, Max: 10): 7.754
+    Confidence (ID: 44, Max: 10): 7.644
+    Physical Fitness (ID: 49, Max: 10): 8.163
+    → Total Raw Score: 23.561
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Stage Presence (ID: 41, Max: 10): 7.806
+    Confidence (ID: 44, Max: 10): 8.433
+    Physical Fitness (ID: 49, Max: 10): 9.441
+    → Total Raw Score: 25.680
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Stage Presence (ID: 41, Max: 10): 8.924
+    Confidence (ID: 44, Max: 10): 9.682
+    Physical Fitness (ID: 49, Max: 10): 10
+    → Total Raw Score: 28.606
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Stage Presence (ID: 41, Max: 10): 9.615
+    Confidence (ID: 44, Max: 10): 9.906
+    Physical Fitness (ID: 49, Max: 10): 9.738
+    → Total Raw Score: 29.259
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 9.34
+    → Total Raw Score: 29.340
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.336
+    Physical Fitness (ID: 49, Max: 10): 9.106
+    → Total Raw Score: 28.442
+
+JUDGE: David Chen (Judge ID: 35, Username: judge3)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Stage Presence (ID: 41, Max: 10): 7.355
+    Confidence (ID: 44, Max: 10): 8.458
+    Physical Fitness (ID: 49, Max: 10): 8.556
+    → Total Raw Score: 24.369
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Stage Presence (ID: 41, Max: 10): 8.191
+    Confidence (ID: 44, Max: 10): 8.435
+    Physical Fitness (ID: 49, Max: 10): 8.279
+    → Total Raw Score: 24.905
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Stage Presence (ID: 41, Max: 10): 8.886
+    Confidence (ID: 44, Max: 10): 8.096
+    Physical Fitness (ID: 49, Max: 10): 7.776
+    → Total Raw Score: 24.758
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Stage Presence (ID: 41, Max: 10): 8.211
+    Confidence (ID: 44, Max: 10): 7.941
+    Physical Fitness (ID: 49, Max: 10): 7.918
+    → Total Raw Score: 24.070
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Stage Presence (ID: 41, Max: 10): 7.755
+    Confidence (ID: 44, Max: 10): 8.219
+    Physical Fitness (ID: 49, Max: 10): 9.015
+    → Total Raw Score: 24.989
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Stage Presence (ID: 41, Max: 10): 8.346
+    Confidence (ID: 44, Max: 10): 9.038
+    Physical Fitness (ID: 49, Max: 10): 9.74
+    → Total Raw Score: 27.124
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Stage Presence (ID: 41, Max: 10): 8.923
+    Confidence (ID: 44, Max: 10): 9.853
+    Physical Fitness (ID: 49, Max: 10): 10
+    → Total Raw Score: 28.776
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Stage Presence (ID: 41, Max: 10): 9.789
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 10
+    → Total Raw Score: 29.789
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 9.649
+    → Total Raw Score: 29.649
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.676
+    Physical Fitness (ID: 49, Max: 10): 9.697
+    → Total Raw Score: 29.373
+
+JUDGE: Sarah Williams (Judge ID: 36, Username: judge4)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Stage Presence (ID: 41, Max: 10): 7.405
+    Confidence (ID: 44, Max: 10): 8.28
+    Physical Fitness (ID: 49, Max: 10): 8.319
+    → Total Raw Score: 24.004
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Stage Presence (ID: 41, Max: 10): 8.354
+    Confidence (ID: 44, Max: 10): 8.306
+    Physical Fitness (ID: 49, Max: 10): 7.858
+    → Total Raw Score: 24.518
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Stage Presence (ID: 41, Max: 10): 8.426
+    Confidence (ID: 44, Max: 10): 8.405
+    Physical Fitness (ID: 49, Max: 10): 7.687
+    → Total Raw Score: 24.518
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Stage Presence (ID: 41, Max: 10): 8.452
+    Confidence (ID: 44, Max: 10): 7.752
+    Physical Fitness (ID: 49, Max: 10): 7.763
+    → Total Raw Score: 23.967
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Stage Presence (ID: 41, Max: 10): 8.01
+    Confidence (ID: 44, Max: 10): 7.932
+    Physical Fitness (ID: 49, Max: 10): 8.648
+    → Total Raw Score: 24.590
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Stage Presence (ID: 41, Max: 10): 7.765
+    Confidence (ID: 44, Max: 10): 8.916
+    Physical Fitness (ID: 49, Max: 10): 9.349
+    → Total Raw Score: 26.030
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Stage Presence (ID: 41, Max: 10): 8.78
+    Confidence (ID: 44, Max: 10): 9.924
+    Physical Fitness (ID: 49, Max: 10): 10
+    → Total Raw Score: 28.704
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Stage Presence (ID: 41, Max: 10): 9.742
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 9.88
+    → Total Raw Score: 29.622
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 9.675
+    → Total Raw Score: 29.675
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.641
+    Physical Fitness (ID: 49, Max: 10): 9.682
+    → Total Raw Score: 29.323
+
+JUDGE: Michael Brown (Judge ID: 37, Username: judge5)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Stage Presence (ID: 41, Max: 10): 7.531
+    Confidence (ID: 44, Max: 10): 8.462
+    Physical Fitness (ID: 49, Max: 10): 8.009
+    → Total Raw Score: 24.002
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Stage Presence (ID: 41, Max: 10): 8.873
+    Confidence (ID: 44, Max: 10): 8.837
+    Physical Fitness (ID: 49, Max: 10): 8.09
+    → Total Raw Score: 25.800
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Stage Presence (ID: 41, Max: 10): 8.99
+    Confidence (ID: 44, Max: 10): 8.675
+    Physical Fitness (ID: 49, Max: 10): 7.486
+    → Total Raw Score: 25.151
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Stage Presence (ID: 41, Max: 10): 8.529
+    Confidence (ID: 44, Max: 10): 8.28
+    Physical Fitness (ID: 49, Max: 10): 7.719
+    → Total Raw Score: 24.528
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Stage Presence (ID: 41, Max: 10): 8.401
+    Confidence (ID: 44, Max: 10): 8.382
+    Physical Fitness (ID: 49, Max: 10): 8.517
+    → Total Raw Score: 25.300
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Stage Presence (ID: 41, Max: 10): 8.198
+    Confidence (ID: 44, Max: 10): 9.158
+    Physical Fitness (ID: 49, Max: 10): 9.349
+    → Total Raw Score: 26.705
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Stage Presence (ID: 41, Max: 10): 9.416
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 10
+    → Total Raw Score: 29.416
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 10
+    → Total Raw Score: 30.000
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 9.348
+    → Total Raw Score: 29.348
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 9.656
+    → Total Raw Score: 29.656
+
+JUDGE: Lisa Johnson (Judge ID: 38, Username: judge6)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Stage Presence (ID: 41, Max: 10): 8.051
+    Confidence (ID: 44, Max: 10): 8.236
+    Physical Fitness (ID: 49, Max: 10): 7.942
+    → Total Raw Score: 24.229
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Stage Presence (ID: 41, Max: 10): 8.848
+    Confidence (ID: 44, Max: 10): 8.652
+    Physical Fitness (ID: 49, Max: 10): 8.068
+    → Total Raw Score: 25.568
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Stage Presence (ID: 41, Max: 10): 9.293
+    Confidence (ID: 44, Max: 10): 8.592
+    Physical Fitness (ID: 49, Max: 10): 7.429
+    → Total Raw Score: 25.314
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Stage Presence (ID: 41, Max: 10): 8.909
+    Confidence (ID: 44, Max: 10): 7.839
+    Physical Fitness (ID: 49, Max: 10): 7.454
+    → Total Raw Score: 24.202
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Stage Presence (ID: 41, Max: 10): 8.41
+    Confidence (ID: 44, Max: 10): 8.317
+    Physical Fitness (ID: 49, Max: 10): 8.238
+    → Total Raw Score: 24.965
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Stage Presence (ID: 41, Max: 10): 8.518
+    Confidence (ID: 44, Max: 10): 8.913
+    Physical Fitness (ID: 49, Max: 10): 9.593
+    → Total Raw Score: 27.024
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Stage Presence (ID: 41, Max: 10): 9.433
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 10
+    → Total Raw Score: 29.433
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 9.776
+    → Total Raw Score: 29.776
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Physical Fitness (ID: 49, Max: 10): 9.412
+    → Total Raw Score: 29.412
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.889
+    Physical Fitness (ID: 49, Max: 10): 9.29
+    → Total Raw Score: 29.179
+
+JUDGE: Robert Taylor (Judge ID: 39, Username: judge7)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Stage Presence (ID: 41, Max: 10): 7.561
+    Confidence (ID: 44, Max: 10): 7.849
+    Physical Fitness (ID: 49, Max: 10): 7.433
+    → Total Raw Score: 22.843
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Stage Presence (ID: 41, Max: 10): 8.511
+    Confidence (ID: 44, Max: 10): 7.945
+    Physical Fitness (ID: 49, Max: 10): 7.589
+    → Total Raw Score: 24.045
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Stage Presence (ID: 41, Max: 10): 8.674
+    Confidence (ID: 44, Max: 10): 7.864
+    Physical Fitness (ID: 49, Max: 10): 6.961
+    → Total Raw Score: 23.499
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Stage Presence (ID: 41, Max: 10): 8.216
+    Confidence (ID: 44, Max: 10): 7.584
+    Physical Fitness (ID: 49, Max: 10): 7.163
+    → Total Raw Score: 22.963
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Stage Presence (ID: 41, Max: 10): 7.702
+    Confidence (ID: 44, Max: 10): 7.339
+    Physical Fitness (ID: 49, Max: 10): 8.061
+    → Total Raw Score: 23.102
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Stage Presence (ID: 41, Max: 10): 8.101
+    Confidence (ID: 44, Max: 10): 8.503
+    Physical Fitness (ID: 49, Max: 10): 8.963
+    → Total Raw Score: 25.567
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Stage Presence (ID: 41, Max: 10): 9.016
+    Confidence (ID: 44, Max: 10): 9.243
+    Physical Fitness (ID: 49, Max: 10): 9.659
+    → Total Raw Score: 27.918
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.997
+    Physical Fitness (ID: 49, Max: 10): 9.201
+    → Total Raw Score: 29.198
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.601
+    Physical Fitness (ID: 49, Max: 10): 8.978
+    → Total Raw Score: 28.579
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Stage Presence (ID: 41, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.437
+    Physical Fitness (ID: 49, Max: 10): 8.617
+    → Total Raw Score: 28.054
+
+--------------------------------------------------------------------------------
+ROUND: Final - Final Q&A (Round ID: 18)
+--------------------------------------------------------------------------------
+
+Criteria:
+  - Intelligence & Wit (Max: 15.00, Weight: 42.86%)
+  - Composure (Max: 10.00, Weight: 28.57%)
+  - Persuasiveness (Max: 10.00, Weight: 28.57%)
+
+
+JUDGE: John Anderson (Judge ID: 33, Username: judge1)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Intelligence & Wit (ID: 50, Max: 15): 7.467
+    Composure (ID: 51, Max: 10): 7.722
+    Persuasiveness (ID: 52, Max: 10): 7.62
+    → Total Raw Score: 22.809
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Intelligence & Wit (ID: 50, Max: 15): 8.392
+    Composure (ID: 51, Max: 10): 8.011
+    Persuasiveness (ID: 52, Max: 10): 7.237
+    → Total Raw Score: 23.640
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Intelligence & Wit (ID: 50, Max: 15): 8.781
+    Composure (ID: 51, Max: 10): 7.556
+    Persuasiveness (ID: 52, Max: 10): 6.964
+    → Total Raw Score: 23.301
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Intelligence & Wit (ID: 50, Max: 15): 8.315
+    Composure (ID: 51, Max: 10): 7.149
+    Persuasiveness (ID: 52, Max: 10): 7.301
+    → Total Raw Score: 22.765
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Intelligence & Wit (ID: 50, Max: 15): 7.603
+    Composure (ID: 51, Max: 10): 7.375
+    Persuasiveness (ID: 52, Max: 10): 7.867
+    → Total Raw Score: 22.845
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Intelligence & Wit (ID: 50, Max: 15): 7.92
+    Composure (ID: 51, Max: 10): 8.421
+    Persuasiveness (ID: 52, Max: 10): 9.183
+    → Total Raw Score: 25.524
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Intelligence & Wit (ID: 50, Max: 15): 8.666
+    Composure (ID: 51, Max: 10): 9.218
+    Persuasiveness (ID: 52, Max: 10): 9.744
+    → Total Raw Score: 27.628
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Intelligence & Wit (ID: 50, Max: 15): 9.806
+    Composure (ID: 51, Max: 10): 9.725
+    Persuasiveness (ID: 52, Max: 10): 9.634
+    → Total Raw Score: 29.165
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Intelligence & Wit (ID: 50, Max: 15): 10.553
+    Composure (ID: 51, Max: 10): 9.534
+    Persuasiveness (ID: 52, Max: 10): 9.073
+    → Total Raw Score: 29.160
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Intelligence & Wit (ID: 50, Max: 15): 10.248
+    Composure (ID: 51, Max: 10): 9.171
+    Persuasiveness (ID: 52, Max: 10): 8.635
+    → Total Raw Score: 28.054
+
+JUDGE: Maria Garcia (Judge ID: 34, Username: judge2)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Intelligence & Wit (ID: 50, Max: 15): 7.246
+    Composure (ID: 51, Max: 10): 7.788
+    Persuasiveness (ID: 52, Max: 10): 8.099
+    → Total Raw Score: 23.133
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Intelligence & Wit (ID: 50, Max: 15): 8.397
+    Composure (ID: 51, Max: 10): 8.074
+    Persuasiveness (ID: 52, Max: 10): 7.916
+    → Total Raw Score: 24.387
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Intelligence & Wit (ID: 50, Max: 15): 8.647
+    Composure (ID: 51, Max: 10): 7.939
+    Persuasiveness (ID: 52, Max: 10): 7.647
+    → Total Raw Score: 24.233
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Intelligence & Wit (ID: 50, Max: 15): 8.053
+    Composure (ID: 51, Max: 10): 7.291
+    Persuasiveness (ID: 52, Max: 10): 7.631
+    → Total Raw Score: 22.975
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Intelligence & Wit (ID: 50, Max: 15): 7.98
+    Composure (ID: 51, Max: 10): 7.561
+    Persuasiveness (ID: 52, Max: 10): 8.209
+    → Total Raw Score: 23.750
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Intelligence & Wit (ID: 50, Max: 15): 7.873
+    Composure (ID: 51, Max: 10): 8.699
+    Persuasiveness (ID: 52, Max: 10): 9.3
+    → Total Raw Score: 25.872
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Intelligence & Wit (ID: 50, Max: 15): 8.917
+    Composure (ID: 51, Max: 10): 9.353
+    Persuasiveness (ID: 52, Max: 10): 9.995
+    → Total Raw Score: 28.265
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Intelligence & Wit (ID: 50, Max: 15): 10.053
+    Composure (ID: 51, Max: 10): 9.901
+    Persuasiveness (ID: 52, Max: 10): 9.842
+    → Total Raw Score: 29.796
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Intelligence & Wit (ID: 50, Max: 15): 10.465
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 9.574
+    → Total Raw Score: 30.039
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Intelligence & Wit (ID: 50, Max: 15): 10.268
+    Composure (ID: 51, Max: 10): 9.603
+    Persuasiveness (ID: 52, Max: 10): 9.414
+    → Total Raw Score: 29.285
+
+JUDGE: David Chen (Judge ID: 35, Username: judge3)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Intelligence & Wit (ID: 50, Max: 15): 7.157
+    Composure (ID: 51, Max: 10): 8.523
+    Persuasiveness (ID: 52, Max: 10): 8.654
+    → Total Raw Score: 24.334
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Intelligence & Wit (ID: 50, Max: 15): 8.173
+    Composure (ID: 51, Max: 10): 8.734
+    Persuasiveness (ID: 52, Max: 10): 8.299
+    → Total Raw Score: 25.206
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Intelligence & Wit (ID: 50, Max: 15): 8.498
+    Composure (ID: 51, Max: 10): 8.337
+    Persuasiveness (ID: 52, Max: 10): 7.839
+    → Total Raw Score: 24.674
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Intelligence & Wit (ID: 50, Max: 15): 8.34
+    Composure (ID: 51, Max: 10): 7.832
+    Persuasiveness (ID: 52, Max: 10): 8.129
+    → Total Raw Score: 24.301
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Intelligence & Wit (ID: 50, Max: 15): 7.898
+    Composure (ID: 51, Max: 10): 8.188
+    Persuasiveness (ID: 52, Max: 10): 8.958
+    → Total Raw Score: 25.044
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Intelligence & Wit (ID: 50, Max: 15): 7.882
+    Composure (ID: 51, Max: 10): 9.061
+    Persuasiveness (ID: 52, Max: 10): 10
+    → Total Raw Score: 26.943
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Intelligence & Wit (ID: 50, Max: 15): 9.053
+    Composure (ID: 51, Max: 10): 9.709
+    Persuasiveness (ID: 52, Max: 10): 10
+    → Total Raw Score: 28.762
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Intelligence & Wit (ID: 50, Max: 15): 10.143
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 10
+    → Total Raw Score: 30.143
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Intelligence & Wit (ID: 50, Max: 15): 10.557
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 9.944
+    → Total Raw Score: 30.501
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Intelligence & Wit (ID: 50, Max: 15): 10.548
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 9.73
+    → Total Raw Score: 30.278
+
+JUDGE: Sarah Williams (Judge ID: 36, Username: judge4)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Intelligence & Wit (ID: 50, Max: 15): 7.136
+    Composure (ID: 51, Max: 10): 7.908
+    Persuasiveness (ID: 52, Max: 10): 8.489
+    → Total Raw Score: 23.533
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Intelligence & Wit (ID: 50, Max: 15): 8.221
+    Composure (ID: 51, Max: 10): 8.524
+    Persuasiveness (ID: 52, Max: 10): 8.192
+    → Total Raw Score: 24.937
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Intelligence & Wit (ID: 50, Max: 15): 8.452
+    Composure (ID: 51, Max: 10): 8.37
+    Persuasiveness (ID: 52, Max: 10): 7.427
+    → Total Raw Score: 24.249
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Intelligence & Wit (ID: 50, Max: 15): 8.278
+    Composure (ID: 51, Max: 10): 7.567
+    Persuasiveness (ID: 52, Max: 10): 7.433
+    → Total Raw Score: 23.278
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Intelligence & Wit (ID: 50, Max: 15): 7.955
+    Composure (ID: 51, Max: 10): 7.956
+    Persuasiveness (ID: 52, Max: 10): 8.343
+    → Total Raw Score: 24.254
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Intelligence & Wit (ID: 50, Max: 15): 7.742
+    Composure (ID: 51, Max: 10): 8.731
+    Persuasiveness (ID: 52, Max: 10): 9.762
+    → Total Raw Score: 26.235
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Intelligence & Wit (ID: 50, Max: 15): 8.585
+    Composure (ID: 51, Max: 10): 9.938
+    Persuasiveness (ID: 52, Max: 10): 10
+    → Total Raw Score: 28.523
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Intelligence & Wit (ID: 50, Max: 15): 9.873
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 9.795
+    → Total Raw Score: 29.668
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Intelligence & Wit (ID: 50, Max: 15): 10.327
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 9.67
+    → Total Raw Score: 29.997
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Intelligence & Wit (ID: 50, Max: 15): 10.179
+    Composure (ID: 51, Max: 10): 9.739
+    Persuasiveness (ID: 52, Max: 10): 9.458
+    → Total Raw Score: 29.376
+
+JUDGE: Michael Brown (Judge ID: 37, Username: judge5)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Intelligence & Wit (ID: 50, Max: 15): 7.582
+    Composure (ID: 51, Max: 10): 8.449
+    Persuasiveness (ID: 52, Max: 10): 8.094
+    → Total Raw Score: 24.125
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Intelligence & Wit (ID: 50, Max: 15): 8.534
+    Composure (ID: 51, Max: 10): 8.952
+    Persuasiveness (ID: 52, Max: 10): 7.999
+    → Total Raw Score: 25.485
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Intelligence & Wit (ID: 50, Max: 15): 9.152
+    Composure (ID: 51, Max: 10): 8.259
+    Persuasiveness (ID: 52, Max: 10): 7.705
+    → Total Raw Score: 25.116
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Intelligence & Wit (ID: 50, Max: 15): 8.732
+    Composure (ID: 51, Max: 10): 7.858
+    Persuasiveness (ID: 52, Max: 10): 7.881
+    → Total Raw Score: 24.471
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Intelligence & Wit (ID: 50, Max: 15): 8.361
+    Composure (ID: 51, Max: 10): 8.331
+    Persuasiveness (ID: 52, Max: 10): 8.346
+    → Total Raw Score: 25.038
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Intelligence & Wit (ID: 50, Max: 15): 8.211
+    Composure (ID: 51, Max: 10): 8.988
+    Persuasiveness (ID: 52, Max: 10): 9.701
+    → Total Raw Score: 26.900
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Intelligence & Wit (ID: 50, Max: 15): 9.464
+    Composure (ID: 51, Max: 10): 9.828
+    Persuasiveness (ID: 52, Max: 10): 10
+    → Total Raw Score: 29.292
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Intelligence & Wit (ID: 50, Max: 15): 10.184
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 10
+    → Total Raw Score: 30.184
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Intelligence & Wit (ID: 50, Max: 15): 10.832
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 9.728
+    → Total Raw Score: 30.560
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Intelligence & Wit (ID: 50, Max: 15): 10.879
+    Composure (ID: 51, Max: 10): 9.848
+    Persuasiveness (ID: 52, Max: 10): 9.476
+    → Total Raw Score: 30.203
+
+JUDGE: Lisa Johnson (Judge ID: 38, Username: judge6)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Intelligence & Wit (ID: 50, Max: 15): 7.729
+    Composure (ID: 51, Max: 10): 8.37
+    Persuasiveness (ID: 52, Max: 10): 8.069
+    → Total Raw Score: 24.168
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Intelligence & Wit (ID: 50, Max: 15): 8.817
+    Composure (ID: 51, Max: 10): 8.933
+    Persuasiveness (ID: 52, Max: 10): 7.936
+    → Total Raw Score: 25.686
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Intelligence & Wit (ID: 50, Max: 15): 9.341
+    Composure (ID: 51, Max: 10): 8.386
+    Persuasiveness (ID: 52, Max: 10): 7.517
+    → Total Raw Score: 25.244
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Intelligence & Wit (ID: 50, Max: 15): 9.141
+    Composure (ID: 51, Max: 10): 7.897
+    Persuasiveness (ID: 52, Max: 10): 7.773
+    → Total Raw Score: 24.811
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Intelligence & Wit (ID: 50, Max: 15): 8.536
+    Composure (ID: 51, Max: 10): 8.396
+    Persuasiveness (ID: 52, Max: 10): 8.408
+    → Total Raw Score: 25.340
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Intelligence & Wit (ID: 50, Max: 15): 8.596
+    Composure (ID: 51, Max: 10): 8.896
+    Persuasiveness (ID: 52, Max: 10): 9.363
+    → Total Raw Score: 26.855
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Intelligence & Wit (ID: 50, Max: 15): 9.417
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 9.887
+    → Total Raw Score: 29.304
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Intelligence & Wit (ID: 50, Max: 15): 10.625
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 10
+    → Total Raw Score: 30.625
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Intelligence & Wit (ID: 50, Max: 15): 11.059
+    Composure (ID: 51, Max: 10): 10
+    Persuasiveness (ID: 52, Max: 10): 9.179
+    → Total Raw Score: 30.238
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Intelligence & Wit (ID: 50, Max: 15): 10.981
+    Composure (ID: 51, Max: 10): 9.989
+    Persuasiveness (ID: 52, Max: 10): 9.275
+    → Total Raw Score: 30.245
+
+JUDGE: Robert Taylor (Judge ID: 39, Username: judge7)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Intelligence & Wit (ID: 50, Max: 15): 7.359
+    Composure (ID: 51, Max: 10): 7.837
+    Persuasiveness (ID: 52, Max: 10): 7.785
+    → Total Raw Score: 22.981
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Intelligence & Wit (ID: 50, Max: 15): 8.316
+    Composure (ID: 51, Max: 10): 7.858
+    Persuasiveness (ID: 52, Max: 10): 7.124
+    → Total Raw Score: 23.298
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Intelligence & Wit (ID: 50, Max: 15): 8.614
+    Composure (ID: 51, Max: 10): 7.715
+    Persuasiveness (ID: 52, Max: 10): 7.014
+    → Total Raw Score: 23.343
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Intelligence & Wit (ID: 50, Max: 15): 8.151
+    Composure (ID: 51, Max: 10): 7.262
+    Persuasiveness (ID: 52, Max: 10): 7.036
+    → Total Raw Score: 22.449
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Intelligence & Wit (ID: 50, Max: 15): 8.134
+    Composure (ID: 51, Max: 10): 7.473
+    Persuasiveness (ID: 52, Max: 10): 7.927
+    → Total Raw Score: 23.534
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Intelligence & Wit (ID: 50, Max: 15): 8.138
+    Composure (ID: 51, Max: 10): 8.523
+    Persuasiveness (ID: 52, Max: 10): 9.159
+    → Total Raw Score: 25.820
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Intelligence & Wit (ID: 50, Max: 15): 9.146
+    Composure (ID: 51, Max: 10): 9.282
+    Persuasiveness (ID: 52, Max: 10): 9.652
+    → Total Raw Score: 28.080
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Intelligence & Wit (ID: 50, Max: 15): 10.133
+    Composure (ID: 51, Max: 10): 9.95
+    Persuasiveness (ID: 52, Max: 10): 9.272
+    → Total Raw Score: 29.355
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Intelligence & Wit (ID: 50, Max: 15): 10.612
+    Composure (ID: 51, Max: 10): 9.767
+    Persuasiveness (ID: 52, Max: 10): 8.898
+    → Total Raw Score: 29.277
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Intelligence & Wit (ID: 50, Max: 15): 10.316
+    Composure (ID: 51, Max: 10): 9.482
+    Persuasiveness (ID: 52, Max: 10): 8.959
+    → Total Raw Score: 28.757
+
+--------------------------------------------------------------------------------
+ROUND: Final - Final Walk (Round ID: 19)
+--------------------------------------------------------------------------------
+
+Criteria:
+  - Overall Impact (Max: 10.00, Weight: 33.33%)
+  - Confidence (Max: 10.00, Weight: 33.33%)
+  - Grace & Poise (Max: 10.00, Weight: 33.33%)
+
+
+JUDGE: John Anderson (Judge ID: 33, Username: judge1)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Overall Impact (ID: 38, Max: 10): 7.025
+    Confidence (ID: 44, Max: 10): 7.725
+    Grace & Poise (ID: 53, Max: 10): 7.752
+    → Total Raw Score: 22.502
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Overall Impact (ID: 38, Max: 10): 8.146
+    Confidence (ID: 44, Max: 10): 7.973
+    Grace & Poise (ID: 53, Max: 10): 7.564
+    → Total Raw Score: 23.683
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Overall Impact (ID: 38, Max: 10): 8.793
+    Confidence (ID: 44, Max: 10): 7.458
+    Grace & Poise (ID: 53, Max: 10): 7.1
+    → Total Raw Score: 23.351
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Overall Impact (ID: 38, Max: 10): 8.288
+    Confidence (ID: 44, Max: 10): 7.255
+    Grace & Poise (ID: 53, Max: 10): 7.174
+    → Total Raw Score: 22.717
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Overall Impact (ID: 38, Max: 10): 7.703
+    Confidence (ID: 44, Max: 10): 7.326
+    Grace & Poise (ID: 53, Max: 10): 8.055
+    → Total Raw Score: 23.084
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Overall Impact (ID: 38, Max: 10): 7.769
+    Confidence (ID: 44, Max: 10): 8.411
+    Grace & Poise (ID: 53, Max: 10): 9.208
+    → Total Raw Score: 25.388
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Overall Impact (ID: 38, Max: 10): 8.831
+    Confidence (ID: 44, Max: 10): 9.459
+    Grace & Poise (ID: 53, Max: 10): 9.357
+    → Total Raw Score: 27.647
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Overall Impact (ID: 38, Max: 10): 9.801
+    Confidence (ID: 44, Max: 10): 9.642
+    Grace & Poise (ID: 53, Max: 10): 9.613
+    → Total Raw Score: 29.056
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.676
+    Grace & Poise (ID: 53, Max: 10): 9.086
+    → Total Raw Score: 28.762
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.384
+    Grace & Poise (ID: 53, Max: 10): 8.649
+    → Total Raw Score: 28.033
+
+JUDGE: Maria Garcia (Judge ID: 34, Username: judge2)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Overall Impact (ID: 38, Max: 10): 7.372
+    Confidence (ID: 44, Max: 10): 7.765
+    Grace & Poise (ID: 53, Max: 10): 8.247
+    → Total Raw Score: 23.384
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Overall Impact (ID: 38, Max: 10): 7.981
+    Confidence (ID: 44, Max: 10): 8.098
+    Grace & Poise (ID: 53, Max: 10): 7.864
+    → Total Raw Score: 23.943
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Overall Impact (ID: 38, Max: 10): 8.344
+    Confidence (ID: 44, Max: 10): 7.893
+    Grace & Poise (ID: 53, Max: 10): 7.475
+    → Total Raw Score: 23.712
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Overall Impact (ID: 38, Max: 10): 8.317
+    Confidence (ID: 44, Max: 10): 7.597
+    Grace & Poise (ID: 53, Max: 10): 7.598
+    → Total Raw Score: 23.512
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Overall Impact (ID: 38, Max: 10): 7.559
+    Confidence (ID: 44, Max: 10): 7.777
+    Grace & Poise (ID: 53, Max: 10): 8.299
+    → Total Raw Score: 23.635
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Overall Impact (ID: 38, Max: 10): 8.055
+    Confidence (ID: 44, Max: 10): 8.513
+    Grace & Poise (ID: 53, Max: 10): 9.531
+    → Total Raw Score: 26.099
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Overall Impact (ID: 38, Max: 10): 8.88
+    Confidence (ID: 44, Max: 10): 9.675
+    Grace & Poise (ID: 53, Max: 10): 10
+    → Total Raw Score: 28.555
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Overall Impact (ID: 38, Max: 10): 9.952
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 9.873
+    → Total Raw Score: 29.825
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.809
+    Grace & Poise (ID: 53, Max: 10): 9.24
+    → Total Raw Score: 29.049
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.364
+    Grace & Poise (ID: 53, Max: 10): 9.355
+    → Total Raw Score: 28.719
+
+JUDGE: David Chen (Judge ID: 35, Username: judge3)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Overall Impact (ID: 38, Max: 10): 7.218
+    Confidence (ID: 44, Max: 10): 8.306
+    Grace & Poise (ID: 53, Max: 10): 8.736
+    → Total Raw Score: 24.260
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Overall Impact (ID: 38, Max: 10): 8.336
+    Confidence (ID: 44, Max: 10): 8.593
+    Grace & Poise (ID: 53, Max: 10): 8.438
+    → Total Raw Score: 25.367
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Overall Impact (ID: 38, Max: 10): 8.909
+    Confidence (ID: 44, Max: 10): 8.238
+    Grace & Poise (ID: 53, Max: 10): 7.897
+    → Total Raw Score: 25.044
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Overall Impact (ID: 38, Max: 10): 8.365
+    Confidence (ID: 44, Max: 10): 7.871
+    Grace & Poise (ID: 53, Max: 10): 8.057
+    → Total Raw Score: 24.293
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Overall Impact (ID: 38, Max: 10): 7.991
+    Confidence (ID: 44, Max: 10): 8.272
+    Grace & Poise (ID: 53, Max: 10): 8.849
+    → Total Raw Score: 25.112
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Overall Impact (ID: 38, Max: 10): 8.139
+    Confidence (ID: 44, Max: 10): 8.704
+    Grace & Poise (ID: 53, Max: 10): 9.908
+    → Total Raw Score: 26.751
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Overall Impact (ID: 38, Max: 10): 9.018
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 10
+    → Total Raw Score: 29.018
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 10
+    → Total Raw Score: 30.000
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 9.692
+    → Total Raw Score: 29.692
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.694
+    Grace & Poise (ID: 53, Max: 10): 9.978
+    → Total Raw Score: 29.672
+
+JUDGE: Sarah Williams (Judge ID: 36, Username: judge4)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Overall Impact (ID: 38, Max: 10): 7.273
+    Confidence (ID: 44, Max: 10): 8.236
+    Grace & Poise (ID: 53, Max: 10): 8.386
+    → Total Raw Score: 23.895
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Overall Impact (ID: 38, Max: 10): 8.366
+    Confidence (ID: 44, Max: 10): 8.719
+    Grace & Poise (ID: 53, Max: 10): 7.8
+    → Total Raw Score: 24.885
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Overall Impact (ID: 38, Max: 10): 8.726
+    Confidence (ID: 44, Max: 10): 8.049
+    Grace & Poise (ID: 53, Max: 10): 7.437
+    → Total Raw Score: 24.212
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Overall Impact (ID: 38, Max: 10): 8.357
+    Confidence (ID: 44, Max: 10): 7.698
+    Grace & Poise (ID: 53, Max: 10): 7.79
+    → Total Raw Score: 23.845
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Overall Impact (ID: 38, Max: 10): 7.986
+    Confidence (ID: 44, Max: 10): 7.847
+    Grace & Poise (ID: 53, Max: 10): 8.369
+    → Total Raw Score: 24.202
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Overall Impact (ID: 38, Max: 10): 7.995
+    Confidence (ID: 44, Max: 10): 8.721
+    Grace & Poise (ID: 53, Max: 10): 9.587
+    → Total Raw Score: 26.303
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Overall Impact (ID: 38, Max: 10): 8.705
+    Confidence (ID: 44, Max: 10): 9.734
+    Grace & Poise (ID: 53, Max: 10): 10
+    → Total Raw Score: 28.439
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Overall Impact (ID: 38, Max: 10): 9.588
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 10
+    → Total Raw Score: 29.588
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 9.587
+    → Total Raw Score: 29.587
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.865
+    Grace & Poise (ID: 53, Max: 10): 9.355
+    → Total Raw Score: 29.220
+
+JUDGE: Michael Brown (Judge ID: 37, Username: judge5)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Overall Impact (ID: 38, Max: 10): 7.558
+    Confidence (ID: 44, Max: 10): 8.445
+    Grace & Poise (ID: 53, Max: 10): 8.057
+    → Total Raw Score: 24.060
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Overall Impact (ID: 38, Max: 10): 8.466
+    Confidence (ID: 44, Max: 10): 8.836
+    Grace & Poise (ID: 53, Max: 10): 7.699
+    → Total Raw Score: 25.001
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Overall Impact (ID: 38, Max: 10): 9.005
+    Confidence (ID: 44, Max: 10): 8.504
+    Grace & Poise (ID: 53, Max: 10): 7.535
+    → Total Raw Score: 25.044
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Overall Impact (ID: 38, Max: 10): 8.739
+    Confidence (ID: 44, Max: 10): 7.828
+    Grace & Poise (ID: 53, Max: 10): 7.516
+    → Total Raw Score: 24.083
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Overall Impact (ID: 38, Max: 10): 8.471
+    Confidence (ID: 44, Max: 10): 8.263
+    Grace & Poise (ID: 53, Max: 10): 8.616
+    → Total Raw Score: 25.350
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Overall Impact (ID: 38, Max: 10): 8.608
+    Confidence (ID: 44, Max: 10): 8.916
+    Grace & Poise (ID: 53, Max: 10): 9.314
+    → Total Raw Score: 26.838
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Overall Impact (ID: 38, Max: 10): 9.267
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 10
+    → Total Raw Score: 29.267
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 10
+    → Total Raw Score: 30.000
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 9.471
+    → Total Raw Score: 29.471
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 9.374
+    → Total Raw Score: 29.374
+
+JUDGE: Lisa Johnson (Judge ID: 38, Username: judge6)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Overall Impact (ID: 38, Max: 10): 8.045
+    Confidence (ID: 44, Max: 10): 8.161
+    Grace & Poise (ID: 53, Max: 10): 8.146
+    → Total Raw Score: 24.352
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Overall Impact (ID: 38, Max: 10): 9.145
+    Confidence (ID: 44, Max: 10): 8.967
+    Grace & Poise (ID: 53, Max: 10): 7.865
+    → Total Raw Score: 25.977
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Overall Impact (ID: 38, Max: 10): 9.461
+    Confidence (ID: 44, Max: 10): 8.446
+    Grace & Poise (ID: 53, Max: 10): 7.312
+    → Total Raw Score: 25.219
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Overall Impact (ID: 38, Max: 10): 9.103
+    Confidence (ID: 44, Max: 10): 7.9
+    Grace & Poise (ID: 53, Max: 10): 7.587
+    → Total Raw Score: 24.590
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Overall Impact (ID: 38, Max: 10): 8.603
+    Confidence (ID: 44, Max: 10): 8.181
+    Grace & Poise (ID: 53, Max: 10): 8.591
+    → Total Raw Score: 25.375
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Overall Impact (ID: 38, Max: 10): 8.736
+    Confidence (ID: 44, Max: 10): 9.017
+    Grace & Poise (ID: 53, Max: 10): 9.514
+    → Total Raw Score: 27.267
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Overall Impact (ID: 38, Max: 10): 9.6
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 10
+    → Total Raw Score: 29.600
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 10
+    → Total Raw Score: 30.000
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 10
+    Grace & Poise (ID: 53, Max: 10): 9.172
+    → Total Raw Score: 29.172
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.951
+    Grace & Poise (ID: 53, Max: 10): 9.544
+    → Total Raw Score: 29.495
+
+JUDGE: Robert Taylor (Judge ID: 39, Username: judge7)
+................................................................................
+
+  Contestant #01: Contestant C1 (Contestant ID: 46)
+    Overall Impact (ID: 38, Max: 10): 7.273
+    Confidence (ID: 44, Max: 10): 7.568
+    Grace & Poise (ID: 53, Max: 10): 7.523
+    → Total Raw Score: 22.364
+
+  Contestant #02: Contestant C2 (Contestant ID: 47)
+    Overall Impact (ID: 38, Max: 10): 8.409
+    Confidence (ID: 44, Max: 10): 8.166
+    Grace & Poise (ID: 53, Max: 10): 7.52
+    → Total Raw Score: 24.095
+
+  Contestant #03: Contestant C3 (Contestant ID: 48)
+    Overall Impact (ID: 38, Max: 10): 8.632
+    Confidence (ID: 44, Max: 10): 7.611
+    Grace & Poise (ID: 53, Max: 10): 6.975
+    → Total Raw Score: 23.218
+
+  Contestant #04: Contestant C4 (Contestant ID: 49)
+    Overall Impact (ID: 38, Max: 10): 8.37
+    Confidence (ID: 44, Max: 10): 7.273
+    Grace & Poise (ID: 53, Max: 10): 6.86
+    → Total Raw Score: 22.503
+
+  Contestant #05: Contestant C5 (Contestant ID: 50)
+    Overall Impact (ID: 38, Max: 10): 8.155
+    Confidence (ID: 44, Max: 10): 7.645
+    Grace & Poise (ID: 53, Max: 10): 7.787
+    → Total Raw Score: 23.587
+
+  Contestant #06: Contestant C6 (Contestant ID: 51)
+    Overall Impact (ID: 38, Max: 10): 8.16
+    Confidence (ID: 44, Max: 10): 8.339
+    Grace & Poise (ID: 53, Max: 10): 8.735
+    → Total Raw Score: 25.234
+
+  Contestant #07: Contestant C7 (Contestant ID: 52)
+    Overall Impact (ID: 38, Max: 10): 8.79
+    Confidence (ID: 44, Max: 10): 9.536
+    Grace & Poise (ID: 53, Max: 10): 9.581
+    → Total Raw Score: 27.907
+
+  Contestant #08: Contestant C8 (Contestant ID: 53)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.692
+    Grace & Poise (ID: 53, Max: 10): 9.455
+    → Total Raw Score: 29.147
+
+  Contestant #09: Contestant C9 (Contestant ID: 54)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.902
+    Grace & Poise (ID: 53, Max: 10): 9.094
+    → Total Raw Score: 28.996
+
+  Contestant #10: Contestant C10 (Contestant ID: 55)
+    Overall Impact (ID: 38, Max: 10): 10
+    Confidence (ID: 44, Max: 10): 9.305
+    Grace & Poise (ID: 53, Max: 10): 8.744
+    → Total Raw Score: 28.049
+
+=================================================================================
+END OF MANUAL SCORE INPUT DATA
+=================================================================================

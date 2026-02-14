@@ -1,0 +1,9 @@
+username,email,full_name,password,event_id,judge_number,specialty
+judge1,judge1@example.com,John Smith,judge123,1,J1,Performance
+judge2,judge2@example.com,Jane Doe,judge123,1,J2,Technical
+judge3,judge3@example.com,Robert Johnson,judge123,1,J3,Creative
+judge4,judge4@example.com,Mary Williams,judge123,1,J4,Presentation
+judge5,judge5@example.com,David Brown,judge123,1,J5,Overall
+judge6,judge6@example.com,Sarah Davis,judge123,,J6,Overall
+judge7,judge7@example.com,Michael Wilson,judge123,,J7,
+

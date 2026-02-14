@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Save and Max Value Limit Test</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+        .pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #log {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Auto-Save and Max Value Limit Test Suite</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Max Value Limit (10)</h2>
+        <p>Test if values greater than 10 are prevented/capped</p>
+        <input type="number" id="testInput1" class="score-input" data-max="10" min="0" max="10" step="0.001" placeholder="Enter score">
+        <button onclick="testMaxValue()">Test Max Value</button>
+        <div id="result1"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Auto-Save Functionality</h2>
+        <p>Test if auto-save triggers after 1 second</p>
+        <input type="number" id="testInput2" class="score-input" data-contestant-id="1" data-criteria-id="1" data-max="10" min="0" max="10" step="0.001" placeholder="Enter score">
+        <button onclick="testAutoSave()">Test Auto-Save</button>
+        <div id="result2"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: Paste Prevention</h2>
+        <p>Test if pasting values > 10 is prevented</p>
+        <input type="number" id="testInput3" class="score-input" data-max="10" min="0" max="10" step="0.001" placeholder="Try pasting 15">
+        <button onclick="testPaste()">Test Paste</button>
+        <div id="result3"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 4: Keydown Prevention</h2>
+        <p>Test if typing values > 10 is prevented</p>
+        <input type="number" id="testInput4" class="score-input" data-max="10" min="0" max="10" step="0.001" placeholder="Try typing 15">
+        <div id="result4"></div>
+    </div>
+    
+    <div id="log"></div>
+    
+    <script>
+        let autoSaveTimer = null;
+        let saveCount = 0;
+        
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `[${timestamp}] ${message}<br>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+            console.log(message);
+        }
+        
+        // Simulate the auto-save functionality from score_table.php
+        function initTestAutoSave() {
+            // Keydown handler to prevent typing values > max
+            $(document).on('keydown', '.score-input', function(e) {
+                const $input = $(this);
+                const max = parseFloat($input.data('max'));
+                const currentValue = $input.val();
+                
+                // Allow: backspace, delete, tab, escape, enter, decimal point, and arrow keys
+                if ([8, 9, 27, 13, 46, 110, 190, 37, 38, 39, 40].indexOf(e.keyCode) !== -1 ||
+                    (e.keyCode === 65 && e.ctrlKey === true) ||
+                    (e.keyCode === 67 && e.ctrlKey === true) ||
+                    (e.keyCode === 86 && e.ctrlKey === true) ||
+                    (e.keyCode === 88 && e.ctrlKey === true) ||
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    return;
+                }
+                
+                // Allow numbers and decimal point
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105) && e.keyCode !== 110 && e.keyCode !== 190) {
+                    e.preventDefault();
+                    return;
+                }
+                
+                // Check if the new value would exceed max
+                const char = String.fromCharCode(e.which);
+                const newValue = currentValue.slice(0, $input[0].selectionStart) + char + currentValue.slice($input[0].selectionEnd);
+                const numValue = parseFloat(newValue);
+                
+                if (!isNaN(numValue) && numValue > max) {
+                    e.preventDefault();
+                    $input.val(max.toFixed(3));
+                    log(`❌ Prevented typing value > ${max}. Capped at ${max}`, 'fail');
+                    return false;
+                }
+            });
+            
+            // Paste handler
+            $(document).on('paste', '.score-input', function(e) {
+                const $input = $(this);
+                const max = parseFloat($input.data('max'));
+                
+                const pastedData = (e.originalEvent.clipboardData || window.clipboardData).getData('text');
+                const pastedValue = parseFloat(pastedData);
+                
+                if (!isNaN(pastedValue) && pastedValue > max) {
+                    e.preventDefault();
+                    $input.val(max.toFixed(3));
+                    log(`❌ Prevented pasting value > ${max}. Capped at ${max}`, 'fail');
+                    return false;
+                }
+            });
+            
+            // Auto-save on input
+            $(document).on('input change', '.score-input', function() {
+                const $input = $(this);
+                const contestantId = $input.data('contestant-id');
+                const criteriaId = $input.data('criteria-id');
+                const max = parseFloat($input.data('max'));
+                
+                if (!$input.prop('readonly') && !$input.prop('disabled')) {
+                    let inputValue = $input.val();
+                    if (typeof inputValue === 'string') {
+                        inputValue = inputValue.trim();
+                    }
+                    
+                    let value = parseFloat(inputValue);
+                    
+                    if (!isNaN(value)) {
+                        if (value > max) {
+                            value = max;
+                            $input.val(max.toFixed(3));
+                            log(`⚠️ Value capped at ${max}`, 'info');
+                        }
+                        if (value < 0) {
+                            value = 0;
+                            $input.val('0.000');
+                        }
+                    }
+                    
+                    if (!inputValue || inputValue === '' || isNaN(value)) {
+                        return;
+                    }
+                    
+                    log(`⏳ Auto-save timer started for value: ${value}`, 'info');
+                    
+                    if (autoSaveTimer) {
+                        clearTimeout(autoSaveTimer);
+                    }
+                    
+                    const finalValue = value;
+                    autoSaveTimer = setTimeout(function() {
+                        saveCount++;
+                        log(`✅ Auto-save triggered! Saved value: ${finalValue} (Save #${saveCount})`, 'pass');
+                        if (contestantId && criteriaId) {
+                            log(`   Contestant: ${contestantId}, Criteria: ${criteriaId}`, 'info');
+                        }
+                    }, 1000);
+                }
+            });
+            
+            log('✅ Auto-save system initialized', 'pass');
+        }
+        
+        function testMaxValue() {
+            const input = document.getElementById('testInput1');
+            const result = document.getElementById('result1');
+            
+            // Test 1: Try entering 15
+            input.value = '15';
+            input.dispatchEvent(new Event('input'));
+            
+            setTimeout(() => {
+                const value = parseFloat(input.value);
+                if (value <= 10) {
+                    result.innerHTML = '<div class="test-result pass">✅ PASS: Value capped at ' + value + '</div>';
+                    log('✅ Test 1 PASS: Max value limit works', 'pass');
+                } else {
+                    result.innerHTML = '<div class="test-result fail">❌ FAIL: Value not capped. Current: ' + value + '</div>';
+                    log('❌ Test 1 FAIL: Max value limit not working', 'fail');
+                }
+            }, 100);
+        }
+        
+        function testAutoSave() {
+            const input = document.getElementById('testInput2');
+            const result = document.getElementById('result2');
+            
+            result.innerHTML = '<div class="test-result info">⏳ Testing... Enter a value and wait 1 second</div>';
+            log('⏳ Test 2: Auto-save test started', 'info');
+            
+            input.value = '8.5';
+            input.dispatchEvent(new Event('input'));
+            
+            setTimeout(() => {
+                if (saveCount > 0) {
+                    result.innerHTML = '<div class="test-result pass">✅ PASS: Auto-save triggered after 1 second</div>';
+                    log('✅ Test 2 PASS: Auto-save works', 'pass');
+                } else {
+                    result.innerHTML = '<div class="test-result fail">❌ FAIL: Auto-save did not trigger</div>';
+                    log('❌ Test 2 FAIL: Auto-save not working', 'fail');
+                }
+            }, 1500);
+        }
+        
+        function testPaste() {
+            const input = document.getElementById('testInput3');
+            const result = document.getElementById('result3');
+            
+            input.value = '';
+            input.focus();
+            
+            // Simulate paste
+            const pasteEvent = new ClipboardEvent('paste', {
+                clipboardData: new DataTransfer()
+            });
+            pasteEvent.clipboardData.setData('text/plain', '15');
+            
+            input.dispatchEvent(pasteEvent);
+            
+            setTimeout(() => {
+                const value = parseFloat(input.value);
+                if (value <= 10) {
+                    result.innerHTML = '<div class="test-result pass">✅ PASS: Paste prevented. Value: ' + value + '</div>';
+                    log('✅ Test 3 PASS: Paste prevention works', 'pass');
+                } else {
+                    result.innerHTML = '<div class="test-result fail">❌ FAIL: Paste not prevented. Value: ' + value + '</div>';
+                    log('❌ Test 3 FAIL: Paste prevention not working', 'fail');
+                }
+            }, 100);
+        }
+        
+        // Initialize on page load
+        $(document).ready(function() {
+            initTestAutoSave();
+            log('🚀 Test suite initialized', 'info');
+            log('📝 Instructions:', 'info');
+            log('   1. Test Max Value: Click button to test if 15 gets capped to 10', 'info');
+            log('   2. Test Auto-Save: Click button and check if save triggers after 1s', 'info');
+            log('   3. Test Paste: Click button to test paste prevention', 'info');
+            log('   4. Test Keydown: Try typing 15 in the input field', 'info');
+        });
+    </script>
+</body>
+</html>

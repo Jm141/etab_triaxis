@@ -1,0 +1,408 @@
+===============================================
+JUDGES RAW SCORE QUERIES - TABULATION SYSTEM
+===============================================
+judges
+73
+74
+75
+76
+77
+83
+
+event_id= 18
+round_id= 83
+87
+88
+89
+90
+91
+92
+level_id= 51
+52
+53
+
+-- This file contains essential SQL queries for fetching judges' raw scores
+-- Use these queries in your PHP controllers, reports, or database operations
+
+-- ================================================================
+-- 1. BASIC RAW SCORE QUERIES
+-- ================================================================
+
+-- Get raw scores for a specific judge, contestant, and round
+-- USE: Individual score verification, score editing, detailed contestant evaluation
+SELECT 
+    sd.raw_score, 
+    sd.criteria_id, 
+    c.name as criterion_name,
+    c.max_score,
+    sd.weighted_score
+FROM score_details sd
+JOIN scores s ON sd.score_id = s.id
+JOIN criteria c ON sd.criteria_id = c.id
+WHERE s.judge_id = ? 
+  AND s.contestant_id = ? 
+  AND s.round_id = ?
+  AND s.is_submitted = 1
+ORDER BY c.name;
+
+-- ================================================================
+-- 2. RAW TOTAL PER JUDGE
+-- ================================================================
+
+-- Sum of all raw scores for a judge's evaluation of a contestant
+-- USE: Ranking calculations, score summaries, judge performance analysis
+SELECT 
+    s.contestant_id, 
+    s.judge_id, 
+    c.contestant_number, 
+    c.name as contestant_name,
+    (SELECT COALESCE(SUM(sd.raw_score), 0) 
+     FROM score_details sd 
+     WHERE sd.score_id = s.id) as raw_total,
+    s.total_score as calculated_percentage
+FROM scores s
+JOIN contestants c ON s.contestant_id = c.id
+WHERE s.round_id = ? 
+  AND s.is_submitted = 1 
+  AND c.status = 'Active'
+ORDER BY c.contestant_number;
+
+-- ================================================================
+-- 3. COMPLETE JUDGE BREAKDOWN
+-- ================================================================
+
+-- Get all raw scores with judge and contestant details
+-- USE: Comprehensive reports, score sheets, audit trails
+SELECT 
+    s.contestant_id, 
+    c.contestant_number, 
+    c.name as contestant_name,
+    s.judge_id, 
+    j.judge_number, 
+    u.full_name as judge_name,
+    (SELECT COALESCE(SUM(sd.raw_score), 0) 
+     FROM score_details sd 
+     WHERE sd.score_id = s.id) as raw_total,
+    s.total_score,
+    s.is_submitted,
+    s.submitted_at
+FROM scores s
+JOIN contestants c ON s.contestant_id = c.id
+JOIN judges j ON s.judge_id = j.id
+JOIN users u ON j.user_id = u.id
+WHERE s.round_id = ? 
+  AND s.is_submitted = 1
+ORDER BY c.contestant_number, j.judge_number;
+
+-- ================================================================
+-- 4. DETAILED CRITERIA BREAKDOWN
+-- ================================================================
+
+-- Get individual criterion scores for all contestants in a round
+-- USE: Detailed score sheets, per-criteria analysis, judge consistency checks
+SELECT 
+    c.contestant_number,
+    c.name as contestant_name,
+    crit.name as criterion_name,
+    crit.max_score,
+    sd.raw_score,
+    sd.weighted_score,
+    j.judge_number,
+    u.full_name as judge_name,
+    s.is_submitted
+FROM score_details sd
+JOIN scores s ON sd.score_id = s.id
+JOIN contestants c ON s.contestant_id = c.id
+JOIN criteria crit ON sd.criteria_id = crit.id
+JOIN judges j ON s.judge_id = j.id
+JOIN users u ON j.user_id = u.id
+WHERE s.round_id = ? 
+  AND s.is_submitted = 1
+ORDER BY c.contestant_number, j.judge_number, crit.name;
+
+-- ================================================================
+-- 5. JUDGE-SPECIFIC QUERIES
+-- ================================================================
+
+-- Get all scores submitted by a specific judge in a round
+-- USE: Judge performance review, score validation, judge workload analysis
+SELECT 
+    c.contestant_number,
+    c.name as contestant_name,
+    (SELECT COALESCE(SUM(sd.raw_score), 0) 
+     FROM score_details sd 
+     WHERE sd.score_id = s.id) as raw_total,
+    s.total_score,
+    s.is_submitted,
+    s.submitted_at,
+    s.ip_address
+FROM scores s
+JOIN contestants c ON s.contestant_id = c.id
+WHERE s.judge_id = ? 
+  AND s.round_id = ?
+  AND c.status = 'Active'
+ORDER BY c.contestant_number;
+
+-- Get judge's scoring progress in a round
+-- USE: Progress tracking, completion status, judge assignment management
+SELECT 
+    COUNT(*) as total_contestants,
+    COUNT(CASE WHEN s.is_submitted = 1 THEN 1 END) as submitted_scores,
+    COUNT(CASE WHEN s.id IS NOT NULL THEN 1 END) as started_scores,
+    ROUND(
+        (COUNT(CASE WHEN s.is_submitted = 1 THEN 1 END) * 100.0 / COUNT(*)), 2
+    ) as completion_percentage
+FROM contestants c
+LEFT JOIN scores s ON c.id = s.contestant_id AND s.judge_id = ? AND s.round_id = ?
+WHERE c.event_id = ? 
+  AND c.status = 'Active';
+
+-- ================================================================
+-- 6. CONTESTANT-SPECIFIC QUERIES
+-- ================================================================
+
+-- Get all judges' raw scores for a specific contestant
+-- USE: Contestant score summary, ranking verification, score appeals
+SELECT 
+    j.judge_number,
+    u.full_name as judge_name,
+    (SELECT COALESCE(SUM(sd.raw_score), 0) 
+     FROM score_details sd 
+     WHERE sd.score_id = s.id) as raw_total,
+    s.total_score,
+    s.is_submitted,
+    s.submitted_at
+FROM scores s
+JOIN judges j ON s.judge_id = j.id
+JOIN users u ON j.user_id = u.id
+WHERE s.contestant_id = ? 
+  AND s.round_id = ?
+  AND s.is_submitted = 1
+ORDER BY j.judge_number;
+
+-- Get detailed breakdown of all scores for a contestant
+-- USE: Detailed contestant report, score verification, appeal documentation
+SELECT 
+    j.judge_number,
+    u.full_name as judge_name,
+    crit.name as criterion_name,
+    crit.max_score,
+    sd.raw_score,
+    sd.weighted_score,
+    s.is_submitted
+FROM scores s
+JOIN judges j ON s.judge_id = j.id
+JOIN users u ON j.user_id = u.id
+JOIN score_details sd ON s.id = sd.score_id
+JOIN criteria crit ON sd.criteria_id = crit.id
+WHERE s.contestant_id = ? 
+  AND s.round_id = ?
+  AND s.is_submitted = 1
+ORDER BY j.judge_number, crit.name;
+
+-- ================================================================
+-- 7. ROUND-LEVEL ANALYSIS QUERIES
+-- ================================================================
+
+-- Get scoring summary for entire round
+-- USE: Round completion status, overall statistics, event management
+SELECT 
+    COUNT(DISTINCT c.id) as total_contestants,
+    COUNT(DISTINCT j.id) as total_judges,
+    COUNT(s.id) as total_submitted_scores,
+    COUNT(DISTINCT s.contestant_id) as contestants_with_scores,
+    ROUND(
+        COUNT(s.id) * 100.0 / (COUNT(DISTINCT c.id) * COUNT(DISTINCT j.id)), 2
+    ) as completion_percentage
+FROM contestants c
+CROSS JOIN judges j
+LEFT JOIN scores s ON c.id = s.contestant_id 
+    AND j.id = s.judge_id 
+    AND s.round_id = ?
+    AND s.is_submitted = 1
+WHERE c.event_id = ? 
+  AND c.status = 'Active'
+  AND j.event_id = ?;
+
+-- Get highest and lowest raw scores per contestant in round
+-- USE: Score range analysis, outlier detection, quality control
+SELECT 
+    c.contestant_number,
+    c.name as contestant_name,
+    MAX((SELECT COALESCE(SUM(sd.raw_score), 0) 
+         FROM score_details sd 
+         WHERE sd.score_id = s.id)) as highest_raw_score,
+    MIN((SELECT COALESCE(SUM(sd.raw_score), 0) 
+         FROM score_details sd 
+         WHERE sd.score_id = s.id)) as lowest_raw_score,
+    AVG((SELECT COALESCE(SUM(sd.raw_score), 0) 
+         FROM score_details sd 
+         WHERE sd.score_id = s.id)) as average_raw_score
+FROM scores s
+JOIN contestants c ON s.contestant_id = c.id
+WHERE s.round_id = ? 
+  AND s.is_submitted = 1
+  AND c.status = 'Active'
+GROUP BY c.id, c.contestant_number, c.name
+ORDER BY c.contestant_number;
+
+-- ================================================================
+-- 8. AUDIT AND VERIFICATION QUERIES
+-- ================================================================
+
+-- Check for missing scores in a round
+-- USE: Data integrity checks, completion verification, quality assurance
+SELECT 
+    c.contestant_number,
+    c.name as contestant_name,
+    j.judge_number,
+    u.full_name as judge_name,
+    CASE 
+        WHEN s.id IS NULL THEN 'MISSING'
+        WHEN s.is_submitted = 0 THEN 'DRAFT'
+        ELSE 'SUBMITTED'
+    END as score_status
+FROM contestants c
+CROSS JOIN judges j
+JOIN users u ON j.user_id = u.id
+LEFT JOIN scores s ON c.id = s.contestant_id 
+    AND j.id = s.judge_id 
+    AND s.round_id = ?
+WHERE c.event_id = ? 
+  AND c.status = 'Active'
+  AND j.event_id = ?
+  AND (s.id IS NULL OR s.is_submitted = 0)
+ORDER BY c.contestant_number, j.judge_number;
+
+-- Get score modification history
+-- USE: Audit trail, change tracking, dispute resolution
+SELECT 
+    c.contestant_number,
+    c.name as contestant_name,
+    j.judge_number,
+    u.full_name as judge_name,
+    s.total_score,
+    (SELECT COALESCE(SUM(sd.raw_score), 0) 
+     FROM score_details sd 
+     WHERE sd.score_id = s.id) as raw_total,
+    s.admin_edited_by,
+    s.admin_edited_at,
+    s.submitted_at,
+    s.ip_address
+FROM scores s
+JOIN contestants c ON s.contestant_id = c.id
+JOIN judges j ON s.judge_id = j.id
+JOIN users u ON j.user_id = u.id
+WHERE s.round_id = ? 
+  AND (s.admin_edited_by IS NOT NULL OR s.admin_edited_at IS NOT NULL)
+ORDER BY s.admin_edited_at DESC;
+
+-- ================================================================
+-- 9. CRITERIA-SPECIFIC QUERIES
+-- ================================================================
+
+-- Get raw scores for specific criterion across all contestants
+-- USE: Criteria analysis, judge consistency per criterion, scoring patterns
+SELECT 
+    c.contestant_number,
+    c.name as contestant_name,
+    j.judge_number,
+    u.full_name as judge_name,
+    crit.name as criterion_name,
+    sd.raw_score,
+    crit.max_score,
+    ROUND((sd.raw_score / crit.max_score) * 100, 2) as percentage_score
+FROM score_details sd
+JOIN scores s ON sd.score_id = s.id
+JOIN contestants c ON s.contestant_id = c.id
+JOIN judges j ON s.judge_id = j.id
+JOIN users u ON j.user_id = u.id
+JOIN criteria crit ON sd.criteria_id = crit.id
+WHERE s.round_id = ? 
+  AND sd.criteria_id = ?
+  AND s.is_submitted = 1
+ORDER BY c.contestant_number, j.judge_number;
+
+-- Get criteria statistics for a round
+-- USE: Criteria difficulty analysis, score distribution, judge calibration
+SELECT 
+    crit.name as criterion_name,
+    crit.max_score,
+    COUNT(sd.id) as total_scores,
+    AVG(sd.raw_score) as average_raw_score,
+    MIN(sd.raw_score) as lowest_raw_score,
+    MAX(sd.raw_score) as highest_raw_score,
+    ROUND(STDDEV(sd.raw_score), 3) as standard_deviation
+FROM score_details sd
+JOIN scores s ON sd.score_id = s.id
+JOIN criteria crit ON sd.criteria_id = crit.id
+WHERE s.round_id = ? 
+  AND s.is_submitted = 1
+GROUP BY crit.id, crit.name, crit.max_score
+ORDER BY crit.name;
+
+-- ================================================================
+-- 10. PERFORMANCE AND OPTIMIZATION QUERIES
+-- ================================================================
+
+-- Fast query for score summary (optimized for large datasets)
+-- USE: Dashboard displays, quick statistics, real-time updates
+SELECT 
+    c.id as contestant_id,
+    c.contestant_number,
+    c.name,
+    COUNT(s.id) as submitted_judge_count,
+    COALESCE(AVG(s.total_score), 0) as average_percentage,
+    COALESCE(AVG(
+        (SELECT COALESCE(SUM(sd.raw_score), 0) 
+         FROM score_details sd 
+         WHERE sd.score_id = s.id)
+    ), 0) as average_raw_score
+FROM contestants c
+LEFT JOIN scores s ON c.id = s.contestant_id 
+    AND s.round_id = ? 
+    AND s.is_submitted = 1
+WHERE c.event_id = ? 
+  AND c.status = 'Active'
+GROUP BY c.id, c.contestant_number, c.name
+ORDER BY c.contestant_number;
+
+-- Judge scoring consistency check
+-- USE: Judge training, quality control, bias detection
+SELECT 
+    j.judge_number,
+    u.full_name as judge_name,
+    COUNT(sd.id) as total_scores_given,
+    AVG(sd.raw_score) as judge_average,
+    ROUND(STDDEV(sd.raw_score), 3) as score_variance,
+    MIN(sd.raw_score) as lowest_given,
+    MAX(sd.raw_score) as highest_given
+FROM judges j
+JOIN users u ON j.user_id = u.id
+JOIN scores s ON j.id = s.judge_id
+JOIN score_details sd ON s.id = sd.score_id
+WHERE s.round_id = ? 
+  AND s.is_submitted = 1
+GROUP BY j.id, j.judge_number, u.full_name
+ORDER BY score_variance ASC;
+
+-- ================================================================
+-- USAGE NOTES:
+-- ================================================================
+-- 
+-- 1. Replace ? placeholders with actual parameter values in your PHP code
+-- 2. Use parameterized queries to prevent SQL injection
+-- 3. Consider adding LIMIT clauses for large datasets
+-- 4. Index recommendations for performance:
+--    - scores(judge_id, round_id, contestant_id, is_submitted)
+--    - score_details(score_id, criteria_id)
+--    - contestants(event_id, status)
+-- 
+-- 5. Common PHP usage pattern:
+--    $scores = $db->fetchAll($query, [$param1, $param2, $param3]);
+-- 
+-- 6. For reporting, consider exporting results to CSV or Excel
+-- 7. Use COALESCE() to handle NULL values in calculations
+-- 8. Always filter by is_submitted = 1 for final scores
+-- 
+-- ================================================================
