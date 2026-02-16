@@ -98,6 +98,9 @@ $router->get('contestants/download-template', 'Contestant@downloadTemplate');
 
 // Judge Scoring Interface
 $router->get('judge/rounds', 'JudgeScoring@rounds');
+// Level table: one view with all scoring categories (rounds) merged
+$router->get('judge/level/{levelId}/table', 'JudgeScoring@levelTable');
+$router->post('judge/level/{levelId}/submit-all', 'JudgeScoring@submitLevelAll');
 // More specific route first (table view)
 $router->get('judge/rounds/{roundId}/table', 'JudgeScoring@roundTable');
 // Less specific route last (redirects to table)

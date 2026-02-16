@@ -108,23 +108,20 @@ require __DIR__ . '/../layout/header.php';
         <div class="card-body p-0" >
             <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
                 <table class="table table-bordered table-hover table-sm" id="scoringTable">
-                    <thead class="thead-dark sticky-top" style="background-color: #0a0a0a; z-index: 10;">
+                    <thead class="thead-dark sticky-top" style="background-color: #37474f; z-index: 10;">
                         <tr>
-                            <th rowspan="2" class="align-middle text-center" style="min-width: 100px; position: sticky; left: 0; background-color: #0a0a0a; z-index: 11;">
+                            <th rowspan="2" class="align-middle text-center" style="min-width: 100px; position: sticky; left: 0; background-color: #37474f; z-index: 11;">
                                 <strong>Contestant #</strong>
                             </th>
                             <?php foreach ($criteria as $criterion): ?>
-                                <th class="text-center" style="min-width: 120px;">
-                                    <div class="small">
+                                <th class="text-center criteria-header-cell">
+                                    <div class="criteria-header-inner">
                                         <strong><?= htmlspecialchars($criterion['name']) ?></strong>
                                         <br>
                                         <span class="badge badge-info">Max: <?= number_format($criterion['max_score'], 2) ?></span>
                                     </div>
                                 </th>
                             <?php endforeach; ?>
-                            <th rowspan="2" class="align-middle text-center" style="min-width: 120px;">
-                                <strong>Status</strong>
-                            </th>
                         </tr>
                         <tr>
                             <?php foreach ($criteria as $criterion): ?>
@@ -202,53 +199,6 @@ require __DIR__ . '/../layout/header.php';
                                 <?php endif; ?>
                             </td>
                             <?php endforeach; ?>
-                            <td class="text-center">
-                                <?php if ($isSubmitted): ?>
-                                    <span class="badge badge-success">
-                                        <i class="fas fa-check-circle"></i> Submitted
-                                    </span>
-                                    <?php if ($permissionStatus === 'judge_requested'): ?>
-                                        <br><small class="text-info mt-1 d-block">
-                                            <i class="fas fa-clock"></i> Permission requested
-                                        </small>
-                                    <?php elseif ($permissionStatus === 'admin_requested'): ?>
-                                        <br><small class="text-warning mt-1 d-block mb-2">
-                                            <i class="fas fa-exclamation-triangle"></i> Admin wants to edit
-                                        </small>
-                                        <div class="btn-group btn-group-sm mt-1">
-                                            <button type="button" 
-                                                    class="btn btn-sm btn-success grant-permission-btn"
-                                                    data-score-id="<?= $existingScore['id'] ?? '' ?>"
-                                                    title="Grant permission to admin">
-                                                <i class="fas fa-check"></i> Grant
-                                            </button>
-                                            <button type="button" 
-                                                    class="btn btn-sm btn-danger deny-permission-btn"
-                                                    data-score-id="<?= $existingScore['id'] ?? '' ?>"
-                                                    title="Deny permission to admin">
-                                                <i class="fas fa-times"></i> Deny
-                                            </button>
-                                        </div>
-                                    <?php elseif ($permissionStatus === 'granted'): ?>
-                                        <br><small class="text-success mt-1 d-block">
-                                            <i class="fas fa-unlock"></i> Editable
-                                        </small>
-                                    <?php else: ?>
-                                        <br>
-                                        <button type="button" 
-                                                class="btn btn-sm btn-outline-primary mt-1 request-edit-permission"
-                                                data-contestant-id="<?= $contestant['id'] ?>"
-                                                data-score-id="<?= $existingScore['id'] ?? '' ?>"
-                                                title="Request permission to edit submitted score">
-                                            <i class="fas fa-edit"></i> Request Edit
-                                        </button>
-                                    <?php endif; ?>
-                                <?php else: ?>
-                                    <span class="badge badge-warning">
-                                        <i class="fas fa-clock"></i> Draft
-                                    </span>
-                                <?php endif; ?>
-                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -260,23 +210,38 @@ require __DIR__ . '/../layout/header.php';
 
 <style>
 #scoringTable thead th {
-    background-color: #0a0a0a !important;
-    color: #00d9ff !important;
-    border-color: #333 !important;
+    background-color: #37474f !important;
+    color: #eceff1 !important;
+    border-color: #546e7a !important;
+}
+#scoringTable thead th.criteria-header-cell {
+    min-width: 150px !important;
+    padding: 12px 10px;
+}
+#scoringTable thead th.criteria-header-cell .criteria-header-inner {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+#scoringTable thead th.criteria-header-cell .criteria-header-inner strong {
+    font-size: 1.05rem;
+}
+#scoringTable thead th.criteria-header-cell .badge {
+    font-size: 0.8rem;
+    padding: 4px 8px;
 }
 
 #scoringTable tbody tr.table-success {
-    background-color: rgba(0, 217, 255, 0.1) !important;
+    background-color: rgba(77, 182, 172, 0.08) !important;
 }
 
 .score-input:read-only {
-    background-color: #f5f5f5;
+    background-color: #eceff1;
     cursor: not-allowed;
 }
 
 .score-input:focus {
-    border-color: #00d9ff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 217, 255, 0.25);
+    border-color: #4db6ac;
+    box-shadow: 0 0 0 0.2rem rgba(77, 182, 172, 0.25);
 }
 </style>
 
@@ -1198,23 +1163,23 @@ console.log('[Auto-Save] ===== SCRIPT BLOCK LOADED =====');
 
 <style>
 #scoringTable thead th {
-    background-color: #0a0a0a !important;
-    color: #00d9ff !important;
-    border-color: #333 !important;
+    background-color: #37474f !important;
+    color: #eceff1 !important;
+    border-color: #546e7a !important;
 }
 
 #scoringTable tbody tr.table-success {
-    background-color: rgba(0, 217, 255, 0.1) !important;
+    background-color: rgba(77, 182, 172, 0.08) !important;
 }
 
 .score-input:read-only {
-    background-color: #f5f5f5;
+    background-color: #eceff1;
     cursor: not-allowed;
 }
 
 .score-input:focus {
-    border-color: #00d9ff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 217, 255, 0.25);
+    border-color: #4db6ac;
+    box-shadow: 0 0 0 0.2rem rgba(77, 182, 172, 0.25);
 }
 
 /* Mobile and Tablet Responsive Styles */

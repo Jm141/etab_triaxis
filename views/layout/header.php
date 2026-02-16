@@ -21,18 +21,18 @@
     
     <style>
         :root {
-            --primary: #0a0a0a;
-            --secondary: #00d9ff;
+            --primary: #37474f;
+            --secondary: #4db6ac;
             --accent: #ffffff;
             --bg: #fafafa;
-            --bg-dark: #1a1a1a;
-            --text: #0a0a0a;
-            --text-light: #666;
-            --border: #e5e5e5;
-            --hover: #f5f5f5;
-            --sidebar-bg: #0a0a0a;
-            --sidebar-text: rgba(255,255,255,0.8);
-            --sidebar-active: #00d9ff;
+            --bg-dark: #455a64;
+            --text: #263238;
+            --text-light: #546e7a;
+            --border: #e0e8ec;
+            --hover: #f0f4f6;
+            --sidebar-bg: #37474f;
+            --sidebar-text: rgba(255,255,255,0.88);
+            --sidebar-active: #80cbc4;
         }
         
         * {
@@ -76,13 +76,13 @@
         }
         
         .main-sidebar .nav-sidebar .nav-item .nav-link:hover {
-            background: rgba(0,217,255,0.1);
-            color: var(--accent);
+            background: rgba(128,203,196,0.15);
+            color: var(--sidebar-active);
             border-left-color: var(--secondary);
         }
         
         .main-sidebar .nav-sidebar .nav-item .nav-link.active {
-            background: rgba(0,217,255,0.15);
+            background: rgba(128,203,196,0.2);
             color: var(--sidebar-active);
             border-left-color: var(--secondary);
             font-weight: 600;
@@ -179,11 +179,11 @@
         }
         
         .btn-primary:hover {
-            background: #1a1a1a;
-            border-color: #1a1a1a;
+            background: #455a64;
+            border-color: #455a64;
             color: var(--accent);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(10,10,10,0.15);
+            box-shadow: 0 4px 12px rgba(55,71,79,0.2);
         }
         
         .btn-secondary {
