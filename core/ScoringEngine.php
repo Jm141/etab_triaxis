@@ -285,10 +285,26 @@ class ScoringEngine {
             }
             
             // Calculate overall level rankings (aggregate across all rounds)
-            $levelRankings = $this->calculateLevelRankings($levelId);
+            $levelResult = $this->calculateLevelRankings($levelId);
+            
+            // Check if level is complete
+            if (!$levelResult['level_complete']) {
+                return [
+                    'success' => false,
+                    'message' => $levelResult['message'],
+                    'incomplete_rounds' => $levelResult['incomplete_rounds'],
+                    'total_rounds' => $levelResult['total_rounds'],
+                    'completed_rounds' => $levelResult['completed_rounds']
+                ];
+            }
+            
+            $levelRankings = $levelResult['rankings'];
             
             if (empty($levelRankings)) {
-                return false;
+                return [
+                    'success' => false,
+                    'message' => 'No rankings available for this level'
+                ];
             }
             
             // Get next level
@@ -355,10 +371,26 @@ class ScoringEngine {
         }
         
         // Calculate overall level rankings (aggregate across all rounds)
-        $levelRankings = $this->calculateLevelRankings($levelId);
+        $levelResult = $this->calculateLevelRankings($levelId);
+        
+        // Check if level is complete
+        if (!$levelResult['level_complete']) {
+            return [
+                'success' => false,
+                'message' => $levelResult['message'],
+                'incomplete_rounds' => $levelResult['incomplete_rounds'],
+                'total_rounds' => $levelResult['total_rounds'],
+                'completed_rounds' => $levelResult['completed_rounds']
+            ];
+        }
+        
+        $levelRankings = $levelResult['rankings'];
         
         if (empty($levelRankings)) {
-            return false;
+            return [
+                'success' => false,
+                'message' => 'No rankings available for this level'
+            ];
         }
         
         // Get next level
@@ -446,7 +478,7 @@ class ScoringEngine {
         
         // Get all rounds in this level
         $rounds = $this->db->fetchAll(
-            "SELECT id FROM rounds WHERE level_id = ? ORDER BY `order`",
+            "SELECT id, name FROM rounds WHERE level_id = ? ORDER BY `order`",
             [$levelId]
         );
         
@@ -455,6 +487,7 @@ class ScoringEngine {
         }
         
         $roundIds = array_column($rounds, 'id');
+        $totalExpectedRounds = count($rounds);
         $roundIndexMap = [];
         foreach ($roundIds as $index => $roundId) {
             $roundIndexMap[$roundId] = $index;
@@ -475,8 +508,34 @@ class ScoringEngine {
             return [];
         }
         
-        // Get level formula (if any) for weighted ranking
-        $levelFormula = $this->getLevelFormula($level['event_id'], $levelId);
+        // Check which rounds have scores (are complete)
+        $roundsWithScores = [];
+        foreach ($allRankings as $ranking) {
+            $roundsWithScores[$ranking['round_id']] = true;
+        }
+        
+        $incompleteRounds = [];
+        foreach ($rounds as $round) {
+            if (!isset($roundsWithScores[$round['id']])) {
+                $incompleteRounds[] = [
+                    'id' => $round['id'],
+                    'name' => $round['name'],
+                    'status' => 'incomplete'
+                ];
+            }
+        }
+        
+        // CRITICAL: Check if level is complete before allowing advancement
+        if (!empty($incompleteRounds)) {
+            return [
+                'level_complete' => false,
+                'incomplete_rounds' => $incompleteRounds,
+                'total_rounds' => $totalExpectedRounds,
+                'completed_rounds' => count($roundsWithScores),
+                'message' => 'Level cannot be ranked until all rounds are complete',
+                'rankings' => [] // Empty rankings until level is complete
+            ];
+        }
         
         // Group by contestant and calculate overall score using formula or average
         $contestantScores = [];
@@ -488,7 +547,7 @@ class ScoringEngine {
                     'contestant_number' => $ranking['contestant_number'],
                     'name' => $ranking['name'],
                     'team_name' => $ranking['team_name'] ?? null,
-                    'round_averages' => array_fill(0, count($roundIds), 0),
+                    'round_averages' => array_fill(0, $totalExpectedRounds, 0),
                     'total' => 0,
                     'count' => 0,
                     'average' => 0
@@ -501,11 +560,15 @@ class ScoringEngine {
             }
         }
         
+        // Get level formula for this round (if any)
+        $levelFormula = $this->getLevelFormula($level['event_id'], $levelId);
+        
         // Calculate overall averages or formula-based totals
         foreach ($contestantScores as &$cs) {
             $roundAverages = $cs['round_averages'];
-            $cs['count'] = count($roundAverages);
+            $cs['count'] = $totalExpectedRounds; // Use TOTAL expected rounds, not just scored rounds
             $cs['total'] = array_sum($roundAverages);
+            $cs['completed_rounds'] = count(array_filter($roundAverages, fn($r) => $r > 0));
             
             if ($levelFormula && !empty($levelFormula['formula_expression'])) {
                 $average = $this->evaluateLevelFormula($levelFormula['formula_expression'], $roundAverages);
@@ -538,7 +601,15 @@ class ScoringEngine {
             }
             $i = $j + 1;
         }
-        return $contestantScores;
+        
+        return [
+            'level_complete' => true,
+            'incomplete_rounds' => [],
+            'total_rounds' => $totalExpectedRounds,
+            'completed_rounds' => $totalExpectedRounds,
+            'message' => 'Level ranking calculated successfully',
+            'rankings' => $contestantScores
+        ];
     }
 
     /**

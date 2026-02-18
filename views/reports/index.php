@@ -25,6 +25,109 @@ require __DIR__ . '/../layout/header.php';
 <?php endif; ?>
 
 <div class="row">
+    <!-- Level Completion Status -->
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="fas fa-tasks"></i> Level Completion Status</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-3">Check which levels are complete before processing advancement.</p>
+                
+                <?php 
+                // Initialize scoring engine
+                require_once __DIR__ . '/../../core/ScoringEngine.php';
+                $scoringEngine = new ScoringEngine();
+                
+                $totalLevels = count($levels);
+                $completeLevels = 0;
+                $incompleteLevels = 0;
+                $hasIncompleteRounds = false;
+                ?>
+                
+                <div class="row">
+                    <?php foreach ($levels as $level): ?>
+                        <?php 
+                        $levelResult = $scoringEngine->calculateLevelRankings($level['id']);
+                        $isComplete = $levelResult['level_complete'] ?? false;
+                        $incompleteRounds = $levelResult['incomplete_rounds'] ?? [];
+                        $totalRounds = $levelResult['total_rounds'] ?? 0;
+                        $completedRounds = $levelResult['completed_rounds'] ?? 0;
+                        $completionPercentage = $totalRounds > 0 ? ($completedRounds / $totalRounds) * 100 : 0;
+                        
+                        if ($isComplete) {
+                            $completeLevels++;
+                        } else {
+                            $incompleteLevels++;
+                            $hasIncompleteRounds = true;
+                        }
+                        ?>
+                        
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="card <?= $isComplete ? 'border-success' : 'border-warning' ?> h-100">
+                                <div class="card-body p-3">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h6 class="mb-0">
+                                            <i class="fas fa-layer-group"></i> 
+                                            <?= htmlspecialchars($level['name']) ?>
+                                        </h6>
+                                        <span class="badge <?= $isComplete ? 'bg-success' : 'bg-warning' ?> text-white">
+                                            <?= $isComplete ? 'Complete' : 'Incomplete' ?>
+                                        </span>
+                                    </div>
+                                    
+                                    <!-- Progress Bar -->
+                                    <div class="progress mb-2" style="height: 20px;">
+                                        <div class="progress-bar <?= $isComplete ? 'bg-success' : 'bg-warning' ?>" 
+                                             role="progressbar" 
+                                             style="width: <?= $completionPercentage ?>%"
+                                             aria-valuenow="<?= $completionPercentage ?>" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100">
+                                            <?= number_format($completionPercentage, 0) ?>%
+                                        </div>
+                                    </div>
+                                    
+                                    <small class="text-muted">
+                                        <?= $completedRounds ?>/<?= $totalRounds ?> rounds complete
+                                        <?php if (!$isComplete && !empty($incompleteRounds)): ?>
+                                            <br>
+                                            <span class="text-warning">
+                                                <i class="fas fa-exclamation-triangle"></i> 
+                                                <?= count($incompleteRounds) ?> round(s) missing scores
+                                            </span>
+                                        <?php endif; ?>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                
+                <!-- Summary Alert -->
+                <?php if ($hasIncompleteRounds): ?>
+                    <div class="alert alert-warning mt-3">
+                        <h6><i class="fas fa-exclamation-triangle"></i> ⚠️ Incomplete Levels Detected</h6>
+                        <p class="mb-2">
+                            <strong>Advancement cannot be processed</strong> until all rounds in incomplete levels are scored.
+                            This ensures fair and accurate rankings for all contestants.
+                        </p>
+                        <a href="/tabulation/events/<?= $event['id'] ?>/levels" class="btn btn-warning">
+                            <i class="fas fa-edit"></i> Go to Scoring
+                        </a>
+                    </div>
+                <?php else: ?>
+                    <div class="alert alert-success mt-3">
+                        <h6><i class="fas fa-check-circle"></i> ✅ All Levels Complete</h6>
+                        <p class="mb-0">
+                            All levels have been scored. Advancement can be processed safely.
+                        </p>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    
     <!-- Report Per Round -->
     <div class="col-md-6 mb-4">
         <div class="card">
