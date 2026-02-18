@@ -2,18 +2,10 @@
 $title = 'Score Level: ' . htmlspecialchars($level['name']);
 require __DIR__ . '/../layout/header.php'; 
 ?>
-
+<!-- 
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
-    <h1 class="mb-3 mb-md-0"><i class="fas fa-table"></i> <span class="d-none d-sm-inline"><?= htmlspecialchars($event['name']) ?> — </span><?= htmlspecialchars($level['name']) ?></h1>
-    <div class="d-flex flex-column flex-sm-row gap-2 w-100 w-md-auto">
-        <button type="button" class="btn btn-success btn-sm btn-block btn-md-inline" id="submitAllBtn">
-            <i class="fas fa-check-circle"></i> <span class="d-none d-sm-inline">Submit All Scores (All Categories)</span><span class="d-sm-none">Submit All</span>
-        </button>
-        <a href="/tabulation/judge/rounds" class="btn btn-secondary btn-sm btn-block btn-md-inline">
-            <i class="fas fa-arrow-left"></i> Back
-        </a>
-    </div>
-</div>
+    <h1 class="mb-3 mb-md-0"><i class="fas fa-table"></i> <span class="d-none d-sm-inline"><?= htmlspecialchars($level['name']) ?></h1>
+</div> -->
 
 <?php if (empty($roundsData)): ?>
     <div class="alert alert-warning">No rounds assigned for this level.</div>
@@ -41,6 +33,7 @@ require __DIR__ . '/../layout/header.php';
                 <?php endforeach; ?>
             </div>
             <div class="tabs-scroll-arrows tabs-right" title="Next tabs"><i class="fas fa-chevron-right"></i></div>
+             
         </div>
         <div class="card-body p-0 position-relative" style="min-height: 320px;">
             <?php foreach ($roundsData as $index => $rd): 
@@ -55,25 +48,68 @@ require __DIR__ . '/../layout/header.php';
                 $catIndex = $index % 6;
             ?>
             <div id="<?= $panelId ?>" class="score-sheet-panel cat-color-<?= $catIndex ?>" data-round-id="<?= $roundId ?>" style="<?= $isFirst ? '' : 'display:none;' ?>">
+                <?php 
+                // Check if any contestant in this category has submitted scores
+                $anySubmitted = false;
+                if (!empty($allScores)) {
+                    foreach ($allScores as $score) {
+                        if ($score['is_submitted'] ?? false) {
+                            $anySubmitted = true;
+                            break;
+                        }
+                    }
+                }
+                $canEditCategory = !$anySubmitted;
+                ?>
+                <!-- Debug: canEditCategory = <?php var_dump($canEditCategory); ?>, anySubmitted = <?php var_dump($anySubmitted); ?> -->
+                 
                 <?php if (empty($contestants) || empty($criteria)): ?>
                     <div class="p-4 text-muted">No contestants or criteria for this category.</div>
                 <?php else: 
                     $totalMax = array_sum(array_column($criteria, 'max_score'));
                 ?>
-                <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch; position: relative;">
+                    <!-- Submit button positioned outside table -->
+                    <div style="position: absolute; top: 10px; right: 10px; z-index: 25; background: white; padding: 5px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); border: 1px solid #dee2e6;">
+                        <?php if ($canEditCategory): ?>
+                            <button type="button" 
+                                    class="btn btn-success btn-sm submit-category-btn" 
+                                    data-round-id="<?= $roundId ?>" 
+                                    data-category-name="<?= htmlspecialchars($round['name']) ?>"
+                                    style="font-size: 11px; padding: 4px 8px;">
+                                <i class="fas fa-check-circle"></i> 
+                                Submit All
+                            </button>
+                        <?php else: ?>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-muted" style="font-size: 10px;">
+                                    <i class="fas fa-lock"></i> Submitted
+                                </span>
+                                <button type="button" 
+                                        class="btn btn-warning btn-xs request-edit-permission" 
+                                        data-round-id="<?= $roundId ?>" 
+                                        data-category-name="<?= htmlspecialchars($round['name']) ?>"
+                                        title="Request permission to edit submitted scores"
+                                        style="font-size: 9px; padding: 2px 6px;">
+                                    <i class="fas fa-key"></i> Request
+                                </button>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    
                     <table class="table table-bordered table-hover table-sm scoring-table-level mb-0" data-round-id="<?= $roundId ?>" data-max-total="<?= (float)$totalMax ?>" data-category-name="<?= htmlspecialchars($round['name']) ?>">
                         <thead class="thead-dark sticky-top thead-cat-accent" style="background-color: #37474f; z-index: 10;">
                             <tr>
-                                <th class="align-middle text-center" style="min-width: 100px; position: sticky; left: 0; background-color: #37474f; z-index: 11;"><strong>Contestant #</strong></th>
+                                <th class="align-middle text-center" style="min-width: 100px; position: sticky; left: 0; background-color: #37474f; z-index: 11; font-size: 14px;"><strong>Contestant #</strong></th>
                                 <?php foreach ($criteria as $criterion): ?>
-                                <th class="text-center criteria-header-cell">
+                                <th class="text-center criteria-header-cell" style="font-size: 13px;">
                                     <div class="criteria-header-inner">
-                                        <strong><?= htmlspecialchars($criterion['name']) ?></strong>
-                                        <br><span class="badge badge-info">Max <?= number_format($criterion['max_score'], 0) ?></span>
+                                        <strong style="font-size: 14px;"><?= htmlspecialchars($criterion['name']) ?></strong>
+                                        <br><span class="badge badge-info" style="font-size: 11px;">Max <?= number_format($criterion['max_score'], 0) ?></span>
                                     </div>
                                 </th>
                                 <?php endforeach; ?>
-                                <th class="align-middle text-center" style="min-width: 100px;"><strong>Raw Total <?= number_format($totalMax, 0) ?></strong></th>
+                                <th class="align-middle text-center" style="min-width: 100px; font-size: 14px;"><strong>Total Score <?= number_format($totalMax, 0) ?></strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -120,10 +156,10 @@ require __DIR__ . '/../layout/header.php';
                                     <?php if (!$canEdit): ?><small class="text-muted d-block mt-1"><i class="fas fa-lock"></i></small><?php endif; ?>
                                 </td>
                                 <?php endforeach; ?>
-                                <td class="text-center align-middle raw-total-cell" data-contestant-id="<?= $contestant['id'] ?>" data-round-id="<?= $roundId ?>"><?php
+                                <td class="text-center align-middle raw-total-cell" data-contestant-id="<?= $contestant['id'] ?>" data-round-id="<?= $roundId ?>" style="font-size: 13px;"><?php
                                     if ($rowTotal > 0 && $totalMax > 0) {
                                         $pct = ($rowTotal / $totalMax) * 100;
-                                        echo number_format($rowTotal, 2) . ' <span class="raw-total-pct text-muted small">(' . number_format($pct, 1) . '%)</span>';
+                                        echo number_format($rowTotal, 2) . ' <span class="raw-total-pct text-muted small"></span>';
                                     } else {
                                         echo '—';
                                     }
@@ -178,10 +214,6 @@ require __DIR__ . '/../layout/header.php';
         }
         function updateRawTotalForRow(row) {
             var table = row.closest('table');
-            var maxTotal = 100;
-            if (table && table.getAttribute('data-max-total')) {
-                maxTotal = parseFloat(table.getAttribute('data-max-total')) || 100;
-            }
             var inputs = row.querySelectorAll('.score-input');
             var total = 0;
             for (var i = 0; i < inputs.length; i++) {
@@ -190,6 +222,13 @@ require __DIR__ . '/../layout/header.php';
             }
             var cell = row.querySelector('.raw-total-cell');
             if (!cell) return;
+            
+            // Get the actual max total for this category from the table data attribute
+            var maxTotal = 100;
+            if (table && table.getAttribute('data-max-total')) {
+                maxTotal = parseFloat(table.getAttribute('data-max-total')) || 100;
+            }
+            
             if (total > 0 && maxTotal > 0) {
                 var pct = (total / maxTotal * 100).toFixed(1);
                 cell.innerHTML = total.toFixed(2) + ' <span class="raw-total-pct text-muted small">(' + pct + '%)</span>';
@@ -285,13 +324,13 @@ require __DIR__ . '/../layout/header.php';
                     }
                 });
                 if (exceeded.length > 0) {
-                    alert('Some scores exceed the maximum allowed. Please correct them.\n\nScores you entered are already saved.');
+                    Swal.fire('Warning', 'Some scores exceed the maximum allowed. Please correct them.\n\nScores you entered are already saved.', 'warning');
                     return;
                 }
                 if (missing.length > 0) {
                     var msg = 'Your entered scores are already saved in the database.\n\nThe following have not been entered yet. Please fill them in, then click Submit All again:\n\n' + missing.slice(0, 20).join('\n');
                     if (missing.length > 20) msg += '\n... and ' + (missing.length - 20) + ' more';
-                    alert(msg);
+                    Swal.fire('Missing Scores', msg, 'warning');
                     return;
                 }
                 if (!confirm('All scores are saved. Submit all to finalize? You will need permission to edit after.')) return;
@@ -299,21 +338,22 @@ require __DIR__ . '/../layout/header.php';
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
                 var body = new FormData();
                 body.append('csrf_token', _csrf);
-                fetch(_baseUrl + '/judge/level/' + _levelId + '/submit-all', {
+                fetch(_baseUrl + '/judge/rounds/' + roundId + '/submit-category', {
                     method: 'POST',
                     body: body,
                     credentials: 'same-origin'
                 }).then(function(r) { return r.json(); }).then(function(data) {
                     if (data.success) {
-                        alert('All scores have been saved and submitted.');
-                        window.location.reload();
+                        Swal.fire('Success', 'All scores have been saved and submitted.', 'success').then(function() {
+                            window.location.reload();
+                        });
                     } else {
-                        alert(data.message || 'Something went wrong.');
+                        Swal.fire('Error', data.message || 'Something went wrong.', 'error');
                         btn.disabled = false;
                         btn.innerHTML = '<i class="fas fa-check-circle"></i> <span class="d-none d-sm-inline">Submit All Scores (All Categories)</span><span class="d-sm-none">Submit All</span>';
                     }
                 }).catch(function() {
-                    alert('Error submitting. Please try again.');
+                    Swal.fire('Error', 'Error submitting. Please try again.', 'error');
                     btn.disabled = false;
                     btn.innerHTML = '<i class="fas fa-check-circle"></i> <span class="d-none d-sm-inline">Submit All Scores (All Categories)</span><span class="d-sm-none">Submit All</span>';
                 });
@@ -430,79 +470,15 @@ require __DIR__ . '/../layout/header.php';
 </style>
 
 <script>
-(function() {
-    'use strict';
-    const levelId = <?= (int)$level['id'] ?>;
-    const judgeId = <?= (int)$judge['id'] ?>;
-    const csrfToken = <?= json_encode(Session::getCSRFToken() ?: '', JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+(function(){
     
-    function checkSubmitButton() {
-        let filledCount = 0, totalEditable = 0;
-        $('.score-input:not([readonly])').each(function() {
-            totalEditable++;
-            var v = $(this).val();
-            if (v && v !== '' && v !== '0' && v !== '0.00' && v !== '0.0') filledCount++;
-        });
-        if (totalEditable > 0 && filledCount >= totalEditable) {
-            $('#submitAllBtn').prop('disabled', false);
-        } else {
-            $('#submitAllBtn').prop('disabled', true);
-        }
-    }
-    
-    $(document).on('input change', '.score-input', function() { checkSubmitButton(); });
-    $(document).on('blur', '.score-input', function() {
-        var $input = $(this);
-        if ($input.prop('readonly')) return;
-        var contestantId = $input.data('contestant-id'), criteriaId = $input.data('criteria-id'), roundId = $input.data('round-id');
-        if (!contestantId || !criteriaId || !roundId) return;
-        var val = parseFloat($input.val());
-        if (isNaN(val) || val < 0) return;
-        var max = parseFloat($input.data('max')) || 0;
-        if (max > 0 && val > max) { $input.val(max.toFixed(2)); val = max; }
-        $.ajax({
-            url: '/tabulation/judge/rounds/' + roundId + '/contestants/' + contestantId + '/auto-save',
-            method: 'POST',
-            dataType: 'json',
-            data: { csrf_token: csrfToken, criteria_id: criteriaId, raw_score: val },
-            success: function(r) { if (r.success) checkSubmitButton(); else Swal.fire('Error', r.message || 'Save failed', 'error'); },
-            error: function() { Swal.fire('Error', 'Error saving score. Try again.', 'error'); }
-        });
-    });
-    
-    var autoSaveTimer = null, isSaving = false;
-    $(document).on('input', '.score-input', function() {
-        var $input = $(this);
-        if ($input.prop('readonly') || $input.prop('disabled')) return;
-        var contestantId = $input.data('contestant-id'), criteriaId = $input.data('criteria-id'), roundId = $input.data('round-id');
-        if (!contestantId || !criteriaId || !roundId) return;
-        var val = parseFloat($input.val());
-        if (isNaN(val) || val < 0) { checkSubmitButton(); return; }
-        var max = parseFloat($input.data('max')) || 0;
-        if (max > 0 && val > max) { checkSubmitButton(); return; }
-        if (autoSaveTimer) clearTimeout(autoSaveTimer);
-        autoSaveTimer = setTimeout(function() {
-            if (isSaving) return;
-            isSaving = true;
-            $.ajax({
-                url: '/tabulation/judge/rounds/' + roundId + '/contestants/' + contestantId + '/auto-save',
-                method: 'POST',
-                dataType: 'json',
-                data: { csrf_token: csrfToken, criteria_id: criteriaId, raw_score: val },
-                success: function(r) { isSaving = false; if (r.success) checkSubmitButton(); },
-                error: function() { isSaving = false; }
-            });
-        }, 1000);
-        checkSubmitButton();
-    });
-    
-    // Submit All: handled in vanilla JS (early script) so it works without jQuery; checks for missing scores and notifies judges
-    
-    
+    // Handle per-category submission buttons
     $(document).on('click', '.request-edit-permission', function() {
         var roundId = $(this).data('round-id'), scoreId = $(this).data('score-id'), contestantId = $(this).data('contestant-id');
         if (!roundId || !scoreId || !contestantId) return;
-        $.ajax({
+        // New code to handle request-edit-permission click event
+        console.log('Request edit permission clicked');
+        // Add your logic here
             url: '/tabulation/judge/rounds/' + roundId + '/request-edit-permission',
             method: 'POST',
             dataType: 'json',
@@ -531,6 +507,174 @@ require __DIR__ . '/../layout/header.php';
     });
     
     $(document).ready(function() { checkSubmitButton(); });
+    
+    // Handle per-category submission buttons
+    $(document).on('click', '.submit-category-btn', function() {
+        const $btn = $(this);
+        const roundId = $btn.data('round-id');
+        const categoryName = $btn.data('category-name');
+        
+        if ($btn.prop('disabled')) return;
+        
+        // Check all inputs in this category
+        const $panel = $btn.closest('.score-sheet-panel');
+        const $inputs = $panel.find('.score-input:not([readonly])');
+        let missing = [], exceeded = [], incomplete = [];
+        
+        $inputs.each(function() {
+            const $input = $(this);
+            const v = $input.val() ? $input.val().trim() : '';
+            const num = parseFloat(v);
+            const max = parseFloat($input.data('max')) || 0;
+            
+            if (!v || v === '' || v === '0' || v === '0.00') {
+                const $row = $input.closest('tr');
+                const contestantNum = $row.find('td:first').text().trim();
+                incomplete.push('Contestant #' + contestantNum);
+            } else if (!isNaN(num) && max > 0 && num > max) {
+                exceeded.push(num.toFixed(2) + ' (max ' + max + ')');
+            }
+        });
+        
+        if (exceeded.length > 0) {
+            Swal.fire('Warning', 'Some scores exceed the maximum allowed for ' + categoryName + '. Please correct them.', 'warning');
+            return;
+        }
+        
+        if (incomplete.length > 0) {
+            Swal.fire({
+                title: 'Incomplete Scores',
+                html: 'The following contestants in ' + categoryName + ' have incomplete scores:<br><br><strong>' + incomplete.join(', ') + '</strong><br><br>Please enter all scores before submitting.',
+                icon: 'warning',
+                confirmButtonColor: '#dc3545',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+        
+        Swal.fire({
+            title: 'Submit Category',
+            text: 'Are you sure you want to submit all scores for ' + categoryName + '? You will need permission to edit after.',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Submit ' + categoryName,
+            confirmButtonColor: '#28a745'
+        }).then(function(result) {
+            if (result.isConfirmed) {
+                $btn.prop('disabled', true);
+                $btn.html('<i class="fas fa-spinner fa-spin"></i> Submitting...');
+                
+                const body = new FormData();
+                body.append('csrf_token', csrfToken);
+                body.append('round_id', roundId);
+                
+                fetch(_baseUrl + '/judge/rounds/' + roundId + '/submit-all', {
+                    method: 'POST',
+                    body: body,
+                    credentials: 'same-origin'
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    if (data.success) {
+                        Swal.fire('Success', categoryName + ' scores have been submitted successfully.', 'success').then(function() {
+                            window.location.reload();
+                        });
+                    } else {
+                        Swal.fire('Error', data.message || 'Something went wrong.', 'error');
+                        $btn.prop('disabled', false);
+                        $btn.html('<i class="fas fa-check-circle"></i> Submit All');
+                    }
+                }).catch(function() {
+                    Swal.fire('Error', 'Error submitting ' + categoryName + '. Please try again.', 'error');
+                    $btn.prop('disabled', false);
+                    $btn.html('<i class="fas fa-check-circle"></i> Submit All');
+                });
+            }
+        });
+    });
+
+    // Handle request edit permission button for categories
+    $(document).on('click', '.request-edit-permission', function() {
+        const $btn = $(this);
+        const roundId = $btn.data('round-id');
+        const categoryName = $btn.data('category-name');
+        
+        Swal.fire({
+            title: 'Request Edit Permission',
+            text: 'Are you sure you want to request permission to edit submitted scores for ' + categoryName + '?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Request Permission',
+            confirmButtonColor: '#ffc107'
+        }).then(function(result) {
+            if (result.isConfirmed) {
+                $btn.prop('disabled', true);
+                $btn.html('<i class="fas fa-spinner fa-spin"></i> Requesting...');
+                
+                const body = new FormData();
+                body.append('csrf_token', csrfToken);
+                body.append('round_id', roundId);
+                
+                fetch(_baseUrl + '/judge/rounds/' + roundId + '/request-edit-permission', {
+                    method: 'POST',
+                    body: body,
+                    credentials: 'same-origin'
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    if (data.success) {
+                        Swal.fire('Request Sent', data.message || 'Permission request sent successfully.', 'success');
+                        $btn.removeClass('btn-warning').addClass('btn-info');
+                        $btn.html('<i class="fas fa-clock"></i> Pending');
+                        $btn.prop('disabled', true);
+                    } else {
+                        Swal.fire('Error', data.message || 'Failed to send permission request.', 'error');
+                        $btn.prop('disabled', false);
+                        $btn.html('<i class="fas fa-key"></i> Request');
+                    }
+                }).catch(function() {
+                    Swal.fire('Error', 'Error sending permission request. Please try again.', 'error');
+                    $btn.prop('disabled', false);
+                    $btn.html('<i class="fas fa-key"></i> Request');
+                });
+            }
+        });
+    });
+    
+    // Add heartbeat to keep session active and update last_activity
+    setInterval(function() {
+        $.ajax({
+            url: '/tabulation/judge/heartbeat',
+            method: 'POST',
+            data: { csrf_token: csrfToken },
+            success: function() {
+                // Heartbeat successful - session remains active
+            },
+            error: function() {
+                // Heartbeat failed - may indicate connection issues
+            }
+        });
+    }, 8000); // Send heartbeat every 8 seconds (faster than 10-second ping check)
+    
+    // Handle browser close/tab close to mark session as inactive
+    window.addEventListener('beforeunload', function(e) {
+        // Send synchronous request to mark session as inactive
+        navigator.sendBeacon('/tabulation/judge/disconnect', new FormData().append('csrf_token', csrfToken));
+    });
+    
+    // Handle page visibility changes (tab switching)
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            // Page is hidden, send disconnect signal
+            navigator.sendBeacon('/tabulation/judge/disconnect', new FormData().append('csrf_token', csrfToken));
+        } else {
+            // Page is visible again, send heartbeat immediately
+            $.ajax({
+                url: '/tabulation/judge/heartbeat',
+                method: 'POST',
+                data: { csrf_token: csrfToken },
+                success: function() {
+                    // Session reactivated
+                }
+            });
+        }
+    });
 })();
 </script>
 

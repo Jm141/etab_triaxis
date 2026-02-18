@@ -32,41 +32,16 @@ require __DIR__ . '/../layout/header.php';
             </div>
         <?php else: ?>
             <?php
-            // Group rounds by event and level (one card per level; all scoring categories in one view)
-            $groupedByLevel = [];
+            // Group rounds by event and level
+            $groupedRounds = [];
             foreach ($rounds as $round) {
-                $levelId = $round['level_id'];
-                if (!isset($groupedByLevel[$round['event_id']])) {
-                    $groupedByLevel[$round['event_id']] = [];
-                }
-                if (!isset($groupedByLevel[$round['event_id']][$levelId])) {
-                    $groupedByLevel[$round['event_id']][$levelId] = [
-                        'event_name' => $round['event_name'],
-                        'level_name' => $round['level_name'],
-                        'rounds' => []
-                    ];
-                }
-                $groupedByLevel[$round['event_id']][$levelId]['rounds'][] = $round;
+                $groupedRounds[$round['event_id']][$round['level_name']][] = $round;
             }
             ?>
             
-            <?php foreach ($groupedByLevel as $eventId => $levels): ?>
-                <?php foreach ($levels as $levelId => $levelData): ?>
-                    <?php 
-                    $levelRounds = $levelData['rounds'];
-                    $firstRound = $levelRounds[0];
-                    $totalSubmitted = 0;
-                    $totalContestants = 0;
-                    $allDone = true;
-                    foreach ($levelRounds as $r) {
-                        $sc = $r['submitted_count'] ?? 0;
-                        $tc = $r['total_contestants'] ?? 0;
-                        $totalSubmitted += $sc;
-                        $totalContestants = max($totalContestants, $tc);
-                        if ($tc > 0 && $sc < $tc) $allDone = false;
-                    }
-                    $percentage = $totalContestants > 0 ? min(100, ($totalSubmitted / (count($levelRounds) * max(1, $totalContestants))) * 100) : 0;
-                    ?>
+            <?php foreach ($groupedRounds as $eventId => $levels): ?>
+                <?php foreach ($levels as $levelName => $levelRounds): ?>
+                    <?php $firstRound = $levelRounds[0]; ?>
                     <div class="card mb-4">
                         <div class="card-header bg-primary text-white">
                             <h4 class="mb-0">
@@ -75,37 +50,56 @@ require __DIR__ . '/../layout/header.php';
                         </div>
                         <div class="card-body">
                             <div class="card mb-3">
-                                <div class="card-header d-flex flex-wrap align-items-center justify-content-between" style="background-color: #37474f; color: #eceff1;">
+                                <div class="card-header bg-secondary text-white">
                                     <h5 class="mb-0">
-                                        <i class="fas fa-layer-group"></i> <?= htmlspecialchars($levelData['level_name']) ?>
+                                        <i class="fas fa-layer-group"></i> <?= htmlspecialchars($levelName) ?>
                                     </h5>
-                                    <a href="/tabulation/judge/level/<?= (int)$levelId ?>/table" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-table"></i> Score All Categories
-                                    </a>
                                 </div>
                                 <div class="card-body">
-                                    <p class="text-muted small mb-2">
-                                        <strong>Scoring categories in this level:</strong>
-                                        <?= htmlspecialchars(implode(', ', array_map(function($r) { return $r['name']; }, $levelRounds))) ?>
-                                    </p>
-                                    <div class="mb-2">
-                                        <small class="text-muted">Progress (all categories):</small>
-                                        <div class="progress mt-1" style="height: 20px;">
-                                            <div class="progress-bar <?= $allDone ? 'bg-success' : '' ?>" role="progressbar" style="width: <?= $percentage ?>%">
-                                                <?= $totalSubmitted ?> / <?= count($levelRounds) * max(1, $totalContestants) ?>
+                                    <div class="row">
+                                        <?php foreach ($levelRounds as $round): ?>
+                                            <div class="col-md-6 col-lg-4 mb-3">
+                                                <div class="card h-100">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">
+                                                            <i class="fas fa-circle-notch"></i> <?= htmlspecialchars($round['name']) ?>
+                                                        </h6>
+                                                        <div class="mb-2">
+                                                            <?php 
+                                                            $submittedCount = $round['submitted_count'] ?? 0;
+                                                            $totalContestants = $round['total_contestants'] ?? 0;
+                                                            $percentage = $totalContestants > 0 ? ($submittedCount / $totalContestants * 100) : 0;
+                                                            
+                                                            // Determine if round is done (all contestants scored and submitted)
+                                                            $isDone = ($totalContestants > 0 && $submittedCount >= $totalContestants);
+                                                            ?>
+                                                            <small class="text-muted">Progress:</small>
+                                                            <div class="progress mt-1" style="height: 20px;">
+                                                                <div class="progress-bar <?= $isDone ? 'bg-success' : '' ?>" role="progressbar" 
+                                                                     style="width: <?= $percentage ?>%">
+                                                                    <?= $submittedCount ?> / <?= $totalContestants ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-2">
+                                                            <?php if ($isDone): ?>
+                                                                <span class="badge bg-success">
+                                                                    <i class="fas fa-check-circle"></i> Done
+                                                                </span>
+                                                            <?php else: ?>
+                                                                <span class="badge bg-<?= $round['status'] === 'Active' ? 'primary' : 'secondary' ?>">
+                                                                    <?= htmlspecialchars($round['status']) ?>
+                                                                </span>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                        <a href="/tabulation/judge/rounds/<?= $round['id'] ?>/table" class="btn btn-sm btn-primary w-100">
+                                                            <i class="fas fa-table"></i> Score Contestants
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
-                                    <div class="mb-2">
-                                        <?php if ($allDone && $totalContestants > 0): ?>
-                                            <span class="badge bg-success"><i class="fas fa-check-circle"></i> All categories done</span>
-                                        <?php else: ?>
-                                            <span class="badge bg-primary">In progress</span>
-                                        <?php endif; ?>
-                                    </div>
-                                    <a href="/tabulation/judge/level/<?= (int)$levelId ?>/table" class="btn btn-primary w-100">
-                                        <i class="fas fa-table"></i> Score All Categories in One View
-                                    </a>
                                 </div>
                             </div>
                         </div>

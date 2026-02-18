@@ -3,17 +3,51 @@ $title = 'Score Round: ' . $round['name'];
 require __DIR__ . '/../layout/header.php'; 
 ?>
 
-<div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
-    <h1 class="mb-3 mb-md-0"><i class="fas fa-table"></i> <span class="d-none d-sm-inline">Score Round: </span><?= htmlspecialchars($round['name']) ?></h1>
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+    <!-- <h1 class="mb-3 mb-md-0">
+        <i class="fas fa-table"></i> 
+        <span class="d-none d-sm-inline">Score Round: </span><?= htmlspecialchars($round['name']) ?>
+    </h1> -->
     <div class="d-flex flex-column flex-sm-row gap-2 w-100 w-md-auto">
-        <button type="button" class="btn btn-success btn-sm btn-block btn-md-inline" id="submitAllBtn" disabled>
-            <i class="fas fa-check-circle"></i> <span class="d-none d-sm-inline">Submit All Scores</span><span class="d-sm-none">Submit All</span>
+        <button type="button" class="btn btn-success btn-sm btn-block btn-md-inline" id="submitAllBtn"  style='width:600px;'disabled>
+            <i class="fas fa-check-circle"></i> <span class="d-none d-sm-inline">Submit All Scores for <?= htmlspecialchars($round['name']) ?></span><span class="d-sm-none">Submit All</span>
         </button>
-        <a href="/tabulation/judge/rounds" class="btn btn-secondary btn-sm btn-block btn-md-inline">
+        <!-- <a href="/tabulation/judge/rounds" class="btn btn-secondary btn-sm btn-block btn-md-inline">
             <i class="fas fa-arrow-left"></i> Back
-        </a>
+        </a> -->
     </div>
 </div>
+
+<?php if (!empty($assignedRounds)): ?>
+    <div class="mb-4">
+        <div class="card">
+            <div class="card-body py-2">
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
+                    <span class="mr-2 mb-2 mb-lg-0 font-weight-bold">
+                        <i class="fas fa-layer-group"></i> My Rounds:
+                    </span>
+                    <div class="btn-group btn-group-sm flex-wrap" role="group" aria-label="Round navigation">
+                        <?php foreach ($assignedRounds as $assignedRound): ?>
+                            <?php 
+                                $isActive = isset($currentRoundId) && (int)$currentRoundId === (int)$assignedRound['id'];
+                            ?>
+                            <a href="/tabulation/judge/rounds/<?= $assignedRound['id'] ?>/table"
+                               class="btn <?= $isActive ? 'btn-primary' : 'btn-outline-primary' ?> mb-1">
+                                <!-- <?= htmlspecialchars($assignedRound['event_name']) ?> 
+                                - <?= htmlspecialchars($assignedRound['level_name']) ?>  -->
+                                <?= htmlspecialchars($assignedRound['name']) ?>
+                            </a>
+                        <?php endforeach; ?>
+                        
+                    </div>
+                </div>
+                <small class="text-muted d-block mt-2">
+                    Switching rounds will keep all entered scores. Draft scores are auto-saved to the system.
+                </small>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 
 <!-- <div class="card mb-4">
     <div class="card-body">
@@ -108,20 +142,26 @@ require __DIR__ . '/../layout/header.php';
         <div class="card-body p-0" >
             <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
                 <table class="table table-bordered table-hover table-sm" id="scoringTable">
-                    <thead class="thead-dark sticky-top" style="background-color: #37474f; z-index: 10;">
+                    <thead class="thead-dark sticky-top" style="background-color: #0a0a0a; z-index: 10;">
                         <tr>
-                            <th rowspan="2" class="align-middle text-center" style="min-width: 100px; position: sticky; left: 0; background-color: #37474f; z-index: 11;">
+                            <th rowspan="2" class="align-middle text-center" style="min-width: 100px; position: sticky; left: 0; background-color: #0a0a0a; z-index: 11;">
                                 <strong>Contestant #</strong>
                             </th>
+                            <th rowspan="2" class="align-middle text-center" style="min-width: 150px; position: sticky; left: 100px; background-color: #0a0a0a; z-index: 11;">
+                                <strong>Contestant Name</strong>
+                            </th>
                             <?php foreach ($criteria as $criterion): ?>
-                                <th class="text-center criteria-header-cell">
-                                    <div class="criteria-header-inner">
+                                <th class="text-center" style="min-width: 120px;">
+                                    <div class="small">
                                         <strong><?= htmlspecialchars($criterion['name']) ?></strong>
                                         <br>
                                         <span class="badge badge-info">Max: <?= number_format($criterion['max_score'], 2) ?></span>
                                     </div>
                                 </th>
                             <?php endforeach; ?>
+                            <th rowspan="2" class="align-middle text-center" style="min-width: 120px;">
+                                <strong>Status</strong>
+                            </th>
                         </tr>
                         <tr>
                             <?php foreach ($criteria as $criterion): ?>
@@ -170,6 +210,9 @@ require __DIR__ . '/../layout/header.php';
                             <td class="text-center font-weight-bold" style="position: sticky; left: 0; background-color: inherit; z-index: 1; font-size: 1.1em;">
                                 <?= htmlspecialchars($contestant['contestant_number']) ?>
                             </td>
+                             <td class="text-center font-weight-bold" >
+                                <?= htmlspecialchars($contestant['name']) ?>
+                            </td>
                             <?php foreach ($criteria as $criterion): 
                                 $detail = null;
                                 // $scoreDetails is indexed by criteria_id, so we can directly access it
@@ -199,6 +242,53 @@ require __DIR__ . '/../layout/header.php';
                                 <?php endif; ?>
                             </td>
                             <?php endforeach; ?>
+                            <td class="text-center">
+                                <?php if ($isSubmitted): ?>
+                                    <span class="badge badge-success">
+                                        <i class="fas fa-check-circle"></i> Submitted
+                                    </span>
+                                    <?php if ($permissionStatus === 'judge_requested'): ?>
+                                        <br><small class="text-info mt-1 d-block">
+                                            <i class="fas fa-clock"></i> Permission requested
+                                        </small>
+                                    <?php elseif ($permissionStatus === 'admin_requested'): ?>
+                                        <br><small class="text-warning mt-1 d-block mb-2">
+                                            <i class="fas fa-exclamation-triangle"></i> Admin wants to edit
+                                        </small>
+                                        <div class="btn-group btn-group-sm mt-1">
+                                            <button type="button" 
+                                                    class="btn btn-sm btn-success grant-permission-btn"
+                                                    data-score-id="<?= $existingScore['id'] ?? '' ?>"
+                                                    title="Grant permission to admin">
+                                                <i class="fas fa-check"></i> Grant
+                                            </button>
+                                            <button type="button" 
+                                                    class="btn btn-sm btn-danger deny-permission-btn"
+                                                    data-score-id="<?= $existingScore['id'] ?? '' ?>"
+                                                    title="Deny permission to admin">
+                                                <i class="fas fa-times"></i> Deny
+                                            </button>
+                                        </div>
+                                    <?php elseif ($permissionStatus === 'granted'): ?>
+                                        <br><small class="text-success mt-1 d-block">
+                                            <i class="fas fa-unlock"></i> Editable
+                                        </small>
+                                    <?php else: ?>
+                                        <br>
+                                        <button type="button" 
+                                                class="btn btn-sm btn-outline-primary mt-1 request-edit-permission"
+                                                data-contestant-id="<?= $contestant['id'] ?>"
+                                                data-score-id="<?= $existingScore['id'] ?? '' ?>"
+                                                title="Request permission to edit submitted score">
+                                            <i class="fas fa-edit"></i> Request Edit
+                                        </button>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <span class="badge badge-warning">
+                                        <i class="fas fa-clock"></i> Draft
+                                    </span>
+                                <?php endif; ?>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -208,40 +298,85 @@ require __DIR__ . '/../layout/header.php';
     </div>
 <?php endif; ?>
 
+<?php if (!empty($assignedRounds)): ?>
+    <div class="mb-4">
+        <div class="card">
+            <div class="card-body py-2">
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
+                    <span class="mr-2 mb-2 mb-lg-0 font-weight-bold">
+                        <i class="fas fa-layer-group"></i> My Rounds:
+                    </span>
+                    <div class="btn-group btn-group-sm flex-wrap" role="group" aria-label="Round navigation">
+                        <?php foreach ($assignedRounds as $assignedRound): ?>
+                            <?php 
+                                $isActive = isset($currentRoundId) && (int)$currentRoundId === (int)$assignedRound['id'];
+                            ?>
+                            <a href="/tabulation/judge/rounds/<?= $assignedRound['id'] ?>/table"
+                               class="btn <?= $isActive ? 'btn-primary' : 'btn-outline-primary' ?> mb-1">
+                                <!-- <?= htmlspecialchars($assignedRound['event_name']) ?> 
+                                - <?= htmlspecialchars($assignedRound['level_name']) ?>  -->
+                                <?= htmlspecialchars($assignedRound['name']) ?>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <small class="text-muted d-block mt-2">
+                    Switching rounds will keep all entered scores. Draft scores are auto-saved to the system.
+                </small>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
 <style>
 #scoringTable thead th {
-    background-color: #37474f !important;
-    color: #eceff1 !important;
-    border-color: #546e7a !important;
-}
-#scoringTable thead th.criteria-header-cell {
-    min-width: 150px !important;
-    padding: 12px 10px;
-}
-#scoringTable thead th.criteria-header-cell .criteria-header-inner {
-    font-size: 1rem;
-    line-height: 1.4;
-}
-#scoringTable thead th.criteria-header-cell .criteria-header-inner strong {
-    font-size: 1.05rem;
-}
-#scoringTable thead th.criteria-header-cell .badge {
-    font-size: 0.8rem;
-    padding: 4px 8px;
+    background-color: #0a0a0a !important;
+    color: #00d9ff !important;
+    border-color: #333 !important;
 }
 
 #scoringTable tbody tr.table-success {
-    background-color: rgba(77, 182, 172, 0.08) !important;
+    background-color: rgba(0, 217, 255, 0.1) !important;
 }
 
 .score-input:read-only {
-    background-color: #eceff1;
+    background-color: #f5f5f5;
     cursor: not-allowed;
 }
 
 .score-input:focus {
-    border-color: #4db6ac;
-    box-shadow: 0 0 0 0.2rem rgba(77, 182, 172, 0.25);
+    border-color: #00d9ff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 217, 255, 0.25);
+}
+
+/* Ensure contestant name column is visible */
+#scoringTable th:nth-child(2),
+#scoringTable td:nth-child(2) {
+    position: sticky !important;
+    left: 100px !important;
+    background-color: inherit !important;
+    z-index: 1 !important;
+    min-width: 150px !important;
+}
+
+/* Ensure contestant number column stays in place */
+#scoringTable th:nth-child(1),
+#scoringTable td:nth-child(1) {
+    position: sticky !important;
+    left: 0 !important;
+    background-color: inherit !important;
+    z-index: 2 !important;
+    min-width: 100px !important;
+}
+
+#scoringTable thead th:nth-child(1) {
+    z-index: 12 !important;
+    background-color: #0a0a0a !important;
+}
+
+#scoringTable thead th:nth-child(2) {
+    z-index: 11 !important;
+    background-color: #0a0a0a !important;
 }
 </style>
 
@@ -1163,23 +1298,23 @@ console.log('[Auto-Save] ===== SCRIPT BLOCK LOADED =====');
 
 <style>
 #scoringTable thead th {
-    background-color: #37474f !important;
-    color: #eceff1 !important;
-    border-color: #546e7a !important;
+    background-color: #0a0a0a !important;
+    color: #00d9ff !important;
+    border-color: #333 !important;
 }
 
 #scoringTable tbody tr.table-success {
-    background-color: rgba(77, 182, 172, 0.08) !important;
+    background-color: rgba(0, 217, 255, 0.1) !important;
 }
 
 .score-input:read-only {
-    background-color: #eceff1;
+    background-color: #f5f5f5;
     cursor: not-allowed;
 }
 
 .score-input:focus {
-    border-color: #4db6ac;
-    box-shadow: 0 0 0 0.2rem rgba(77, 182, 172, 0.25);
+    border-color: #00d9ff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 217, 255, 0.25);
 }
 
 /* Mobile and Tablet Responsive Styles */

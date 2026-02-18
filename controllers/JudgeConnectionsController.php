@@ -1,51 +1,24 @@
 <?php
 /**
- * API Controller
+ * Judge Connections Controller (Admin)
+ * Shows online/offline status based on judge heartbeat (users.last_ping).
  */
 
-class ApiController extends Controller {
+class JudgeConnectionsController extends Controller {
     
-    public function getRankings($roundId) {
-        $rankings = $this->db->fetchAll(
-            "SELECT r.*, c.contestant_number, c.name, c.team_name
-             FROM rankings r
-             JOIN contestants c ON r.contestant_id = c.id
-             WHERE r.round_id = ?
-             ORDER BY r.rank, r.total_score DESC",
-            [$roundId]
-        );
-        
-        $this->json(['success' => true, 'data' => $rankings]);
-    }
-    
-    /**
-     * Judge heartbeat endpoint (Judge clients ping every 3 seconds)
-     * Marks the judge user as online by updating users.last_ping.
-     */
-    public function judgeHeartbeat() {
-        $this->requireRoles(['Judge']);
-        
-        $userId = Session::get('user_id');
-        
-        // Update last heartbeat timestamp
-        $this->db->query(
-            "UPDATE users SET last_ping = NOW() WHERE id = ?",
-            [$userId]
-        );
-        
-        $this->json([
-            'success' => true,
-            'timestamp' => date('Y-m-d H:i:s')
-        ]);
-    }
-    
-    /**
-     * Admin polling endpoint (Admin checks every 4 seconds)
-     * Online if heartbeat within last 8 seconds.
-     */
-    public function pingJudges() {
+    public function index() {
+        // Admin-only page (judges blocked)
         $this->restrictJudges();
         
+        // Ongoing events (for stats panel)
+        $ongoingEvents = $this->db->fetchAll(
+            "SELECT id, name, event_type 
+             FROM events 
+             WHERE status = 'Ongoing'
+             ORDER BY name ASC"
+        );
+        
+        // Online = heartbeat within last 8 seconds
         $rows = $this->db->fetchAll(
             "SELECT 
                 j.id as judge_id,
@@ -75,9 +48,9 @@ class ApiController extends Controller {
              ORDER BY e.name ASC, CAST(j.judge_number AS UNSIGNED), j.judge_number ASC, u.full_name ASC"
         );
         
-        $data = [];
+        $judgeConnections = [];
         foreach ($rows as $row) {
-            $data[] = [
+            $judgeConnections[] = [
                 'judge' => [
                     'id' => (int)$row['judge_id'],
                     'full_name' => $row['full_name'],
@@ -92,21 +65,17 @@ class ApiController extends Controller {
                     'event_type' => $row['event_type'] ?? '',
                 ],
                 'is_active' => !empty($row['is_active']),
-                // Frontend expects a unix timestamp in seconds
-                'last_activity' => !empty($row['last_ping_unix']) ? (int)$row['last_ping_unix'] : null,
+                'last_activity' => !empty($row['last_ping_unix']) ? (int)$row['last_ping_unix'] : null, // used by JS
                 'last_heartbeat' => !empty($row['last_ping']) ? $row['last_ping'] : null,
                 'session_info' => null,
                 'response_time' => null
             ];
         }
         
-        $this->json([
-            'success' => true,
-            'data' => $data,
-            'timestamp' => date('Y-m-d H:i:s')
+        $this->view('dashboard/judge_connections', [
+            'judgeConnections' => $judgeConnections,
+            'ongoingEvents' => $ongoingEvents
         ]);
     }
 }
-
-
 

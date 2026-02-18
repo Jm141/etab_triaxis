@@ -19,7 +19,7 @@ require __DIR__ . '/../layout/header.php';
 
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0"><i class="fas fa-list"></i> Submitted Scores</h5>
+        <h5 class="mb-0"><i class="fas fa-list"></i> Scores (Draft &amp; Submitted)</h5>
         <div class="d-flex gap-2">
             <?php if (!empty($judges)): ?>
             <select class="form-control form-control-sm" id="judgeFilter" style="width: auto; min-width: 200px;">
@@ -47,7 +47,7 @@ require __DIR__ . '/../layout/header.php';
         </div>
         
         <?php if (empty($judgeData)): ?>
-            <p class="text-muted">No scores submitted yet for this round.</p>
+            <p class="text-muted">No scores have been recorded yet for this round.</p>
         <?php else: ?>
             <?php foreach ($judgeData as $judgeData): ?>
             <div class="card mb-4">
@@ -87,6 +87,16 @@ require __DIR__ . '/../layout/header.php';
                                         <strong>#<?= htmlspecialchars($score['contestant_number']) ?></strong>
                                         <br>
                                         <small class="text-muted"><?= htmlspecialchars($score['contestant_name']) ?></small>
+                                        <br>
+                                        <?php if (!empty($score['is_submitted'])): ?>
+                                            <span class="badge badge-success badge-sm mt-1">
+                                                <i class="fas fa-check-circle"></i> Submitted
+                                            </span>
+                                        <?php else: ?>
+                                            <span class="badge badge-warning badge-sm mt-1">
+                                                <i class="fas fa-clock"></i> Draft
+                                            </span>
+                                        <?php endif; ?>
                                     </td>
                                     <?php 
                                     // Create a map of criteria_id => score_detail for easy lookup
@@ -146,36 +156,21 @@ require __DIR__ . '/../layout/header.php';
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing dropdown...');
+$(document).ready(function() {
+    $('#judgeFilter').on('change', function() {
+        const judgeId = $(this).val();
+        const baseUrl = '/tabulation/score-management/round/<?= $round['id'] ?>';
+        const url = judgeId ? baseUrl + '/' + judgeId : baseUrl;
+        window.location.href = url;
+    });
     
-    const judgeFilter = document.getElementById('judgeFilter');
-    if (judgeFilter) {
-        console.log('Judge filter found:', judgeFilter);
-        
-        judgeFilter.addEventListener('change', function() {
-            console.log('Dropdown changed to:', this.value);
-            const judgeId = this.value;
-            const baseUrl = '/tabulation/score-management/round/<?= $round['id'] ?>';
-            const url = judgeId ? baseUrl + '/' + judgeId : baseUrl;
-            console.log('Redirecting to:', url);
-            window.location.href = url;
-        });
-        
-        // Update print button URL when judge filter changes
-        judgeFilter.addEventListener('change', function() {
-            const judgeId = this.value;
-            const baseUrl = '/tabulation/score-management/print-round/<?= $round['id'] ?>';
-            const printUrl = judgeId ? baseUrl + '/' + judgeId : baseUrl;
-            const printBtn = document.getElementById('printBtn');
-            if (printBtn) {
-                printBtn.setAttribute('href', printUrl);
-                console.log('Print URL updated to:', printUrl);
-            }
-        });
-    } else {
-        console.error('Judge filter dropdown not found!');
-    }
+    // Update print button URL when judge filter changes
+    $('#judgeFilter').on('change', function() {
+        const judgeId = $(this).val();
+        const baseUrl = '/tabulation/score-management/print-round/<?= $round['id'] ?>';
+        const printUrl = judgeId ? baseUrl + '/' + judgeId : baseUrl;
+        $('#printBtn').attr('href', printUrl);
+    });
 });
 </script>
 

@@ -15,26 +15,36 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
 
 <!-- Centered Tabulation Header (Visible on Screen and Print) -->
 <div class="tabulation-header">
-    <div class="org-info">
-        <!-- Organization info can be added here if available -->
+    <div class="header-with-logos">
+        <div class="logo-left">
+            <img src="/tabulation/public/images/diwataLogo.png" alt="Left Logo" class="header-logo" onerror="this.style.display='none';">
+        </div>
+        <div class="header-center">
+            <div class="org-info">
+                <!-- Organization info can be added here if available -->
+            </div>
+            <div class="event-name">
+                <?= htmlspecialchars($event['name']) ?>
+            </div>
+            <div class="event-details">
+                <?php if (!empty($round['level_name'])): ?>
+                    <!-- <strong><?= htmlspecialchars($round['level_name']) ?></strong>
+                    <?php if (!empty($round['name'])): ?>
+                        - <?= htmlspecialchars($round['name']) ?>
+                    <?php endif; ?> -->
+                    <!-- <br> -->
+                <?php endif; ?>
+                <?php if (!empty($event['venue'])): ?>
+                    Venue: <?= htmlspecialchars($event['venue']) ?><br>
+                <?php endif; ?>
+                <?= !empty($event['event_date']) ? date('F d, Y', strtotime($event['event_date'])) : date('F d, Y') ?>
+            </div>
+            <div class="tabulation-title">SUMMARY TABULATION SHEET - <?= htmlspecialchars($round['name']) ?></div>
+        </div>
+        <!-- <div class="logo-right">
+            <img src="/tabulation/public/assets/images/logo-right.svg" alt="Right Logo" class="header-logo" onerror="this.style.display='none';">
+        </div> -->
     </div>
-    <div class="event-name">
-        <?= htmlspecialchars($event['name']) ?>
-    </div>
-    <div class="event-details">
-        <?php if (!empty($round['level_name'])): ?>
-            <strong><?= htmlspecialchars($round['level_name']) ?></strong>
-            <?php if (!empty($round['name'])): ?>
-                - <?= htmlspecialchars($round['name']) ?>
-            <?php endif; ?>
-            <br>
-        <?php endif; ?>
-        <?php if (!empty($event['venue'])): ?>
-            Venue: <?= htmlspecialchars($event['venue']) ?><br>
-        <?php endif; ?>
-        <?= !empty($event['event_date']) ? date('F d, Y', strtotime($event['event_date'])) : date('F d, Y') ?>
-    </div>
-    <div class="tabulation-title">SUMMARY TABULATION SHEET</div>
     <div class="divider"></div>
 </div>
 
@@ -53,13 +63,13 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
                                     Judge #<?= htmlspecialchars($judge['judge_number'] ?: '') ?>
                                 </th>
                             <?php endforeach; ?>
-                            <th class="text-center" style="width: 120px;"><strong> Average Score</strong></th>
+                            <th class="text-center" style="width: 120px;"><strong> Total Score</strong></th>
                             <th class="text-center no-print" style="width: 90px;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($contestantScores as $cs): ?>
-                        <tr class="<?= $cs['contestant']['rank'] <= 3.5 ? 'table-warning' : '' ?>">
+                        <tr>
                             <td class="text-center align-middle">
                                 <?php if ($cs['contestant']['rank'] == 1): ?>
                                     <h3 class="mb-0"><span class="badge bg-warning text-dark">1</span></h3>
@@ -117,20 +127,24 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
         <thead>
             <tr>
                 <th class="contestant-no">Contestant<br>No.</th>
+                <th>Contestant Name</th>
                 <?php foreach ($judges as $judge): ?>
                     <th class="judge-col">
                         Judge #<?= htmlspecialchars($judge['judge_number'] ?: '') ?>
                     </th>
                 <?php endforeach; ?>
-                <th class="total-col">AVERAGE SCORE</th>
+                <th class="total-col">TOTAL SCORE</th>
                 <th class="rank-col">RANK</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($contestantScores as $cs): ?>
-            <tr class="<?= $cs['contestant']['rank'] <= 3.5 ? 'table-warning top-three-row' : '' ?>">
+            <tr>
                 <td class="contestant-no">
                     <?= htmlspecialchars($cs['contestant']['contestant_number']) ?>
+                </td>
+                <td class="contestant-no">
+                   <?= htmlspecialchars($cs['contestant']['name']) ?>
                 </td>
                 <?php foreach ($judges as $judge): ?>
                     <td class="judge-col">

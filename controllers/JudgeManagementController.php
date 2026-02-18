@@ -526,11 +526,18 @@ class JudgeManagementController extends Controller {
                 $key = $roundId . '_' . $criteriaId;
                 
                 if (!in_array($key, $currentCriteriaKeys)) {
-                    // Add new criteria assignment
-                    $this->db->query(
-                        "INSERT INTO judge_criteria_assignments (judge_id, round_id, criteria_id) VALUES (?, ?, ?)",
+                    // Add new criteria assignment - check if already exists to avoid duplicates
+                    $existing = $this->db->fetchOne(
+                        "SELECT COUNT(*) as count FROM judge_criteria_assignments WHERE judge_id = ? AND round_id = ? AND criteria_id = ?",
                         [$id, $roundId, $criteriaId]
                     );
+                    
+                    if ($existing['count'] == 0) {
+                        $this->db->query(
+                            "INSERT INTO judge_criteria_assignments (judge_id, round_id, criteria_id) VALUES (?, ?, ?)",
+                            [$id, $roundId, $criteriaId]
+                        );
+                    }
                 }
                 
                 // Remove from current keys to avoid deactivating

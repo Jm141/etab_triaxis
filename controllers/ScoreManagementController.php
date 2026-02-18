@@ -24,32 +24,15 @@ class ScoreManagementController extends Controller {
         
         $this->requireEventAccess($round['event_id']);
         
-        // Get criteria that the judge is assigned to for this round
-        if ($judgeId) {
-            // If specific judge selected, only show criteria assigned to that judge
-            $criteria = $this->db->fetchAll(
-                "SELECT c.*, cw.weight
-                 FROM criteria_weights cw
-                 JOIN criteria c ON cw.criteria_id = c.id
-                 JOIN judge_criteria_assignments jca ON c.id = jca.criteria_id
-                 WHERE cw.round_id = ? AND cw.is_active = 1 
-                   AND jca.judge_id = ? AND jca.round_id = ? AND jca.is_active = 1
-                 ORDER BY c.id, c.name",
-                [$roundId, $judgeId, $roundId]
-            );
-        } else {
-            // If no specific judge, show all criteria that have scores
-            $criteria = $this->db->fetchAll(
-                "SELECT DISTINCT c.*, cw.weight
-                 FROM criteria_weights cw
-                 JOIN criteria c ON cw.criteria_id = c.id
-                 JOIN score_details sd ON c.id = sd.criteria_id
-                 JOIN scores s ON sd.score_id = s.id
-                 WHERE cw.round_id = ? AND cw.is_active = 1 AND s.round_id = ? AND s.is_submitted = 1
-                 ORDER BY c.id, c.name",
-                [$roundId, $roundId]
-            );
-        }
+        // Get criteria for this round
+        $criteria = $this->db->fetchAll(
+            "SELECT c.*, cw.weight
+             FROM criteria_weights cw
+             JOIN criteria c ON cw.criteria_id = c.id
+             WHERE cw.round_id = ? AND cw.is_active = 1
+             ORDER BY c.id, c.name",
+            [$roundId]
+        );
         
         // Get all judges for this round
         $judges = $this->db->fetchAll(
@@ -74,14 +57,15 @@ class ScoreManagementController extends Controller {
             );
         }
         
-        // Get all scores for this round
+        // Get all scores for this round (both draft and submitted)
+        // Admins should be able to see scores even before judges submit
         $scoresQuery = "SELECT s.*, c.contestant_number, c.name as contestant_name,
                                j.id as judge_id, j.judge_number, u.full_name as judge_name
              FROM scores s
              JOIN contestants c ON s.contestant_id = c.id
              JOIN judges j ON s.judge_id = j.id
              JOIN users u ON j.user_id = u.id
-             WHERE s.round_id = ? AND s.is_submitted = 1";
+             WHERE s.round_id = ?";
         
         $scoresParams = [$roundId];
         if ($judgeId) {
@@ -207,15 +191,14 @@ class ScoreManagementController extends Controller {
         // Permission is reset after each edit, so we always need to check
         $needsPermission = !$score['admin_edit_allowed'];
         
-        // Get criteria that have actual scores for this specific score
+        // Get criteria for this round
         $criteria = $this->db->fetchAll(
-            "SELECT DISTINCT c.*, cw.weight
+            "SELECT c.*, cw.weight
              FROM criteria_weights cw
              JOIN criteria c ON cw.criteria_id = c.id
-             JOIN score_details sd ON c.id = sd.criteria_id
-             WHERE cw.round_id = ? AND cw.is_active = 1 AND sd.score_id = ?
+             WHERE cw.round_id = ? AND cw.is_active = 1
              ORDER BY c.id, c.name",
-            [$score['round_id'], $scoreId]
+            [$score['round_id']]
         );
         
         // Get existing score details
@@ -1042,8 +1025,6 @@ class ScoreManagementController extends Controller {
     public function printRoundScores($roundId, $judgeId = null) {
         $this->restrictJudges();
         
-        error_log("DEBUG: printRoundScores called with roundId=$roundId, judgeId=" . ($judgeId ?? 'null'));
-        
         $round = $this->db->fetchOne(
             "SELECT r.*, el.name as level_name, el.event_id
              FROM rounds r
@@ -1058,54 +1039,15 @@ class ScoreManagementController extends Controller {
         
         $this->requireEventAccess($round['event_id']);
         
-        // Get criteria for printing: ONLY criteria assigned to the judge
-        if ($judgeId) {
-            // If specific judge selected, ONLY show criteria assigned to that judge
-            error_log("DEBUG: printRoundScores - Getting criteria assigned to judgeId=$judgeId");
-            $criteria = $this->db->fetchAll(
-                "SELECT c.*, cw.weight
-                 FROM criteria_weights cw
-                 JOIN criteria c ON cw.criteria_id = c.id
-                 JOIN judge_criteria_assignments jca ON c.id = jca.criteria_id
-                 WHERE cw.round_id = ? AND cw.is_active = 1 
-                   AND jca.judge_id = ? AND jca.round_id = ? AND jca.is_active = 1
-                 ORDER BY c.id, c.name",
-                [$roundId, $judgeId, $roundId]
-            );
-            error_log("DEBUG: printRoundScores - Found " . count($criteria) . " criteria assigned to judge $judgeId");
-        } else {
-            // If no specific judge, show only criteria that have scores from the displayed judges
-            error_log("DEBUG: printRoundScores - Getting criteria with scores from displayed judges for roundId=$roundId");
-            
-            // First get the judges that have scores for this round
-            $judgesWithScores = $this->db->fetchAll(
-                "SELECT DISTINCT s.judge_id
-                 FROM scores s
-                 WHERE s.round_id = ? AND s.is_submitted = 1",
-                [$roundId]
-            );
-            $judgeIds = array_column($judgesWithScores, 'judge_id');
-            
-            if (!empty($judgeIds)) {
-                $placeholders = implode(',', array_fill(0, count($judgeIds), '?'));
-                $criteria = $this->db->fetchAll(
-                    "SELECT DISTINCT c.*, cw.weight
-                     FROM criteria_weights cw
-                     JOIN criteria c ON cw.criteria_id = c.id
-                     JOIN score_details sd ON c.id = sd.criteria_id
-                     JOIN scores s ON sd.score_id = s.id
-                     WHERE cw.round_id = ? AND cw.is_active = 1 
-                       AND s.round_id = ? AND s.is_submitted = 1
-                       AND s.judge_id IN ($placeholders)
-                     ORDER BY c.id, c.name",
-                    array_merge([$roundId, $roundId], $judgeIds)
-                );
-            } else {
-                $criteria = [];
-            }
-            
-            error_log("DEBUG: printRoundScores - Found " . count($criteria) . " criteria with scores from " . count($judgeIds) . " judges");
-        }
+        // Get criteria for this round
+        $criteria = $this->db->fetchAll(
+            "SELECT c.*, cw.weight
+             FROM criteria_weights cw
+             JOIN criteria c ON cw.criteria_id = c.id
+             WHERE cw.round_id = ? AND cw.is_active = 1
+             ORDER BY c.id, c.name",
+            [$roundId]
+        );
         
         // Get all judges for this round
         $judges = $this->db->fetchAll(
@@ -1125,14 +1067,14 @@ class ScoreManagementController extends Controller {
             });
         }
         
-        // Get all scores for this round
+        // Get all scores for this round (draft and submitted)
         $scoresQuery = "SELECT s.*, c.contestant_number, c.name as contestant_name,
                                j.id as judge_id, j.judge_number, u.full_name as judge_name
              FROM scores s
              JOIN contestants c ON s.contestant_id = c.id
              JOIN judges j ON s.judge_id = j.id
              JOIN users u ON j.user_id = u.id
-             WHERE s.round_id = ? AND s.is_submitted = 1";
+             WHERE s.round_id = ?";
         
         $scoresParams = [$roundId];
         if ($judgeId) {
@@ -1213,19 +1155,17 @@ class ScoreManagementController extends Controller {
         
         $roundData = [];
         foreach ($rounds as $round) {
-            // Get criteria that have actual scores for this round
+            // Get criteria
             $criteria = $this->db->fetchAll(
-                "SELECT DISTINCT c.*, cw.weight
+                "SELECT c.*, cw.weight
                  FROM criteria_weights cw
                  JOIN criteria c ON cw.criteria_id = c.id
-                 JOIN score_details sd ON c.id = sd.criteria_id
-                 JOIN scores s ON sd.score_id = s.id
-                 WHERE cw.round_id = ? AND cw.is_active = 1 AND s.round_id = ? AND s.is_submitted = 1
+                 WHERE cw.round_id = ? AND cw.is_active = 1
                  ORDER BY c.id, c.name",
-                [$round['id'], $round['id']]
+                [$round['id']]
             );
             
-            // Get scores
+        // Get scores (draft and submitted)
             $scores = $this->db->fetchAll(
                 "SELECT s.*, c.contestant_number, c.name as contestant_name,
                         j.id as judge_id, j.judge_number, u.full_name as judge_name
@@ -1233,7 +1173,7 @@ class ScoreManagementController extends Controller {
                  JOIN contestants c ON s.contestant_id = c.id
                  JOIN judges j ON s.judge_id = j.id
                  JOIN users u ON j.user_id = u.id
-                 WHERE s.round_id = ? AND s.is_submitted = 1
+             WHERE s.round_id = ?
                  ORDER BY j.judge_number, CAST(c.contestant_number AS UNSIGNED)",
                 [$round['id']]
             );

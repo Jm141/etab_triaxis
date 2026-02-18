@@ -15,6 +15,9 @@ $router->get('logout', 'Auth@logout');
 // Dashboard
 $router->get('dashboard', 'Dashboard@index');
 
+// Judge Connection Management (Admin)
+$router->get('judge-connections', 'JudgeConnections@index');
+
 // Events
 $router->get('events', 'Event@index');
 $router->get('events/create', 'Event@create');
@@ -98,9 +101,6 @@ $router->get('contestants/download-template', 'Contestant@downloadTemplate');
 
 // Judge Scoring Interface
 $router->get('judge/rounds', 'JudgeScoring@rounds');
-// Level table: one view with all scoring categories (rounds) merged
-$router->get('judge/level/{levelId}/table', 'JudgeScoring@levelTable');
-$router->post('judge/level/{levelId}/submit-all', 'JudgeScoring@submitLevelAll');
 // More specific route first (table view)
 $router->get('judge/rounds/{roundId}/table', 'JudgeScoring@roundTable');
 // Less specific route last (redirects to table)
@@ -172,4 +172,6 @@ $router->post('events/{eventId}/reports/deductions/{id}/respond', 'Reports@respo
 
 // API Routes
 $router->get('api/rankings/round/{roundId}', 'Api@getRankings');
+$router->get('api/ping-judges', 'Api@pingJudges');
+$router->post('api/judge-heartbeat', 'Api@judgeHeartbeat');
 

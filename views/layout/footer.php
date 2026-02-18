@@ -5,7 +5,7 @@
 
         <!-- Footer -->
         <footer class="main-footer">
-            <strong>Copyright &copy; <?= date('Y') ?> <a href="https://triconnect-9xmz.onrender.com/" target="_blank">Tri-Axis</a>.</strong>
+            <strong>Copyright &copy; <?= date('Y') ?> <a href="https://triconnect-9xmz.onrender.com/" target="_blank">TriAccess Group</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 1.0.0
@@ -105,5 +105,28 @@
             });
         }
     </script>
+
+    <?php if (Session::has('user_id') && Session::get('role_name') === 'Judge'): ?>
+    <script>
+    // Judge heartbeat (ping every 3 seconds)
+    (function() {
+        if (typeof $ === 'undefined') return;
+        const csrfToken = <?php echo json_encode(Session::getCSRFToken() ?: '', JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+        function sendHeartbeat() {
+            $.ajax({
+                url: '/tabulation/api/judge-heartbeat',
+                method: 'POST',
+                dataType: 'json',
+                data: { csrf_token: csrfToken }
+            });
+        }
+        // Send immediately and then every 3 seconds
+        $(document).ready(function() {
+            sendHeartbeat();
+            setInterval(sendHeartbeat, 3000);
+        });
+    })();
+    </script>
+    <?php endif; ?>
 </body>
 </html>

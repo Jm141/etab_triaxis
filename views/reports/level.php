@@ -25,20 +25,30 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
 
 <!-- Centered Tabulation Header (Print View - Full) -->
 <div class="tabulation-header" style="display: none;">
-    <div class="org-info">
-        <!-- Organization info can be added here if available -->
+    <div class="header-with-logos">
+        <div class="logo-left">
+            <img src="/tabulation/public/images/diwataLogo.png" alt="Left Logo" class="header-logo" onerror="this.style.display='none';">
+        </div>
+        <div class="header-center">
+            <div class="org-info">
+                <!-- Organization info can be added here if available -->
+            </div>
+            <div class="event-name">
+                <?= htmlspecialchars($event['name']) ?>
+            </div>
+            <div class="event-details">
+                <strong><?= htmlspecialchars($level['name']) ?></strong>
+                <?php if (!empty($event['venue'])): ?>
+                    <br>Venue: <?= htmlspecialchars($event['venue']) ?>
+                <?php endif; ?>
+                <br><?= !empty($event['event_date']) ? date('F d, Y', strtotime($event['event_date'])) : date('F d, Y') ?>
+            </div>
+            <div class="tabulation-title">SUMMARY TABULATION SHEET</div>
+        </div>
+        <!-- <div class="logo-right">
+            <img src="/tabulation/public/assets/images/diwataLogo.png" alt="Right Logo" class="header-logo" onerror="this.style.display='none';">
+        </div> -->
     </div>
-    <div class="event-name">
-        <?= htmlspecialchars($event['name']) ?>
-    </div>
-    <div class="event-details">
-        <strong><?= htmlspecialchars($level['name']) ?></strong>
-        <?php if (!empty($event['venue'])): ?>
-            <br>Venue: <?= htmlspecialchars($event['venue']) ?>
-        <?php endif; ?>
-        <br><?= !empty($event['event_date']) ? date('F d, Y', strtotime($event['event_date'])) : date('F d, Y') ?>
-    </div>
-    <div class="tabulation-title">SUMMARY TABULATION SHEET</div>
     <div class="divider"></div>
 </div>
 
@@ -59,13 +69,13 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
                             <small> Avg Score</small>
                         </th>
                     <?php endforeach; ?>
-                    <th class="text-center" style="width: 120px;"><strong> Average Score</strong></th>
+                    <th class="text-center" style="width: 120px;"><strong> Total Score</strong></th>
                     <th class="text-center no-print" style="width: 90px;">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($contestantData as $data): ?>
-                <tr class="<?= $data['rank'] <= 3.5 ? 'table-warning' : '' ?>">
+                <tr>
                     <td class="text-center align-middle">
                         <?php if ($data['rank'] == 1): ?>
                             <h3 class="mb-0"><span class="badge bg-warning text-dark">1</span></h3>
@@ -133,13 +143,13 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
                         <small>Average</small>
                     </th>
                 <?php endforeach; ?>
-                <th class="total-col">TOTAL AVERAGE SCORE</th>
+                <th class="total-col">TOTAL SCORE</th>
                 <th class="rank-col">RANK</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($contestantData as $data): ?>
-            <tr class="<?= $data['rank'] <= 3.5 ? 'table-warning top-three-row' : '' ?>">
+            <tr>
                 <td class="contestant-no">
                     <?= htmlspecialchars($data['contestant']['contestant_number']) ?>
                 </td>
@@ -149,6 +159,7 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
                 <?php foreach ($rounds as $round): ?>
                     <td class="judge-col">
                         <?= ScoreFormatter::format($data['round_averages'][$round['id']] ?? 0, 2) ?>
+                        
                     </td>
                 <?php endforeach; ?>
                 <td class="total-col">

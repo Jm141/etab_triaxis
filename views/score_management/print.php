@@ -186,7 +186,7 @@
             </div>
             
             <?php if (empty($scores)): ?>
-                <p style="text-align: center; font-style: italic; color: #666;">No scores submitted for this round.</p>
+                <p style="text-align: center; font-style: italic; color: #666;">No scores recorded for this round.</p>
             <?php else: ?>
                 <?php
                 // Group scores by contestant
@@ -240,6 +240,9 @@
                                     <td>
                                         Judge #<?= htmlspecialchars($score['judge_number'] ?: '-') ?><br>
                                         <small><?= htmlspecialchars($score['judge_name']) ?></small>
+                                        <?php if (empty($score['is_submitted'])): ?>
+                                            <br><small style="color:#b45309;"><strong>(Draft)</strong></small>
+                                        <?php endif; ?>
                                     </td>
                                     
                                     <?php 

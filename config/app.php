@@ -10,7 +10,7 @@ return [
     'port' => 3306,
     'timezone' => 'UTC',
     'session_name' => 'TABULATION_SESSION',
-    'session_lifetime' => 3600, // 1 hour
+    'session_lifetime' => 21600, // 6 hour
     'csrf_token_name' => 'csrf_token',
     'debug' => true,
     'error_reporting' => E_ALL,

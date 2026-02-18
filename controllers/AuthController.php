@@ -62,6 +62,35 @@ class AuthController extends Controller {
                     ]
                 );
                 
+                // Judges should land on the scoring interface by default
+                if ($user['role_name'] === 'Judge') {
+                    // If judge has an assigned ongoing round, go straight to the spreadsheet-style scoring table
+                    $assigned = $this->db->fetchOne(
+                        "SELECT r.id
+                         FROM judge_assignments ja
+                         JOIN judges j ON ja.judge_id = j.id
+                         JOIN rounds r ON ja.round_id = r.id
+                         JOIN event_levels el ON r.level_id = el.id
+                         JOIN events e ON el.event_id = e.id
+                         WHERE j.user_id = ?
+                           AND ja.is_active = 1
+                           AND ja.is_preparation_only = 0
+                           AND e.status = 'Ongoing'
+                         ORDER BY COALESCE(el.`order`, 0) ASC, COALESCE(r.`order`, 0) ASC, r.name ASC
+                         LIMIT 1",
+                        [$user['id']]
+                    );
+                    
+                    if (!empty($assigned['id'])) {
+                        $this->redirect('/tabulation/judge/rounds/' . $assigned['id'] . '/table');
+                        return;
+                    }
+                    
+                    // Fallback: assigned rounds list (shows guidance if none)
+                    $this->redirect('/tabulation/judge/rounds');
+                    return;
+                }
+                
                 $this->redirect('/tabulation/dashboard');
             } else {
                 // Log failed login

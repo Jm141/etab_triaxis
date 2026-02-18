@@ -21,24 +21,27 @@
     
     <style>
         :root {
-            --primary: #37474f;
-            --secondary: #4db6ac;
+            --primary: #373737ff;
+            --secondary: #00d9ff;
             --accent: #ffffff;
             --bg: #fafafa;
-            --bg-dark: #455a64;
-            --text: #263238;
-            --text-light: #546e7a;
-            --border: #e0e8ec;
-            --hover: #f0f4f6;
-            --sidebar-bg: #37474f;
-            --sidebar-text: rgba(255,255,255,0.88);
-            --sidebar-active: #80cbc4;
+            --bg-dark: #1a1a1a;
+            --text: #0a0a0a;
+            --text-light: #666;
+            --border: #e5e5e5;
+            --hover: #f5f5f5;
+            --sidebar-bg: #302e2eff;
+            --sidebar-text: rgba(255,255,255,0.8);
+            --sidebar-active: #00d9ff;
         }
         
         * {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
-        
+        .header-logo {
+            width:200px;
+            height: auto;
+        }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: var(--bg);
@@ -76,13 +79,13 @@
         }
         
         .main-sidebar .nav-sidebar .nav-item .nav-link:hover {
-            background: rgba(128,203,196,0.15);
-            color: var(--sidebar-active);
+            background: rgba(0,217,255,0.1);
+            color: var(--accent);
             border-left-color: var(--secondary);
         }
         
         .main-sidebar .nav-sidebar .nav-item .nav-link.active {
-            background: rgba(128,203,196,0.2);
+            background: rgba(0,217,255,0.15);
             color: var(--sidebar-active);
             border-left-color: var(--secondary);
             font-weight: 600;
@@ -179,11 +182,11 @@
         }
         
         .btn-primary:hover {
-            background: #455a64;
-            border-color: #455a64;
+            background: #1a1a1a;
+            border-color: #1a1a1a;
             color: var(--accent);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(55,71,79,0.2);
+            box-shadow: 0 4px 12px rgba(10,10,10,0.15);
         }
         
         .btn-secondary {
@@ -432,7 +435,7 @@
         }
     </style>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini sidebar-collapse layout-fixed">
     <?php if (Session::has('user_id')): ?>
     <div class="wrapper">
         <!-- Navbar -->
@@ -525,6 +528,12 @@
                             <a href="/tabulation/judge-management" class="nav-link <?= (strpos($_SERVER['REQUEST_URI'] ?? '', '/judge-management') !== false) ? 'active' : '' ?>">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Judges</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tabulation/judge-connections" class="nav-link <?= (strpos($_SERVER['REQUEST_URI'] ?? '', '/judge-connections') !== false) ? 'active' : '' ?>">
+                                <i class="nav-icon fas fa-users-cog"></i>
+                                <p>Judge Connections</p>
                             </a>
                         </li>
                         <?php endif; ?>

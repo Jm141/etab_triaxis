@@ -9,6 +9,45 @@
     text-align: center;
     margin-bottom: 20px;
     display: block;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Header with logos layout */
+.header-with-logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.logo-left, .logo-right {
+    flex: 0 0 auto;
+    width: 500px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+}
+
+.logo-left {
+    left: 20px;
+}
+
+.logo-right {
+    right: 0;
+}
+
+.header-center {
+    flex: 1 1 auto;
+    text-align: center;
+    margin: 15px 270px; /* 250px logo width + 20px margin */
+}
+
+.header-logo {
+    max-height: 500px;
+    max-width: 500px;
+    object-fit: contain;
 }
 
 .tabulation-header .event-name {
@@ -19,12 +58,12 @@
 }
 
 .tabulation-header .event-details {
-    font-size: 11pt;
+    font-size: 16pt;
     margin: 5px 0;
 }
 
 .tabulation-header .tabulation-title {
-    font-size: 14pt;
+    font-size: 16pt;
     font-weight: bold;
     margin-top: 15px;
     margin-bottom: 10px;
@@ -50,12 +89,80 @@
         display: none !important;
     }
     
+    /* Ensure header images are visible in print */
+    .tabulation-header img,
+    .header-logo {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
     /* Tabulation Sheet Header Style */
     .tabulation-header {
         text-align: center;
         margin-bottom: 20px;
         page-break-after: avoid;
         display: block !important;
+        position: relative;
+        z-index: 1000;
+    }
+    
+    /* Header with logos layout for print */
+    .header-with-logos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        position: relative;
+    }
+    
+    .logo-left, .logo-right {
+        display: block !important;
+        visibility: visible !important;
+        flex: 0 0 auto !important;
+        width: 350px !important;
+        text-align: center !important;
+        position: absolute;
+        top: 0;
+    }
+    
+    .logo-left {
+        left: 20px;
+    }
+    
+    .logo-right {
+        right: 0;
+    }
+    
+    .header-center {
+        flex: 1 1 auto;
+        text-align: center;
+        margin: 0 270px; /* 250px logo width + 20px margin */
+    }
+    
+    .header-logo {
+        max-height: 600px;
+        max-width: 600px;
+        object-fit: contain;
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    /* Ensure logo containers are visible */
+    .logo-left, .logo-right {
+        display: block !important;
+        visibility: visible !important;
+        flex: 0 0 auto !important;
+        width: 600px !important;
+        text-align: center !important;
+    }
+    
+    /* Ensure header with logos is properly displayed */
+    .header-with-logos {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 15px !important;
     }
     
     /* Hide screen header, show print header */
@@ -85,7 +192,7 @@
     }
     
     .tabulation-header .event-details {
-        font-size: 10pt;
+        font-size: 16pt;
         margin: 5px 0;
     }
     

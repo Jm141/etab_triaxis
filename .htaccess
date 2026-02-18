@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /tabulation/
+RewriteBase /etab/etab_triaxis/
 
 # Prevent directory listing
 Options -Indexes
