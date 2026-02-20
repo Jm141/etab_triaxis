@@ -58,6 +58,7 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
                         <tr>
                             <th class="text-center" style="width: 80px;">Rank</th>
                             <th style="width: 100px;">Contestant #</th>
+                            <th style="width: 120px;">Name</th>
                             <?php foreach ($judges as $judge): ?>
                                 <th class="text-center" style="min-width: 120px;">
                                     Judge #<?= htmlspecialchars($judge['judge_number'] ?: '') ?>
@@ -68,7 +69,79 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($contestantScores as $cs): ?>
+                        <?php if ($event['gender_mode'] === 'mr_miss'): ?>
+                            <!-- MR & MISS Mode - Group by contestant number -->
+                            <?php 
+                            // Group contestants by number
+                            $groupedContestants = [];
+                            foreach ($contestantScores as $contestantId => $data) {
+                                $number = $data['contestant']['contestant_number'];
+                                if (!isset($groupedContestants[$number])) {
+                                    $groupedContestants[$number] = [];
+                                }
+                                $groupedContestants[$number][] = [
+                                    'id' => $contestantId,
+                                    'data' => $data
+                                ];
+                            }
+                            
+                            foreach ($groupedContestants as $contestantNumber => $group):
+                                foreach ($group as $contestant):
+                                    $cs = $contestant['data'];
+                            ?>
+                        <tr>
+                            <td class="text-center align-middle">
+                                <?php if (isset($cs['contestant']['gender_rank'])): ?>
+                                    <?php if ($cs['contestant']['gender_rank'] == 1): ?>
+                                        <h3 class="mb-0"><span class="badge bg-warning text-dark">1</span></h3>
+                                    <?php elseif ($cs['contestant']['gender_rank'] == 2): ?>
+                                        <h4 class="mb-0"><span class="badge bg-secondary">2</span></h4>
+                                    <?php elseif ($cs['contestant']['gender_rank'] >= 3 && $cs['contestant']['gender_rank'] < 4): ?>
+                                        <h4 class="mb-0"><span class="badge" style="background-color: #CD7F32; color: white;"><?= $cs['contestant']['gender_rank'] ?></span></h4>
+                                    <?php else: ?>
+                                        <h5 class="mb-0"><?= $cs['contestant']['gender_rank'] ?></h5>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <h5 class="mb-0"><?= $cs['contestant']['rank'] ?></h5>
+                                <?php endif; ?>
+                            </td>
+                            <td class="align-middle">
+                                <strong>#<?= htmlspecialchars($cs['contestant']['contestant_number']) ?></strong>
+                                <br>
+                                <small class="text-muted"><?= htmlspecialchars($cs['contestant']['gender'] ?? 'Unknown') ?></small>
+                            </td>
+                            <td class="align-middle">
+                                <?= htmlspecialchars($cs['contestant']['name']) ?>
+                            </td>
+                            <?php foreach ($judges as $judge): ?>
+                                <td class="text-center align-middle">
+                                    <strong><?= ScoreFormatter::format($cs['judge_raw_scores'][$judge['id']] ?? 0, 2) ?></strong>
+                                </td>
+                            <?php endforeach; ?>
+                            <td class="text-center align-middle">
+                                <strong class="text-success" style="font-size: 1.2em;">
+                                    <?= ScoreFormatter::format($cs['adjusted_total'], 2) ?>
+                                </strong>
+                                <?php if (!empty($cs['deduction']) && $cs['deduction'] > 0): ?>
+                                    <div class="text-danger small" title="<?= htmlspecialchars($cs['deduction_reason'] ?? '') ?>">
+                                        <i class="fas fa-minus-circle"></i> -<?= ScoreFormatter::format($cs['deduction'], 2) ?>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                            <td class="text-center align-middle no-print">
+                                <a href="/tabulation/score-management/edit/<?= $cs['contestant']['contestant_id'] ?>" 
+                                   class="btn btn-sm btn-warning" 
+                                   title="Edit Score">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                            </td>
+                        </tr>
+                        <?php 
+                                endforeach; // End contestant in group
+                            endforeach; // End contestant number group
+                        } else: ?>
+                            <!-- Single Gender Mode - Original Layout -->
+                            <?php foreach ($contestantScores as $cs): ?>
                         <tr>
                             <td class="text-center align-middle">
                                 <?php if ($cs['contestant']['rank'] == 1): ?>
@@ -84,6 +157,9 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
                             <td class="align-middle">
                                 <strong>#<?= htmlspecialchars($cs['contestant']['contestant_number']) ?></strong>
                             </td>
+                            <td class="align-middle">
+                                <?= htmlspecialchars($cs['contestant']['name']) ?>
+                            </td>
                             <?php foreach ($judges as $judge): ?>
                                 <td class="text-center align-middle">
                                     <strong><?= ScoreFormatter::format($cs['judge_raw_scores'][$judge['id']] ?? 0, 2) ?></strong>
@@ -97,29 +173,40 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
                                     <div class="text-danger small" title="<?= htmlspecialchars($cs['deduction_reason'] ?? '') ?>">
                                         <i class="fas fa-minus-circle"></i> -<?= ScoreFormatter::format($cs['deduction'], 2) ?>
                                     </div>
-                                    <?php if (($cs['deduction_status'] ?? '') === 'requested'): ?>
-                                        <div class="text-warning small">Pending approval</div>
-                                    <?php elseif (($cs['deduction_status'] ?? '') === 'denied'): ?>
-                                        <div class="text-muted small">Denied</div>
-                                    <?php endif; ?>
                                 <?php endif; ?>
                             </td>
                             <td class="text-center align-middle no-print">
-                                <button type="button"
-                                        class="btn btn-sm btn-danger deduct-btn"
-                                        data-contestant-id="<?= (int)$cs['contestant']['contestant_id'] ?>"
-                                        data-deduction="<?= htmlspecialchars((string)($cs['deduction'] ?? 0)) ?>"
-                                        data-reason="<?= htmlspecialchars((string)($cs['deduction_reason'] ?? '')) ?>"
-                                        data-status="<?= htmlspecialchars((string)($cs['deduction_status'] ?? '')) ?>"
-                                        <?= (($cs['deduction_status'] ?? '') === 'requested') ? 'disabled' : '' ?>>
-                                    <i class="fas fa-minus-circle"></i>
-                                    <?= (($cs['deduction_status'] ?? '') === 'requested') ? 'Pending' : 'Request Deduction' ?>
-                                </button>
+                                <a href="/tabulation/score-management/edit/<?= $cs['contestant']['contestant_id'] ?>" 
+                                   class="btn btn-sm btn-warning" 
+                                   title="Edit Score">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <?php if (empty($cs['deduction']) || $cs['deduction'] == 0): ?>
+                                    <button type="button" 
+                                            class="btn btn-sm btn-outline-danger mt-1 request-deduction"
+                                            data-contestant-id="<?= $cs['contestant']['contestant_id'] ?>"
+                                            data-round-id="<?= $round['id'] ?>"
+                                            title="Request point deduction">
+                                        <i class="fas fa-minus-circle"></i>
+                                        <?= (($cs['deduction_status'] ?? '') === 'requested') ? 'Pending' : 'Request Deduction' ?>
+                                    </button>
+                                <?php else: ?>
+                                    <div class="mt-1">
+                                        <small class="text-muted">
+                                            <i class="fas fa-minus-circle"></i> 
+                                            <?= ScoreFormatter::format($cs['deduction'], 2) ?> 
+                                            (<?= $cs['deduction_status'] ?? 'none' ?>)
+                                        </small>
+                                    </div>
+                                <?php endif; ?>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
+                        <?php endforeach; // End single mode loop
+                        } // End gender mode check ?>
                     </tbody>
                 </table>
+            </div>
+        </div>
     </div>
     
     <!-- Print View - Tabulation Sheet Format -->
@@ -133,114 +220,91 @@ require_once __DIR__ . '/../../core/ScoreFormatter.php';
                         Judge #<?= htmlspecialchars($judge['judge_number'] ?: '') ?>
                     </th>
                 <?php endforeach; ?>
-                <th class="total-col">TOTAL SCORE</th>
-                <th class="rank-col">RANK</th>
+                <th class="total-col">Total Score</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($contestantScores as $cs): ?>
-            <tr>
-                <td class="contestant-no">
-                    <?= htmlspecialchars($cs['contestant']['contestant_number']) ?>
-                </td>
-                <td class="contestant-no">
-                   <?= htmlspecialchars($cs['contestant']['name']) ?>
-                </td>
-                <?php foreach ($judges as $judge): ?>
-                    <td class="judge-col">
-                        <?= ScoreFormatter::format($cs['judge_raw_scores'][$judge['id']] ?? 0, 2) ?>
+            <?php if ($event['gender_mode'] === 'mr_miss'): ?>
+                <!-- MR & MISS Mode - Group by contestant number -->
+                <?php 
+                // Group contestants by number for print view
+                $groupedContestants = [];
+                foreach ($contestantScores as $contestantId => $data) {
+                    $number = $data['contestant']['contestant_number'];
+                    if (!isset($groupedContestants[$number])) {
+                        $groupedContestants[$number] = [];
+                    }
+                    $groupedContestants[$number][] = [
+                        'id' => $contestantId,
+                        'data' => $data
+                    ];
+                }
+                
+                foreach ($groupedContestants as $contestantNumber => $group):
+                    foreach ($group as $contestant):
+                        $cs = $contestant['data'];
+                ?>
+                <tr>
+                    <td class="contestant-no"><?= $contestantNumber ?></td>
+                    <td><?= htmlspecialchars($cs['contestant']['gender'] ?? 'Unknown') ?></td>
+                    <?php foreach ($judges as $judge): ?>
+                        <td class="judge-col">
+                            <?= ScoreFormatter::format($cs['judge_raw_scores'][$judge['id']] ?? 0, 2) ?>
+                        </td>
+                    <?php endforeach; ?>
+                    <td class="total-col">
+                        <?= ScoreFormatter::format($cs['adjusted_total'], 2) ?>
                     </td>
-                <?php endforeach; ?>
-                <td class="total-col">
-                    <?= ScoreFormatter::format($cs['adjusted_total'], 2) ?>
-                </td>
-                <td class="rank-col">
-                    <?= $cs['contestant']['rank'] ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
+                </tr>
+                <?php 
+                        endforeach; // End contestant in group
+                    endforeach; // End contestant number group
+                } else: ?>
+                <!-- Single Gender Mode - Original Layout -->
+                <?php foreach ($contestantScores as $cs): ?>
+                <tr>
+                    <td class="contestant-no"><?= $cs['contestant']['contestant_number'] ?></td>
+                    <td><?= htmlspecialchars($cs['contestant']['name']) ?></td>
+                    <?php foreach ($judges as $judge): ?>
+                        <td class="judge-col">
+                            <?= ScoreFormatter::format($cs['judge_raw_scores'][$judge['id']] ?? 0, 2) ?>
+                        </td>
+                    <?php endforeach; ?>
+                    <td class="total-col">
+                        <?= ScoreFormatter::format($cs['adjusted_total'], 2) ?>
+                    </td>
+                </tr>
+                <?php endforeach; // End single mode loop
+                } // End gender mode check ?>
         </tbody>
     </table>
 <?php endif; ?>
 
 <script>
-window.addEventListener('load', function() {
-    document.addEventListener('click', function(event) {
-        const btn = event.target.closest('.deduct-btn');
-        if (!btn) return;
-        
-        if (typeof Swal === 'undefined') {
-            alert('SweetAlert2 is not loaded.');
-            return;
-        }
-        
-        const contestantId = btn.getAttribute('data-contestant-id');
-        const currentDeduction = parseFloat(btn.getAttribute('data-deduction')) || 0;
-        const currentReason = btn.getAttribute('data-reason') || '';
-        const url = '/tabulation/events/<?= (int)$event['id'] ?>/reports/round/<?= (int)$round['id'] ?>/deduct';
-        const csrfToken = (document.querySelector('meta[name="csrf-token"]') || {}).content || '';
-        
-        Swal.fire({
-            title: 'Request Deduction (Round Average)',
-            html:
-                '<div class="text-left">' +
-                '<label class="form-label mb-1">Deduction Amount</label>' +
-                '<input id="deductionAmount" type="number" class="form-control" min="0" step="0.01">' +
-                '<label class="form-label mt-2 mb-1">Reason (required)</label>' +
-                '<input id="deductionReason" type="text" class="form-control">' +
-                '<small class="text-muted d-block mt-2">This request will be sent to the event organizer.</small>' +
-                '</div>',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Send Request',
-            cancelButtonText: 'Cancel',
-            didOpen: () => {
-                const amountInput = document.getElementById('deductionAmount');
-                const reasonInput = document.getElementById('deductionReason');
-                if (amountInput) amountInput.value = currentDeduction;
-                if (reasonInput) reasonInput.value = currentReason;
-            },
-            preConfirm: () => {
-                const amount = parseFloat(document.getElementById('deductionAmount').value) || 0;
-                const reason = document.getElementById('deductionReason').value || '';
-                if (amount <= 0) {
-                    Swal.showValidationMessage('Deduction amount must be greater than 0.');
-                    return false;
-                }
-                if (!reason.trim()) {
-                    Swal.showValidationMessage('Reason is required.');
-                    return false;
-                }
-                return { amount, reason };
-            }
-        }).then((result) => {
-            if (!result.isConfirmed) return;
+// Copy functionality for tabulation sheet
+document.addEventListener('DOMContentLoaded', function() {
+    // Copy scores to clipboard functionality
+    const copyButtons = document.querySelectorAll('.copy-scores');
+    
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const contestantId = this.getAttribute('data-contestant-id');
+            const scores = this.getAttribute('data-scores');
             
-            const body = new URLSearchParams();
-            body.set('csrf_token', csrfToken);
-            body.set('contestant_id', contestantId);
-            body.set('deduction', result.value.amount);
-            body.set('reason', result.value.reason);
+            // Create temporary textarea
+            const textarea = document.createElement('textarea');
+            textarea.value = scores;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
             
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
-                body: body.toString()
-            })
-                .then((response) => response.json().catch(() => null))
-                .then((response) => {
-                    if (response && response.success) {
-                        location.reload();
-                    } else {
-                        Swal.fire('Error', (response && response.message) || 'Failed to apply deduction.', 'error');
-                    }
-                })
-                .catch(() => {
-                    Swal.fire('Error', 'Failed to apply deduction.', 'error');
-                });
+            // Show feedback
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => {
+                this.innerHTML = originalText;
+            }, 2000);
         });
     });
 });

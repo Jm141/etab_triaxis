@@ -91,7 +91,7 @@ class JudgeScoringController extends Controller {
         
         // Get round info
         $round = $this->db->fetchOne(
-            "SELECT r.*, el.name as level_name, el.event_id, e.name as event_name
+            "SELECT r.*, el.name as level_name, el.event_id, e.name as event_name, e.gender_mode
              FROM rounds r
              JOIN event_levels el ON r.level_id = el.id
              JOIN events e ON el.event_id = e.id
@@ -155,13 +155,35 @@ class JudgeScoringController extends Controller {
             }
         } else {
             // First level OR previous level had no elimination (advance_count = NULL) - show all active contestants
-            $contestants = $this->db->fetchAll(
-                "SELECT c.*
-                 FROM contestants c
-                 WHERE c.event_id = ? AND c.status = 'Active'
-                 ORDER BY CAST(c.contestant_number AS UNSIGNED), c.contestant_number",
-                [$round['event_id']]
-            );
+            if ($round['gender_mode'] === 'mr_miss') {
+                // For MR & MISS events, get contestants grouped by number with both genders
+                $contestants = $this->db->fetchAll(
+                    "SELECT c.*, 
+                            CASE 
+                                WHEN c.name LIKE '%Female%' OR c.name LIKE '%Miss%' THEN 'Female'
+                                WHEN c.name LIKE '%Male%' OR c.name LIKE '%Mr%' THEN 'Male'
+                                ELSE 'Unknown'
+                            END as gender
+                     FROM contestants c
+                     WHERE c.event_id = ? AND c.status = 'Active'
+                     ORDER BY CAST(c.contestant_number AS UNSIGNED), c.contestant_number, 
+                              CASE 
+                                  WHEN c.name LIKE '%Female%' OR c.name LIKE '%Miss%' THEN 1
+                                  WHEN c.name LIKE '%Male%' OR c.name LIKE '%Mr%' THEN 2
+                                  ELSE 3
+                              END",
+                    [$round['event_id']]
+                );
+            } else {
+                // Single gender mode - original query
+                $contestants = $this->db->fetchAll(
+                    "SELECT c.*
+                     FROM contestants c
+                     WHERE c.event_id = ? AND c.status = 'Active'
+                     ORDER BY CAST(c.contestant_number AS UNSIGNED), c.contestant_number",
+                    [$round['event_id']]
+                );
+            }
         }
         
         // Get all rounds assigned to this judge (for navigation)
@@ -469,9 +491,18 @@ class JudgeScoringController extends Controller {
             $scoringEngine = new ScoringEngine();
             $scoringEngine->calculateScore($scoreId);
             
-            // Mark as submitted
+            // Mark as submitted and reset permission status
             $this->db->query(
-                "UPDATE scores SET is_submitted = 1, submitted_at = NOW() WHERE id = ?",
+                "UPDATE scores SET 
+                 is_submitted = 1, 
+                 submitted_at = NOW(),
+                 permission_request_status = 'none',
+                 permission_requested_by = NULL,
+                 permission_requested_at = NULL,
+                 permission_responded_by = NULL,
+                 permission_responded_at = NULL,
+                 permission_granted_at = NULL
+                 WHERE id = ?",
                 [$scoreId]
             );
             
@@ -733,9 +764,19 @@ class JudgeScoringController extends Controller {
                     }
                 }
                 
-                // Mark as submitted (not draft)
+                // Mark as submitted (not draft) and reset permission status
                 $this->db->query(
-                    "UPDATE scores SET is_submitted = 1, is_draft = 0, submitted_at = NOW() WHERE id = ?",
+                    "UPDATE scores SET 
+                     is_submitted = 1, 
+                     is_draft = 0, 
+                     submitted_at = NOW(),
+                     permission_request_status = 'none',
+                     permission_requested_by = NULL,
+                     permission_requested_at = NULL,
+                     permission_responded_by = NULL,
+                     permission_responded_at = NULL,
+                     permission_granted_at = NULL
+                     WHERE id = ?",
                     [$score['id']]
                 );
             }

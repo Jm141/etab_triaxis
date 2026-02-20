@@ -106,6 +106,7 @@ class EventController extends Controller {
         $errors = $this->validateInput($_POST, [
             'name' => 'required|min:3',
             'event_type' => 'required',
+            'gender_mode' => 'required|in:single,mr_miss',
             'event_date' => 'required'
         ]);
         
@@ -118,6 +119,7 @@ class EventController extends Controller {
             'name' => $_POST['name'],
             'description' => $_POST['description'] ?? '',
             'event_type' => $_POST['event_type'],
+            'gender_mode' => $_POST['gender_mode'],
             'venue' => $_POST['venue'] ?? '',
             'event_date' => $_POST['event_date'],
             'start_time' => $_POST['start_time'] ?? null,
@@ -131,8 +133,8 @@ class EventController extends Controller {
         
         try {
             $this->db->query(
-                "INSERT INTO events (name, description, event_type, venue, event_date, start_time, end_time, timezone, status, created_by)
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO events (name, description, event_type, gender_mode, venue, event_date, start_time, end_time, timezone, status, created_by)
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 array_values($data)
             );
             
@@ -345,6 +347,7 @@ class EventController extends Controller {
         $errors = $this->validateInput($_POST, [
             'name' => 'required|min:3',
             'event_type' => 'required',
+            'gender_mode' => 'required|in:single,mr_miss',
             'event_date' => 'required'
         ]);
         
@@ -354,13 +357,14 @@ class EventController extends Controller {
         }
         
         $this->db->query(
-            "UPDATE events SET name = ?, description = ?, event_type = ?, venue = ?, 
+            "UPDATE events SET name = ?, description = ?, event_type = ?, gender_mode = ?, venue = ?, 
              event_date = ?, start_time = ?, end_time = ?, timezone = ?, status = ?
              WHERE id = ?",
             [
                 $_POST['name'],
                 $_POST['description'] ?? '',
                 $_POST['event_type'],
+                $_POST['gender_mode'],
                 $_POST['venue'] ?? '',
                 $_POST['event_date'],
                 $_POST['start_time'] ?? null,

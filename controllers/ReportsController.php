@@ -162,22 +162,66 @@ class ReportsController extends Controller {
         // Get contestants - filter based on whether elimination has occurred
         if ($qualifiedCount > 0) {
             // Elimination has occurred - only show contestants who qualified for this level
-            $allContestants = $this->db->fetchAll(
-                "SELECT c.id, c.contestant_number, c.name
-                 FROM contestants c
-                 WHERE c.event_id = ? AND c.status = 'Active' AND c.qualified_for_level_id = ?
-                 ORDER BY CAST(c.contestant_number AS UNSIGNED)",
-                [$eventId, $currentLevel['id']]
-            );
+            if ($event['gender_mode'] === 'mr_miss') {
+                // MR & MISS mode - include gender detection
+                $allContestants = $this->db->fetchAll(
+                    "SELECT c.id, c.contestant_number, c.name,
+                            CASE 
+                                WHEN c.name LIKE '%Female%' OR c.name LIKE '%Miss%' THEN 'Female'
+                                WHEN c.name LIKE '%Male%' OR c.name LIKE '%Mr%' THEN 'Male'
+                                ELSE 'Unknown'
+                            END as gender
+                     FROM contestants c
+                     WHERE c.event_id = ? AND c.status = 'Active' AND c.qualified_for_level_id = ?
+                     ORDER BY CAST(c.contestant_number AS UNSIGNED), c.contestant_number,
+                              CASE 
+                                  WHEN c.name LIKE '%Female%' OR c.name LIKE '%Miss%' THEN 1
+                                  WHEN c.name LIKE '%Male%' OR c.name LIKE '%Mr%' THEN 2
+                                  ELSE 3
+                              END",
+                    [$eventId, $currentLevel['id']]
+                );
+            } else {
+                // Single gender mode - original query
+                $allContestants = $this->db->fetchAll(
+                    "SELECT c.id, c.contestant_number, c.name
+                     FROM contestants c
+                     WHERE c.event_id = ? AND c.status = 'Active' AND c.qualified_for_level_id = ?
+                     ORDER BY CAST(c.contestant_number AS UNSIGNED)",
+                    [$eventId, $currentLevel['id']]
+                );
+            }
         } else {
             // No elimination has occurred - show all active contestants
-            $allContestants = $this->db->fetchAll(
-                "SELECT c.id, c.contestant_number, c.name
-                 FROM contestants c
-                 WHERE c.event_id = ? AND c.status = 'Active'
-                 ORDER BY CAST(c.contestant_number AS UNSIGNED)",
-                [$eventId]
-            );
+            if ($event['gender_mode'] === 'mr_miss') {
+                // MR & MISS mode - include gender detection
+                $allContestants = $this->db->fetchAll(
+                    "SELECT c.id, c.contestant_number, c.name,
+                            CASE 
+                                WHEN c.name LIKE '%Female%' OR c.name LIKE '%Miss%' THEN 'Female'
+                                WHEN c.name LIKE '%Male%' OR c.name LIKE '%Mr%' THEN 'Male'
+                                ELSE 'Unknown'
+                            END as gender
+                     FROM contestants c
+                     WHERE c.event_id = ? AND c.status = 'Active'
+                     ORDER BY CAST(c.contestant_number AS UNSIGNED), c.contestant_number,
+                              CASE 
+                                  WHEN c.name LIKE '%Female%' OR c.name LIKE '%Miss%' THEN 1
+                                  WHEN c.name LIKE '%Male%' OR c.name LIKE '%Mr%' THEN 2
+                                  ELSE 3
+                              END",
+                    [$eventId]
+                );
+            } else {
+                // Single gender mode - original query
+                $allContestants = $this->db->fetchAll(
+                    "SELECT c.id, c.contestant_number, c.name
+                     FROM contestants c
+                     WHERE c.event_id = ? AND c.status = 'Active'
+                     ORDER BY CAST(c.contestant_number AS UNSIGNED)",
+                    [$eventId]
+                );
+            }
         }
         
         // Then filter to only those with submitted scores in this round
@@ -237,6 +281,7 @@ class ReportsController extends Controller {
                     'contestant_id' => $contestantId,
                     'contestant_number' => $contestant['contestant_number'],
                     'name' => $contestant['name'],
+                    'gender' => $contestant['gender'] ?? 'Unknown',
                     'rank' => 0 // Will be calculated
                 ],
                 'judge_scores' => $judgeScores,
@@ -279,6 +324,48 @@ class ReportsController extends Controller {
         });
         
         $contestantScores = $rankedScores;
+        
+        // Add gender-separated rankings for MR & MISS events
+        if ($event['gender_mode'] === 'mr_miss') {
+            // Separate by gender and rank within each gender
+            $genderGroups = [
+                'Female' => [],
+                'Male' => [],
+                'Unknown' => []
+            ];
+            
+            foreach ($contestantScores as $contestantId => $data) {
+                $gender = $data['contestant']['gender'] ?? 'Unknown';
+                $genderGroups[$gender][$contestantId] = $data;
+            }
+            
+            // Rank each gender group separately
+            foreach ($genderGroups as $gender => $group) {
+                if (empty($group)) continue;
+                
+                // Sort by adjusted total descending within gender
+                uasort($group, function($a, $b) {
+                    return $b['adjusted_total'] <=> $a['adjusted_total'];
+                });
+                $sortedGender = array_values($group);
+                $n = count($sortedGender);
+                
+                // Apply fractional ranking within gender
+                $i = 0;
+                while ($i < $n) {
+                    $j = $i;
+                    while ($j + 1 < $n && abs((float)$sortedGender[$j + 1]['adjusted_total'] - (float)$sortedGender[$j]['adjusted_total']) <= 0.001) {
+                        $j++;
+                    }
+                    $genderRank = (($i + 1) + ($j + 1)) / 2;
+                    for ($k = $i; $k <= $j; $k++) {
+                        $contestantId = $sortedGender[$k]['contestant']['contestant_id'];
+                        $contestantScores[$contestantId]['contestant']['gender_rank'] = $genderRank;
+                    }
+                    $i = $j + 1;
+                }
+            }
+        }
             
         $this->view('reports/round', [
             'event' => $event,

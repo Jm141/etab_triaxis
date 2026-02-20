@@ -41,6 +41,14 @@ require __DIR__ . '/../layout/header.php';
                         <option value="Other">Other</option>
                     </select>
                 </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="gender_mode" class="form-label">Gender Mode *</label>
+                    <select class="form-select" id="gender_mode" name="gender_mode" required>
+                        <option value="single">Single Gender</option>
+                        <option value="mr_miss">MR & MISS (Paired)</option>
+                    </select>
+                </div>
             </div>
             
             <div class="mb-3">

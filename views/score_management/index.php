@@ -235,6 +235,30 @@ $db = Database::getInstance();
                                                         <i class="fas fa-clock"></i> Draft
                                                     </span>
                                                 <?php endif; ?>
+                                                
+                                                <?php 
+                                                // Show advancement status
+                                                if (!empty($score['qualified_for_level_id'])): 
+                                                    // Get the level name for qualified contestants
+                                                    $qualifiedLevel = $db->fetchOne(
+                                                        "SELECT name FROM event_levels WHERE id = ?",
+                                                        [$score['qualified_for_level_id']]
+                                                    );
+                                                    
+                                                    // Check if this is the current level or a different level
+                                                    $isAdvanced = $score['qualified_for_level_id'] != $round['level_id'];
+                                                ?>
+                                                    <br>
+                                                    <?php if ($isAdvanced): ?>
+                                                        <span class="badge badge-success badge-sm" title="Advanced to <?= htmlspecialchars($qualifiedLevel['name'] ?? 'Next Level') ?>">
+                                                            <i class="fas fa-arrow-up"></i> Advanced
+                                                        </span>
+                                                    <?php else: ?>
+                                                        <span class="badge badge-primary badge-sm" title="Qualified for <?= htmlspecialchars($qualifiedLevel['name'] ?? 'This Level') ?>">
+                                                            <i class="fas fa-trophy"></i> Qualified
+                                                        </span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
                                             </td>
                                             <?php 
                                             // Create a map of criteria_id => score_detail for easy lookup

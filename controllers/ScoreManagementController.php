@@ -58,9 +58,12 @@ class ScoreManagementController extends Controller {
         }
         
         // Get all scores for this round (both draft and submitted)
-        // Admins should be able to see scores even before judges submit
+        // If round is finished, show all contestants for historical reference
+        // If round is ongoing, filter based on advancement status
+        
         $scoresQuery = "SELECT s.*, c.contestant_number, c.name as contestant_name,
-                               j.id as judge_id, j.judge_number, u.full_name as judge_name
+                               j.id as judge_id, j.judge_number, u.full_name as judge_name,
+                               c.qualified_for_level_id
              FROM scores s
              JOIN contestants c ON s.contestant_id = c.id
              JOIN judges j ON s.judge_id = j.id
@@ -68,6 +71,17 @@ class ScoreManagementController extends Controller {
              WHERE s.round_id = ?";
         
         $scoresParams = [$roundId];
+        
+        // Show all contestants who participated in this level
+        // Even if they advanced to higher levels, they should still be visible for historical reference
+        error_log("Score Management - Round Status: " . $round['status']);
+        error_log("Score Management - Round ID: " . $roundId);
+        error_log("Score Management - Level ID: " . $round['level_id']);
+        error_log("Score Management - Showing all contestants who participated in this level");
+        
+        // No filtering - show all contestants who have scores in this round
+        // This ensures historical visibility regardless of advancement status
+        
         if ($judgeId) {
             $scoresQuery .= " AND s.judge_id = ?";
             $scoresParams[] = $judgeId;

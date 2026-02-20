@@ -92,6 +92,8 @@ $router->get('judge-management/download-template', 'JudgeManagement@downloadTemp
 
 // Contestants
 $router->get('events/{eventId}/contestants', 'Contestant@index');
+$router->get('events/{eventId}/contestants/create-mr-miss', 'Contestant@createMRMiss');
+$router->post('events/{eventId}/contestants/store-mr-miss', 'Contestant@storeMRMiss');
 $router->post('events/{eventId}/contestants/store', 'Contestant@store');
 $router->get('events/{eventId}/contestants/{id}/edit', 'Contestant@edit');
 $router->post('events/{eventId}/contestants/{id}/update', 'Contestant@update');

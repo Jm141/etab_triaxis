@@ -49,10 +49,35 @@ class ContestantController extends Controller {
             [$eventId, $_POST['contestant_number']]
         );
         
-        if ($existing) {
-            Session::set('error_message', 'Contestant number already exists');
-            $this->redirect('/tabulation/events/' . $eventId . '/contestants');
-            return;
+        // Check event gender mode
+        $event = $this->db->fetchOne("SELECT gender_mode FROM events WHERE id = ?", [$eventId]);
+        
+        // For MR & MISS events, allow duplicates if both genders don't exist for this number
+        if ($event['gender_mode'] === 'mr_miss') {
+            // Check if both genders already exist for this number
+            $existingFemale = $this->db->fetchOne(
+                "SELECT * FROM contestants WHERE event_id = ? AND contestant_number = ? AND name LIKE '%Miss%'",
+                [$eventId, $_POST['contestant_number']]
+            );
+            
+            $existingMale = $this->db->fetchOne(
+                "SELECT * FROM contestants WHERE event_id = ? AND contestant_number = ? AND name LIKE '%Mr%'",
+                [$eventId, $_POST['contestant_number']]
+            );
+            
+            // Allow duplicate if both genders don't exist yet
+            if ($existingFemale && $existingMale) {
+                Session::set('error_message', 'Both Male and Female contestants already exist for this number');
+                $this->redirect('/tabulation/events/' . $eventId . '/contestants');
+                return;
+            }
+        } else {
+            // Single gender events - no duplicates allowed
+            if ($existing) {
+                Session::set('error_message', 'Contestant number already exists');
+                $this->redirect('/tabulation/events/' . $eventId . '/contestants');
+                return;
+            }
         }
         
         $this->db->query(
@@ -73,6 +98,140 @@ class ContestantController extends Controller {
         
         Session::set('success_message', 'Contestant added successfully');
         $this->redirect('/tabulation/events/' . $eventId . '/contestants');
+    }
+    
+    public function createMRMiss($eventId) {
+        $this->restrictJudges();
+        $this->requireEventAccess($eventId);
+        
+        $event = $this->db->fetchOne("SELECT * FROM events WHERE id = ?", [$eventId]);
+        if (!$event) {
+            die("Event not found");
+        }
+        
+        // Check if event is MR & MISS mode
+        if ($event['gender_mode'] !== 'mr_miss') {
+            Session::set('error_message', 'This feature is only available for MR & MISS events');
+            $this->redirect('/tabulation/events/' . $eventId . '/contestants');
+            return;
+        }
+        
+        $this->view('contestant/create_mr_miss', [
+            'event' => $event
+        ]);
+    }
+    
+    public function storeMRMiss($eventId) {
+        $this->restrictJudges();
+        $this->requireEventAccess($eventId);
+        
+        // Prevent modifications to finished events
+        $this->preventFinishedEventModification($eventId);
+        
+        $errors = $this->validateInput($_POST, [
+            'contestant_number' => 'required',
+            'female_name' => 'required|min:2',
+            'male_name' => 'required|min:2'
+        ]);
+        
+        if (!empty($errors)) {
+            $this->view('contestant/create_mr_miss', [
+                'event' => $this->db->fetchOne("SELECT * FROM events WHERE id = ?", [$eventId]),
+                'errors' => $errors,
+                'data' => $_POST
+            ]);
+            return;
+        }
+        
+        $this->db->getConnection()->beginTransaction();
+        
+        try {
+            // Check if number already exists for either gender
+            $existingFemale = $this->db->fetchOne(
+                "SELECT * FROM contestants WHERE event_id = ? AND contestant_number = ? AND name LIKE '%Miss%'",
+                [$eventId, $_POST['contestant_number']]
+            );
+            
+            $existingMale = $this->db->fetchOne(
+                "SELECT * FROM contestants WHERE event_id = ? AND contestant_number = ? AND name LIKE '%Mr%'",
+                [$eventId, $_POST['contestant_number']]
+            );
+            
+            // For MR & MISS events, allow duplicates if both genders don't exist for this number
+            $event = $this->db->fetchOne("SELECT gender_mode FROM events WHERE id = ?", [$eventId]);
+            $allowDuplicate = ($event['gender_mode'] === 'mr_miss') ? 
+                !($existingFemale && $existingMale) : 
+                false; // For single gender events, no duplicates allowed
+            
+            if (!$allowDuplicate && ($existingFemale || $existingMale)) {
+                throw new Exception('Contestant number already exists for this event');
+            }
+            
+            // Add female contestant
+            $this->db->query(
+                "INSERT INTO contestants (event_id, contestant_number, name, team_name, category, bio, status)
+                 VALUES (?, ?, ?, ?, ?, ?, ?)",
+                [
+                    $eventId,
+                    $_POST['contestant_number'],
+                    $_POST['female_name'],
+                    $_POST['team_female'] ?? $_POST['team_name'] ?? null,
+                    $_POST['category_female'] ?? $_POST['category'] ?? null,
+                    $_POST['bio_female'] ?? $_POST['bio'] ?? null,
+                    'Active'
+                ]
+            );
+            
+            $femaleId = $this->db->lastInsertId();
+            
+            // Add male contestant
+            $this->db->query(
+                "INSERT INTO contestants (event_id, contestant_number, name, team_name, category, bio, status)
+                 VALUES (?, ?, ?, ?, ?, ?, ?)",
+                [
+                    $eventId,
+                    $_POST['contestant_number'],
+                    $_POST['male_name'],
+                    $_POST['team_male'] ?? $_POST['team_name'] ?? null,
+                    $_POST['category_male'] ?? $_POST['category'] ?? null,
+                    $_POST['bio_male'] ?? $_POST['bio'] ?? null,
+                    'Active'
+                ]
+            );
+            
+            $maleId = $this->db->lastInsertId();
+            
+            // Log both contestants
+            $this->logAudit('CREATE', 'contestants', $femaleId, null, [
+                'contestant_number' => $_POST['contestant_number'],
+                'name' => $_POST['female_name'],
+                'team_name' => $_POST['team_female'] ?? null,
+                'category' => $_POST['category_female'] ?? null,
+                'bio' => $_POST['bio_female'] ?? null
+            ]);
+            
+            $this->logAudit('CREATE', 'contestants', $maleId, null, [
+                'contestant_number' => $_POST['contestant_number'],
+                'name' => $_POST['male_name'],
+                'team_name' => $_POST['team_male'] ?? null,
+                'category' => $_POST['category_male'] ?? null,
+                'bio' => $_POST['bio_male'] ?? null
+            ]);
+            
+            $this->db->getConnection()->commit();
+            
+            Session::set('success_message', 'MR & MISS contestant pair added successfully');
+            $this->redirect('/tabulation/events/' . $eventId . '/contestants/create-mr-miss');
+            
+        } catch (Exception $e) {
+            $this->db->getConnection()->rollBack();
+            Session::set('error_message', $e->getMessage());
+            $this->view('contestant/create_mr_miss', [
+                'event' => $this->db->fetchOne("SELECT * FROM events WHERE id = ?", [$eventId]),
+                'errors' => ['Database error: ' . $e->getMessage()],
+                'data' => $_POST
+            ]);
+        }
     }
     
     public function edit($eventId, $id) {

@@ -160,7 +160,7 @@ require __DIR__ . '/../layout/header.php';
                                 </th>
                             <?php endforeach; ?>
                             <th rowspan="2" class="align-middle text-center" style="min-width: 120px;">
-                                <strong>Status</strong>
+                                <strong><?= $round['gender_mode'] === 'mr_miss' ? 'Total' : 'Status' ?></strong>
                             </th>
                         </tr>
                         <tr>
@@ -178,33 +178,177 @@ require __DIR__ . '/../layout/header.php';
                     <tbody>
                         <?php 
                         $totalMaxScore = array_sum(array_column($criteria, 'max_score'));
-                        foreach ($contestants as $contestant): 
-                            // Get existing score for this contestant
-                            $existingScore = null;
-                            $scoreDetails = [];
-                            $isSubmitted = false;
-                            $isDraft = true;
-                            $permissionStatus = 'none';
-                            
-                            if (!empty($allScores)) {
-                                foreach ($allScores as $score) {
-                                    if ($score['contestant_id'] == $contestant['id']) {
-                                        $existingScore = $score;
-                                        $isSubmitted = $score['is_submitted'] ?? false;
-                                        $isDraft = $score['is_draft'] ?? true;
-                                        $permissionStatus = $score['permission_request_status'] ?? 'none';
-                                        
-                                        // Get score details
-                                        if (!empty($allScoreDetails[$score['id']])) {
-                                            $scoreDetails = $allScoreDetails[$score['id']];
-                                        }
-                                        break;
-                                    }
+                        
+                        if ($round['gender_mode'] === 'mr_miss') {
+                            // Group contestants by number for MR & MISS mode
+                            $groupedContestants = [];
+                            foreach ($contestants as $contestant) {
+                                $number = $contestant['contestant_number'];
+                                if (!isset($groupedContestants[$number])) {
+                                    $groupedContestants[$number] = [];
                                 }
+                                $groupedContestants[$number][] = $contestant;
                             }
                             
-                            $canEdit = !$isSubmitted || $permissionStatus === 'granted';
-                            $rowClass = $isSubmitted ? 'table-success' : '';
+                            foreach ($groupedContestants as $contestantNumber => $genderGroup):
+                                foreach ($genderGroup as $contestant): 
+                                    // Get existing score for this contestant
+                                    $existingScore = null;
+                                    $scoreDetails = [];
+                                    $isSubmitted = false;
+                                    $isDraft = true;
+                                    $permissionStatus = 'none';
+                                    
+                                    if (!empty($allScores)) {
+                                        foreach ($allScores as $score) {
+                                            if ($score['contestant_id'] == $contestant['id']) {
+                                                $existingScore = $score;
+                                                $isSubmitted = $score['is_submitted'] ?? false;
+                                                $isDraft = $score['is_draft'] ?? true;
+                                                $permissionStatus = $score['permission_request_status'] ?? 'none';
+                                                
+                                                // Get score details
+                                                if (!empty($allScoreDetails[$score['id']])) {
+                                                    $scoreDetails = $allScoreDetails[$score['id']];
+                                                }
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    $canEdit = !$isSubmitted || $permissionStatus === 'granted';
+                                    $rowClass = $isSubmitted ? 'table-success' : '';
+                                    $gender = $contestant['gender'] ?? 'Unknown';
+                        ?>
+                        <tr data-contestant-id="<?= $contestant['id'] ?>" class="<?= $rowClass ?>">
+                            <td class="text-center font-weight-bold" style="position: sticky; left: 0; background-color: inherit; z-index: 1; font-size: 1.1em;">
+                                <?= htmlspecialchars($contestantNumber) ?>
+                            </td>
+                            <td class="font-weight-bold" style="position: sticky; left: 100px; background-color: inherit; z-index: 1;">
+                                <?= htmlspecialchars($gender) ?>
+                                <?php if ($isSubmitted): ?>
+                                    <br>
+                                    <span class="badge badge-success badge-sm">
+                                        <i class="fas fa-check-circle"></i> Submitted
+                                    </span>
+                                <?php else: ?>
+                                    <br>
+                                    <span class="badge badge-warning badge-sm">
+                                        <i class="fas fa-clock"></i> Draft
+                                    </span>
+                                <?php endif; ?>
+                            </td>
+                            <?php foreach ($criteria as $criterion): 
+                                $detail = null;
+                                if (!empty($scoreDetails) && isset($scoreDetails[$criterion['id']])) {
+                                    $detail = $scoreDetails[$criterion['id']];
+                                }
+                                $value = $detail ? number_format($detail['raw_score'], 2, '.', '') : '';
+                            ?>
+                            <td class="text-center">
+                                <input type="number" 
+                                       class="form-control form-control-sm score-input text-center" 
+                                       data-contestant-id="<?= $contestant['id'] ?>"
+                                       data-criteria-id="<?= $criterion['id'] ?>"
+                                       data-round-id="<?= $round['id'] ?>"
+                                       data-max="<?= $criterion['max_score'] ?>"
+                                       value="<?= $value ?>"
+                                       min="0" 
+                                       max="<?= $criterion['max_score'] ?>" 
+                                       step="0.01"
+                                       placeholder="0.00"
+                                       <?= !$canEdit ? 'readonly' : '' ?>
+                                       style="min-width: 80px; width: 100px; margin: 0 auto;">
+                                <?php if (!$canEdit): ?>
+                                    <small class="text-muted d-block mt-1">
+                                        <i class="fas fa-lock"></i> Submitted
+                                    </small>
+                                <?php endif; ?>
+                            </td>
+                            <?php endforeach; ?>
+                            <td class="text-center">
+                                <?php 
+                                // Calculate total for this contestant
+                                $rawTotal = 0;
+                                foreach ($scoreDetails as $detail) {
+                                    $rawTotal += (float)($detail['raw_score'] ?? 0);
+                                }
+                                ?>
+                                <strong class="text-primary" style="font-size: 1.1em;">
+                                    <?= number_format($rawTotal, 2) ?>
+                                </strong>
+                                <?php if ($isSubmitted): ?>
+                                    <?php if ($permissionStatus === 'judge_requested'): ?>
+                                        <br><small class="text-info mt-1 d-block">
+                                            <i class="fas fa-clock"></i> Permission requested
+                                        </small>
+                                    <?php elseif ($permissionStatus === 'admin_requested'): ?>
+                                        <br><small class="text-warning mt-1 d-block mb-2">
+                                            <i class="fas fa-exclamation-triangle"></i> Admin wants to edit
+                                        </small>
+                                        <div class="btn-group btn-group-sm mt-1">
+                                            <button type="button" 
+                                                    class="btn btn-sm btn-success grant-permission-btn"
+                                                    data-score-id="<?= $existingScore['id'] ?? '' ?>"
+                                                    title="Grant permission to admin">
+                                                <i class="fas fa-check"></i> Grant
+                                            </button>
+                                            <button type="button" 
+                                                    class="btn btn-sm btn-danger deny-permission-btn"
+                                                    data-score-id="<?= $existingScore['id'] ?? '' ?>"
+                                                    title="Deny permission to admin">
+                                                <i class="fas fa-times"></i> Deny
+                                            </button>
+                                        </div>
+                                    <?php elseif ($permissionStatus === 'granted'): ?>
+                                        <br><small class="text-success mt-1 d-block">
+                                            <i class="fas fa-unlock"></i> Editable
+                                        </small>
+                                    <?php else: ?>
+                                        <br>
+                                        <button type="button" 
+                                                class="btn btn-sm btn-outline-primary mt-1 request-edit-permission"
+                                                data-contestant-id="<?= $contestant['id'] ?>"
+                                                data-score-id="<?= $existingScore['id'] ?? '' ?>"
+                                                title="Request permission to edit submitted score">
+                                            <i class="fas fa-edit"></i> Request Edit
+                                        </button>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <?php 
+                                endforeach; // End gender group loop
+                            endforeach; // End contestant number loop
+                        } else {
+                            // Single gender mode - original layout
+                            foreach ($contestants as $contestant): 
+                                // Get existing score for this contestant
+                                $existingScore = null;
+                                $scoreDetails = [];
+                                $isSubmitted = false;
+                                $isDraft = true;
+                                $permissionStatus = 'none';
+                                
+                                if (!empty($allScores)) {
+                                    foreach ($allScores as $score) {
+                                        if ($score['contestant_id'] == $contestant['id']) {
+                                            $existingScore = $score;
+                                            $isSubmitted = $score['is_submitted'] ?? false;
+                                            $isDraft = $score['is_draft'] ?? true;
+                                            $permissionStatus = $score['permission_request_status'] ?? 'none';
+                                            
+                                            // Get score details
+                                            if (!empty($allScoreDetails[$score['id']])) {
+                                                $scoreDetails = $allScoreDetails[$score['id']];
+                                            }
+                                            break;
+                                        }
+                                    }
+                                }
+                                
+                                $canEdit = !$isSubmitted || $permissionStatus === 'granted';
+                                $rowClass = $isSubmitted ? 'table-success' : '';
                         ?>
                         <tr data-contestant-id="<?= $contestant['id'] ?>" class="<?= $rowClass ?>">
                             <td class="text-center font-weight-bold" style="position: sticky; left: 0; background-color: inherit; z-index: 1; font-size: 1.1em;">
@@ -290,7 +434,8 @@ require __DIR__ . '/../layout/header.php';
                                 <?php endif; ?>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
+                        <?php endforeach; // End single mode contestant loop
+                        } // End gender mode check ?>
                     </tbody>
                 </table>
             </div>
